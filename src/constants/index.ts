@@ -167,6 +167,27 @@ export const experiences: TExperience[] = [
 
 export const projects: TProject[] = [
   {
+    name: "iSent",
+    description:
+      "A Flutter-based app (sixam_mart baseline) customized with modern UI and features. Includes multiple screens as showcased in attached screenshots.",
+    tags: [
+      {
+        name: "flutter",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "dart",
+        color: "green-text-gradient",
+      },
+      {
+        name: "mobile",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "/isent/icon.jpg",
+    sourceCodeLink: "https://github.com/yasirSub/iSent",
+  },
+  {
     name: "Installer App",
     description:
       "A comprehensive mobile application installer with advanced features and modern UI/UX design. Features include app installation management, system optimization, and user-friendly interface for device management.",
