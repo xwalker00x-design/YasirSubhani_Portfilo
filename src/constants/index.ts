@@ -113,7 +113,7 @@ export const services: TService[] = [
 export const experiences: TExperience[] = [
   {
     title: "Full-Stack Developer",
-    companyName: "Worksaar",
+    companyName: "WorkSaar (Firmbeginners It Solutions Pvt Ltd)",
     icon: creator,
     iconBg: "#915EFF",
     date: "Jan 2024 - 2025",

@@ -100,6 +100,39 @@ const Tech = () => {
           </p>
         </div>
       </div>
+
+      {/* AI Tools Badges */}
+      <div className="mt-12">
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center gap-3 mb-3">
+            <div className="w-8 h-1 bg-gradient-to-r from-fuchsia-500 to-violet-500 rounded-full"></div>
+            <h3 className="text-white font-bold text-2xl">AI Tools</h3>
+            <div className="w-8 h-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"></div>
+          </div>
+          <p className="text-gray-400">LLMs, frameworks and services I work with</p>
+        </div>
+        <div className="flex flex-wrap justify-center gap-2">
+          {[
+            "Anthropic Claude",
+            "Google Gemini",
+            "OpenAI GPT",
+            "LangChain",
+            "LlamaIndex",
+            "Vector DBs (Pinecone/FAISS)",
+            "Whisper/TTS",
+            "Vision Models",
+            "Function Calling/Tools",
+            "RAG Pipelines",
+          ].map((tool) => (
+            <span
+              key={tool}
+              className="px-3 py-1 rounded-full text-sm text-fuchsia-300 border border-fuchsia-600/40 bg-fuchsia-600/10 hover:bg-fuchsia-600/20 transition-colors"
+            >
+              {tool}
+            </span>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { openResumeText } from "../../utils/resumeText";
 const ResumePage = () => {
   const [personal, setPersonal] = useState({
     name: "Yasir Subhani",
-    role: "Full-Stack Developer",
+    role: "Full-Stack Developer • AI Engineer",
     email: "yasir.subhani123@gmail.com",
     phone: "+91 8271819813",
     location: "Kolkata, India",
@@ -16,7 +16,7 @@ const ResumePage = () => {
     yearsExperience: "4+ years experience",
   });
   const [summary, setSummary] = useState(
-    "Full-Stack Developer with 4+ years' experience in web, mobile, and AI automation. Skilled in building scalable apps, integrating AI, and optimizing databases with a focus on UX and performance."
+    "Full-Stack Developer & AI Engineer with experience across web/mobile, AI automation, and LLM integration (Claude, Gemini). Skilled in scalable app development, prompt engineering, and database optimization with strong focus on UX and performance."
   );
   const [customProjects, setCustomProjects] = useState<Array<{ name: string; description: string }>>([]);
   const [achievements, setAchievements] = useState<string[]>([]);
@@ -24,6 +24,18 @@ const ResumePage = () => {
   const [languages, setLanguages] = useState<string>("English, Hindi");
   const [availability, setAvailability] = useState<string>("");
   const [hobbies, setHobbies] = useState<string>("Playing Guitar, Gaming, Stock Market");
+  const [aiTools, setAiTools] = useState<string>(
+    "Cursor AI, Rocode/Cline, Anthropic Claude, Google Gemini, OpenAI GPT, Gemini CLI, LangChain, LlamaIndex, MCP Servers, Pinecone, FAISS, Whisper, TTS, Vision Models, Function Calling, RAG Pipelines"
+  );
+  const [aiIdeAgents, setAiIdeAgents] = useState<string>(
+    "Cursor AI, Rocode/Cline"
+  );
+  const [aiLlmsFrameworks, setAiLlmsFrameworks] = useState<string>(
+    "Anthropic Claude, Google Gemini, OpenAI GPT, Gemini CLI, LangChain, LlamaIndex"
+  );
+  const [aiInfraUtilities, setAiInfraUtilities] = useState<string>(
+    "MCP Servers, Pinecone, FAISS, Whisper, TTS, Vision Models, Function Calling, RAG Pipelines"
+  );
   const [workMode, setWorkMode] = useState<string>("Work from Home");
   const [compact, setCompact] = useState<boolean>(true);
 
@@ -108,19 +120,42 @@ const ResumePage = () => {
           />
         </div>
 
-        {/* Highlights */}
+        {/* AI Tools Used */}
         <div className="mb-10">
-          <label className="text-secondary mb-2 block">Highlights</label>
-          <div className="space-y-3">
-            {[
-              "AI Integration across products",
-              "Plugin development (Plug P)",
-              "Control Panel (C Panel) and Hosting Panel (H Panel) experience",
-            ].map((h, idx) => (
-              <div key={idx} className="bg-black-100 text-white rounded-lg border border-gray-800 px-4 py-3">
-                {h}
-              </div>
-            ))}
+          <label className="text-secondary mb-2 block">AI Tools Used (comma-separated)</label>
+          <input
+            value={aiTools}
+            onChange={(e) => setAiTools(e.target.value)}
+            className="w-full bg-black-100 text-white rounded-lg border border-gray-800 px-4 py-3 focus:outline-none focus:border-[#915EFF]"
+          />
+          <p className="text-secondary text-xs mt-2">Example: Cursor AI, Claude, Gemini, OpenAI GPT, LangChain, LlamaIndex, MCP Servers, Pinecone, FAISS, Whisper, TTS, Vision Models, Function Calling, RAG Pipelines</p>
+        </div>
+
+        {/* Categorized AI Tools (optional) */}
+        <div className="mb-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="flex flex-col">
+            <label className="text-secondary mb-2">AI IDE & Agents</label>
+            <input
+              value={aiIdeAgents}
+              onChange={(e) => setAiIdeAgents(e.target.value)}
+              className="bg-black-100 text-white rounded-lg border border-gray-800 px-4 py-2 focus:outline-none focus:border-[#915EFF]"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="text-secondary mb-2">LLMs & Frameworks</label>
+            <input
+              value={aiLlmsFrameworks}
+              onChange={(e) => setAiLlmsFrameworks(e.target.value)}
+              className="bg-black-100 text-white rounded-lg border border-gray-800 px-4 py-2 focus:outline-none focus:border-[#915EFF]"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="text-secondary mb-2">Infra & Utilities</label>
+            <input
+              value={aiInfraUtilities}
+              onChange={(e) => setAiInfraUtilities(e.target.value)}
+              className="bg-black-100 text-white rounded-lg border border-gray-800 px-4 py-2 focus:outline-none focus:border-[#915EFF]"
+            />
           </div>
         </div>
 
@@ -287,11 +322,11 @@ const ResumePage = () => {
           <motion.button
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            onClick={() => openResumePdf(personal, { summary, additionalProjects: customProjects.filter(p => p.name && p.description), highlights: [
-              "AI Integration across products",
-              "Plugin development (Plug P)",
-              "Control Panel (C Panel) and Hosting Panel (H Panel) experience",
-            ], achievements: achievements.filter(Boolean), certifications: certifications.filter(Boolean), languages: languages.split(',').map(s => s.trim()).filter(Boolean), availability, hobbies: hobbies.split(',').map(s => s.trim()).filter(Boolean), workMode, compact })}
+            onClick={() => openResumePdf(personal, { summary, additionalProjects: customProjects.filter(p => p.name && p.description), aiHighlights: aiTools.split(',').map(s => s.trim()).filter(Boolean), aiHighlightsCategories: {
+              ideAgents: aiIdeAgents.split(',').map(s => s.trim()).filter(Boolean),
+              llmsFrameworks: aiLlmsFrameworks.split(',').map(s => s.trim()).filter(Boolean),
+              infraUtilities: aiInfraUtilities.split(',').map(s => s.trim()).filter(Boolean),
+            }, achievements: achievements.filter(Boolean), certifications: certifications.filter(Boolean), languages: languages.split(',').map(s => s.trim()).filter(Boolean), availability, hobbies: hobbies.split(',').map(s => s.trim()).filter(Boolean), workMode, compact })}
             className="px-6 py-3 rounded-lg font-semibold text-white bg-[#915EFF] hover:bg-[#7B4FD9] transition-colors duration-300 shadow-lg"
           >
             View PDF
@@ -299,11 +334,11 @@ const ResumePage = () => {
           <motion.button
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            onClick={() => downloadResumePdf(personal, "YasirSubhani-Resume.pdf", { summary, additionalProjects: customProjects.filter(p => p.name && p.description), highlights: [
-              "AI Integration across products",
-              "Plugin development (Plug P)",
-              "Control Panel (C Panel) and Hosting Panel (H Panel) experience",
-            ], achievements: achievements.filter(Boolean), certifications: certifications.filter(Boolean), languages: languages.split(',').map(s => s.trim()).filter(Boolean), availability, hobbies: hobbies.split(',').map(s => s.trim()).filter(Boolean), workMode, compact })}
+            onClick={() => downloadResumePdf(personal, "YasirSubhani-Resume.pdf", { summary, additionalProjects: customProjects.filter(p => p.name && p.description), aiHighlights: aiTools.split(',').map(s => s.trim()).filter(Boolean), aiHighlightsCategories: {
+              ideAgents: aiIdeAgents.split(',').map(s => s.trim()).filter(Boolean),
+              llmsFrameworks: aiLlmsFrameworks.split(',').map(s => s.trim()).filter(Boolean),
+              infraUtilities: aiInfraUtilities.split(',').map(s => s.trim()).filter(Boolean),
+            }, achievements: achievements.filter(Boolean), certifications: certifications.filter(Boolean), languages: languages.split(',').map(s => s.trim()).filter(Boolean), availability, hobbies: hobbies.split(',').map(s => s.trim()).filter(Boolean), workMode, compact })}
             className="px-6 py-3 rounded-lg font-semibold text-[#915EFF] border border-[#915EFF] hover:bg-[#915EFF] hover:text-white transition-colors duration-300"
           >
             Download PDF

@@ -24,6 +24,11 @@ type GenerateOptions = {
   languages?: string[];
   availability?: string;
   aiHighlights?: string[];
+  aiHighlightsCategories?: {
+    ideAgents?: string[];
+    llmsFrameworks?: string[];
+    infraUtilities?: string[];
+  };
   education?: Array<{ degree: string; institution: string; year: string }>;
   workMode?: string;
   hobbies?: string[];
@@ -243,12 +248,61 @@ export async function generateResumePdf(personal: PersonalInfo, options: Generat
 
   // Summary
   addSectionTitle("Summary");
-  addBullet(options.summary || "Full-Stack Developer with 4+ years' experience in web, mobile, and AI automation. Skilled in building scalable apps, integrating AI, and optimizing databases with a focus on UX and performance.");
+  // Add a small gap so the first bullet doesn't collide with the title capsule
+  y += 4;
+  addBullet(options.summary || "Full-Stack Developer & AI Engineer with experience in web, mobile, and AI automation. Skilled in building scalable apps, integrating AI/LLMs, and optimizing databases with a focus on UX and performance.");
   // Core strengths
   addBullet("Strong problem-solving and debugging skills; quick at isolating issues and delivering pragmatic fixes.");
   // Tech Summary for ATS
   addBullet("Tech Summary: React, Flutter, Node.js, TypeScript, PostgreSQL/MySQL, Docker, Firebase/Supabase");
   y += 6;
+
+  // AI Tools Used (compact two-column like Skills)
+  if ((options.aiHighlights && options.aiHighlights.length) || options.aiHighlightsCategories) {
+    addSectionTitle("AI Tools Used");
+    const groups: Array<{ title: string; items: string[] }> = [];
+    const cat = options.aiHighlightsCategories || {};
+    if (cat.ideAgents && cat.ideAgents.length) groups.push({ title: "AI IDE & Agents", items: cat.ideAgents });
+    if (cat.llmsFrameworks && cat.llmsFrameworks.length) groups.push({ title: "LLMs & Frameworks", items: cat.llmsFrameworks });
+    if (cat.infraUtilities && cat.infraUtilities.length) groups.push({ title: "Infra & Utilities", items: cat.infraUtilities });
+    // Add remaining flat tools as "Other"
+    if (options.aiHighlights && options.aiHighlights.length) {
+      const already = new Set<string>((groups.flatMap(g => g.items)).map(s => s.toLowerCase()));
+      const other = options.aiHighlights.filter(t => !already.has(t.toLowerCase()));
+      if (other.length) groups.push({ title: "Other", items: other });
+    }
+
+    const colWidthAI = (pageWidth - margin * 2) / 2;
+    let leftYAI = y;
+    let rightYAI = y;
+    const placeAIG = (title: string, itemsText: string, atX: number, atY: number) => {
+      doc.setFont("helvetica", "bold");
+      setPrimary();
+      doc.text(title, atX, atY);
+      setBody();
+      doc.setFont("helvetica", "normal");
+      const lines = doc.splitTextToSize(itemsText, colWidthAI - 20);
+      doc.text(lines, atX, atY + 14);
+      return 14 + lines.length * 14 + 10;
+    };
+
+    for (const g of groups) {
+      const text = g.items.join(", ");
+      const lines = doc.splitTextToSize(text, colWidthAI - 20);
+      const blockH = 14 + lines.length * 14 + 10;
+      let tx = margin;
+      let ty = leftYAI;
+      if (rightYAI < leftYAI) { tx = margin + colWidthAI; ty = rightYAI; }
+      if (ty + blockH > pageHeight - margin) {
+        doc.addPage();
+        drawFooter();
+        leftYAI = margin; rightYAI = margin; tx = margin; ty = leftYAI;
+      }
+      const used = placeAIG(g.title, text, tx, ty);
+      if (tx === margin) leftYAI += used; else rightYAI += used;
+    }
+    y = Math.max(leftYAI, rightYAI) + 6;
+  }
 
   // Skills (moved up)
   addSectionTitle("Skills");
