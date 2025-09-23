@@ -23,3 +23,6 @@ export { default as ProjectsPage } from "./sections/ProjectsPage";
 export { default as Tech } from "./sections/Tech";
 export { default as TradingFinance } from "./sections/TradingFinance";
 export { default as Works } from "./sections/Works";
+export { default as Gear } from "./sections/Gear";
+export { default as Resume } from "./sections/Resume";
+export { default as ResumePage } from "./sections/ResumePage";

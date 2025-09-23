@@ -1,0 +1,36 @@
+final TextEditingController _controller = TextEditingController();
+String getText() => _controller.text;
+List<int> numbers = [1, 2, 3, 4, 5];
+int sum = numbers.reduce((a, b) => a + b);
+List<int> numbers = [1, 2, 3, 4, 5];
+int sum = numbers.reduce((a, b) => a + b);
+final TextEditingController _controller = TextEditingController();
+String getText() => _controller.text;
+Future<String> fetchData() async {
+      await Future.delayed(Duration(seconds: 2));
+        return 'Data fetched';
+}
+Widget _buildItem(BuildContext context, int index) {
+      return ListTile(
+            title: Text('Item $index'),
+                onTap: () => print('Tapped item $index'),
+      );
+}
+Future<String> fetchData() async {
+      await Future.delayed(Duration(seconds: 2));
+        return 'Data fetched';
+}
+import 'package:flutter/material.dart';
+void main() => runApp(MyApp());
+class MyApp extends StatelessWidget {
+      @override
+        Widget build(BuildContext context) {
+                return MaterialApp  (
+                          home: Sc affl
+                )
+        }
+}
+}
+      )
+}
+}

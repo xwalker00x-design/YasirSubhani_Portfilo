@@ -1,9 +1,26 @@
 import { motion } from "framer-motion";
 import ParticlesBackground from "../canvas/ParticlesBackground";
+import { downloadResumePdf } from "../../utils/resumePdf";
 
 const Hero = () => {
   const handleCall = () => {
     window.location.href = "tel:+918271819813";
+  };
+
+  // Resume actions moved to dedicated Resume page
+  const handleQuickDownloadResume = () => {
+    const personal = {
+      name: "Yasir Subhani",
+      role: "Full-Stack Developer",
+      email: "yasir.subhani123@gmail.com",
+      phone: "+91 8271819813",
+      location: "Kolkata, India",
+      linkedin: "linkedin.com/in/yasirsubhani",
+      github: "github.com/yasirSub",
+      website: "https://yasir-subhani-portfilo.vercel.app/",
+      yearsExperience: "4+ years experience",
+    } as const;
+    downloadResumePdf(personal);
   };
 
   return (
@@ -189,26 +206,12 @@ const Hero = () => {
 
               {/* Professional Action Buttons */}
               <motion.div 
-                className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-8 sm:mb-10"
+                className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 mb-8 sm:mb-10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.8 }}
               >
-                <motion.button
-                  onClick={() => window.location.href = '/projects'}
-                  className="group bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    View Projects
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </span>
-                </motion.button>
-                
-
+                {/* Contact first */}
                 
                 <motion.button
                   onClick={handleCall}
@@ -220,6 +223,36 @@ const Hero = () => {
                     Contact Me
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </span>
+                </motion.button>
+
+                {/* Smaller Download Resume second */}
+                <motion.button
+                  onClick={handleQuickDownloadResume}
+                  className="group bg-transparent border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white px-3 py-2 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 hover:scale-105 transform backdrop-blur-sm"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="flex items-center justify-center gap-2">
+                    Download Resume
+                    <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+                    </svg>
+                  </span>
+                </motion.button>
+
+                {/* Projects last */}
+                <motion.button
+                  onClick={() => window.location.href = '/projects'}
+                  className="group bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="flex items-center justify-center gap-2">
+                    View Projects
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </span>
                 </motion.button>

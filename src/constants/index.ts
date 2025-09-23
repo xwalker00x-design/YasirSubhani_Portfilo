@@ -169,7 +169,7 @@ export const projects: TProject[] = [
   {
     name: "iSent",
     description:
-      "A Flutter-based app (sixam_mart baseline) customized with modern UI and features. Includes multiple screens as showcased in attached screenshots.",
+      "Delivery-based mobile app with multiple operational modes. Current build includes Ride (driver) and Store (merchant) modes, with User mode planned. Features order assignment, live tracking, store inventory, and role-specific workflows.",
     tags: [
       {
         name: "flutter",

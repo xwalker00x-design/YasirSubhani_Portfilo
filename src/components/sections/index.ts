@@ -6,3 +6,5 @@ export { default as Hero } from "./Hero";
 export { default as Tech } from "./Tech";
 export { default as Tools } from "./Tools";
 export { default as Works } from "./Works";
+export { default as Gear } from "./Gear";
+export { default as Resume } from "./Resume";

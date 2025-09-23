@@ -76,6 +76,14 @@ const AboutPage = () => {
           >
             About Me
           </motion.h2>
+
+          {/* Small QR badge linking to portfolio */}
+          <div className="flex justify-center mt-2">
+            <a href="https://yasir-subhani-portfilo.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-secondary border border-gray-700 rounded-lg px-3 py-1 hover:text-white hover:border-[#915EFF] transition-colors">
+              <span>Portfolio</span>
+              <span className="inline-block w-3 h-3 bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] rounded-sm" />
+            </a>
+          </div>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -181,10 +189,10 @@ const AboutPage = () => {
                   {
                     title: "MCA (Master of Computer Applications)",
                     institution: "Amity University",
-                    duration: "2024 - Present",
+                    duration: "2024 - 2025",
                     location: "India",
                     tags: ["Advanced CS", "Software Engineering", "Research"],
-                    isCurrent: true
+                    isCurrent: false
                   },
                   {
                     title: "BCA (Bachelor of Computer Applications)",
@@ -432,6 +440,27 @@ const AboutPage = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
               </svg>
             </span>
+          </motion.button>
+        </motion.div>
+
+        {/* Resume CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.5 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="text-center mt-10"
+        >
+          <motion.button
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 30px rgba(145, 94, 255, 0.4)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.location.href = '/resume'}
+            className="bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-10 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg text-lg"
+          >
+            Resume
           </motion.button>
         </motion.div>
 

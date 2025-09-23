@@ -197,6 +197,11 @@ const Navbar = () => {
               )}
             </motion.li>
           ))}
+          <li>
+            <Link to="/gear" className={`${scrolled ? "text-[12px]" : "text-[18px]"} text-secondary hover:text-white`}>
+              Gear
+            </Link>
+          </li>
         </ul>
 
         {/* Mobile Menu Button */}
@@ -253,6 +258,20 @@ const Navbar = () => {
                       </motion.a>
                     </motion.li>
                   ))}
+                  <motion.li
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
+                    className="w-full"
+                  >
+                    <Link
+                      to="/gear"
+                      onClick={() => setToggle(false)}
+                      className="font-poppins cursor-pointer font-medium w-full block py-2 px-4 rounded-lg transition-all duration-300 text-secondary hover:text-white hover:bg-blue-500/10"
+                    >
+                      Gear
+                    </Link>
+                  </motion.li>
                 </ul>
               </motion.div>
             )}

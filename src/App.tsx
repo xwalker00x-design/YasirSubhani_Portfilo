@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar, Footer, FloatingButtons } from "./components";
 import { Hero, About, Experience, Tech, Works, Feedbacks, Contact } from "./components";
+import { Gear } from "./components";
 import { AboutPage } from "./components";
 import { ProjectsPage } from "./components";
 import { OtherPursuits } from "./components";
@@ -8,6 +9,7 @@ import { BeyondCode } from "./components";
 import { TradingFinance } from "./components";
 import { Music } from "./components";
 import { Photography } from "./components";
+import { ResumePage } from "./components";
 import CustomCursor from "./components/CustomCursor";
 
 function App() {
@@ -46,6 +48,8 @@ function App() {
           } />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/resume" element={<ResumePage />} />
+          <Route path="/gear" element={<Gear />} />
           <Route path="/pursuits" element={<OtherPursuits />} />
           <Route path="/beyond-code" element={<BeyondCode />} />
           <Route path="/trading-finance" element={<TradingFinance />} />
