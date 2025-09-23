@@ -91,11 +91,6 @@ const Hero = () => {
                 className="h-4 w-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 shadow-lg"
                 animate={{ 
                   scale: [1, 1.2, 1],
-                  boxShadow: [
-                    "0 0 0 rgba(59, 130, 246, 0.4)",
-                    "0 0 20px rgba(59, 130, 246, 0.6)",
-                    "0 0 0 rgba(59, 130, 246, 0.4)"
-                  ]
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
@@ -142,7 +137,7 @@ const Hero = () => {
                 <motion.span 
                   className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-bold"
                   animate={{ 
-                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                    // backgroundPosition animation isn't typed in framer-motion; remove to satisfy TS
                   }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >

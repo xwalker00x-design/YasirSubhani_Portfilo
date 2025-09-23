@@ -114,7 +114,7 @@ const AboutPage = () => {
             <motion.div
               whileHover={{ 
                 scale: 1.02,
-                boxShadow: "0 20px 40px rgba(145, 94, 255, 0.2)"
+                // use Tailwind shadow utilities instead of animating boxShadow
               }}
               transition={{ duration: 0.3 }}
               className="bg-black-100 p-8 rounded-2xl border border-gray-800 backdrop-blur-sm relative overflow-hidden group"
@@ -166,7 +166,7 @@ const AboutPage = () => {
             <motion.div
               whileHover={{ 
                 scale: 1.02,
-                boxShadow: "0 20px 40px rgba(145, 94, 255, 0.2)"
+                // use Tailwind shadow utilities instead of animating boxShadow
               }}
               transition={{ duration: 0.3 }}
               className="bg-black-100 p-8 rounded-2xl border border-gray-800 backdrop-blur-sm relative overflow-hidden group"
@@ -234,7 +234,7 @@ const AboutPage = () => {
                         <motion.span
                           animate={{ 
                             scale: [1, 1.05, 1],
-                            boxShadow: ["0 0 0 rgba(34, 197, 94, 0.4)", "0 0 20px rgba(34, 197, 94, 0.6)", "0 0 0 rgba(34, 197, 94, 0.4)"]
+                            // remove unsupported boxShadow animation
                           }}
                           transition={{ duration: 2, repeat: Infinity }}
                           className="px-3 py-1 bg-green-500 bg-opacity-20 text-green-400 rounded-full text-xs font-medium border border-green-500"
@@ -283,7 +283,7 @@ const AboutPage = () => {
             <motion.div
               whileHover={{ 
                 scale: 1.02,
-                boxShadow: "0 20px 40px rgba(145, 94, 255, 0.2)"
+                // use Tailwind shadow utilities instead of animating boxShadow
               }}
               transition={{ duration: 0.3 }}
               className="bg-black-100 p-8 rounded-2xl border border-gray-800 backdrop-blur-sm relative overflow-hidden group"
@@ -334,7 +334,7 @@ const AboutPage = () => {
             <motion.div
               whileHover={{ 
                 scale: 1.02,
-                boxShadow: "0 20px 40px rgba(145, 94, 255, 0.2)"
+                // use Tailwind shadow utilities instead of animating boxShadow
               }}
               transition={{ duration: 0.3 }}
               className="bg-black-100 p-8 rounded-2xl border border-gray-800 backdrop-blur-sm relative overflow-hidden group"
@@ -428,7 +428,7 @@ const AboutPage = () => {
           <motion.button
             whileHover={{ 
               scale: 1.05,
-              boxShadow: "0 10px 30px rgba(34, 197, 94, 0.4)"
+              // remove unsupported boxShadow typing
             }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.location.href = '/beyond-code'}
@@ -454,7 +454,7 @@ const AboutPage = () => {
           <motion.button
             whileHover={{ 
               scale: 1.05,
-              boxShadow: "0 10px 30px rgba(145, 94, 255, 0.4)"
+              // remove unsupported boxShadow typing
             }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.location.href = '/resume'}
@@ -489,7 +489,7 @@ const AboutPage = () => {
           <motion.button
             whileHover={{ 
               scale: 1.05,
-              boxShadow: "0 10px 30px rgba(145, 94, 255, 0.4)"
+              // remove unsupported boxShadow typing
             }}
             whileTap={{ scale: 0.95 }}
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}

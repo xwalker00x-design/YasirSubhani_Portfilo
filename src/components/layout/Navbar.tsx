@@ -120,11 +120,6 @@ const Navbar = () => {
                 className={`object-contain rounded-full shadow-lg transition-all duration-1000 ease-in-out ${
                   scrolled ? "h-6 w-6" : "h-12 w-12"
                 }`}
-                animate={{
-                  boxShadow: scrolled 
-                    ? "0 0 20px rgba(145, 94, 255, 0.3)" 
-                    : "0 0 10px rgba(145, 94, 255, 0.1)"
-                }}
               />
               {scrolled && (
                 <motion.div
@@ -281,17 +276,11 @@ const Navbar = () => {
 
       {/* Scroll Progress Bar */}
       {scrolled && (
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: scrollProgress }}
-           className="absolute bottom-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 origin-left rounded-full"
-           style={{ 
-             transformOrigin: 'left',
-             left: '12px',
-             right: '12px',
-             width: 'calc(100% - 24px)'
-           }}
-         />
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: scrollProgress }}
+            className="absolute bottom-0 left-3 right-3 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full origin-left"
+          />
        )}
       </motion.nav>
 
@@ -387,6 +376,20 @@ const Navbar = () => {
                         </motion.a>
                       </motion.li>
                     ))}
+                    <motion.li
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
+                      className="w-full"
+                    >
+                      <Link
+                        to="/gear"
+                        onClick={() => setToggle(false)}
+                        className="font-poppins cursor-pointer font-medium w-full block py-2 px-4 rounded-lg transition-all duration-300 text-white hover:text-blue-100 hover:bg-blue-600/50"
+                      >
+                        Gear
+                      </Link>
+                    </motion.li>
                   </ul>
                 </motion.div>
               )}
@@ -399,14 +402,8 @@ const Navbar = () => {
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: scrollProgress }}
-            className="absolute bottom-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 origin-left rounded-full"
-            style={{ 
-              transformOrigin: 'left',
-              left: '12px',
-              right: '12px',
-              width: 'calc(100% - 24px)'
-            }}
-        />
+            className="absolute bottom-0 left-3 right-3 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full origin-left"
+          />
       )}
     </motion.nav>
     </>
