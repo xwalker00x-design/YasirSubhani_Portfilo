@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { projects } from "../../constants";
 import { github, close } from "../../assets";
 import { TProject } from "../../types";
@@ -187,24 +187,57 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="space-y-4">
+                {/* Source Code Button */}
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => window.open(project.sourceCodeLink, "_blank")}
-                  className="flex-1 bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                 >
                   <img src={github} alt="github" className="w-5 h-5" />
                   View Source Code
                 </motion.button>
                 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 bg-gradient-to-r from-[#00D4FF] to-[#0099CC] hover:from-[#0099CC] hover:to-[#00D4FF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  🚀 Live Demo (Coming Soon)
-                </motion.button>
+                {/* App Store and Play Store Buttons */}
+                {(project.appStoreLink || project.playStoreLink) && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {project.appStoreLink && (
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => window.open(project.appStoreLink, "_blank")}
+                        className="bg-gradient-to-r from-[#000000] to-[#333333] hover:from-[#333333] hover:to-[#000000] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                      >
+                        <span className="text-xl">🍎</span>
+                        App Store
+                      </motion.button>
+                    )}
+                    
+                    {project.playStoreLink && (
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => window.open(project.playStoreLink, "_blank")}
+                        className="bg-gradient-to-r from-[#00D4FF] to-[#0099CC] hover:from-[#0099CC] hover:to-[#00D4FF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                      >
+                        <span className="text-xl">📱</span>
+                        Play Store
+                      </motion.button>
+                    )}
+                  </div>
+                )}
+                
+                {/* Live Demo Button (if no app store links) */}
+                {!project.appStoreLink && !project.playStoreLink && (
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-gradient-to-r from-[#00D4FF] to-[#0099CC] hover:from-[#0099CC] hover:to-[#00D4FF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    🚀 Live Demo (Coming Soon)
+                  </motion.button>
+                )}
               </div>
             </div>
           </motion.div>
@@ -220,17 +253,18 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
   tags, 
   image, 
   sourceCodeLink, 
+  appStoreLink,
+  playStoreLink,
   index,
   onProjectClick 
 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true, amount: 0.25 }}
-      className="bg-black-100 p-5 rounded-2xl sm:w-[400px] w-full group hover:scale-105 transition-all duration-300 cursor-pointer"
-      onClick={() => onProjectClick({ name, description, tags, image, sourceCodeLink })}
+      className="bg-black-100 p-4 sm:p-5 rounded-2xl sm:w-[400px] w-full group hover:scale-105 transition-all duration-300 cursor-pointer"
+      onClick={() => onProjectClick({ name, description, tags, image, sourceCodeLink, appStoreLink, playStoreLink })}
     >
       {/* Project Image Container - Fixed aspect ratio for landscape */}
       <div className="relative w-full aspect-video overflow-hidden rounded-2xl">
@@ -288,6 +322,14 @@ const ProjectsPage = () => {
   const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    console.log('ProjectsPage mounted - Mobile check:', window.innerWidth <= 768);
+    console.log('Total projects:', projects.length);
+    console.log('Filtered projects:', filteredProjects.length);
+  }, []);
 
   const categories = [
     "all", 
@@ -387,28 +429,64 @@ const ProjectsPage = () => {
         {/* Projects Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true, amount: 0.25 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8 mb-12"
         >
-          {displayedProjects.map((project, index) => (
-            <ProjectCard 
-              key={`project-${index}`} 
-              index={index} 
-              {...project}
-              onProjectClick={handleProjectClick}
-            />
-          ))}
+          {displayedProjects.length > 0 ? (
+            displayedProjects.map((project, index) => (
+              <ProjectCard 
+                key={`project-${index}`} 
+                index={index} 
+                {...project}
+                onProjectClick={handleProjectClick}
+              />
+            ))
+          ) : (
+            <div className="col-span-full text-center text-white">
+              <h3 className="text-xl font-semibold mb-2">No projects found</h3>
+              <p className="text-gray-300">Try selecting a different category</p>
+              <div className="mt-4 p-4 bg-gray-800 rounded-lg">
+                <p className="text-sm text-gray-400">
+                  Debug: Total projects: {projects.length}, 
+                  Filtered: {filteredProjects.length}, 
+                  Category: {selectedCategory}
+                </p>
+              </div>
+            </div>
+          )}
         </motion.div>
+
+        {/* Simple fallback grid for mobile compatibility */}
+        <div className="grid grid-cols-1 sm:hidden gap-4 mb-12">
+          {projects.slice(0, 6).map((project, index) => (
+            <div 
+              key={`fallback-${index}`}
+              className="bg-gray-800 p-4 rounded-lg"
+              onClick={() => handleProjectClick(project)}
+            >
+              <h4 className="text-white font-semibold mb-2">{project.name}</h4>
+              <p className="text-gray-300 text-sm">{project.description}</p>
+              <div className="mt-2 flex flex-wrap gap-1">
+                {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                  <span 
+                    key={tagIndex}
+                    className="text-xs bg-blue-600 text-white px-2 py-1 rounded"
+                  >
+                    {tag.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* View More Button */}
         {filteredProjects.length > 12 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true, amount: 0.25 }}
             className="text-center"
           >
             <motion.button
@@ -425,9 +503,8 @@ const ProjectsPage = () => {
         {/* Project Count */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          viewport={{ once: true, amount: 0.25 }}
           className="text-center mt-16 text-secondary"
         >
           <p className="text-lg">

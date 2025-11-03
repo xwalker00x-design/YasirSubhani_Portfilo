@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import IconBall from "../canvas/IconBall";
 import { SectionWrapper } from "../../hoc";
 import { 
@@ -9,6 +11,42 @@ import {
 } from "../../constants";
 
 const Tech = () => {
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Set default expanded state based on screen size
+  useEffect(() => {
+    if (isMobile) {
+      // On mobile, keep all categories collapsed by default
+      setExpandedCategories(new Set());
+    } else {
+      // On desktop, expand all categories by default
+      setExpandedCategories(new Set(skillCategories.map(cat => cat.title)));
+    }
+  }, [isMobile]);
+
+  const toggleCategory = (categoryTitle: string) => {
+    setExpandedCategories(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(categoryTitle)) {
+        newSet.delete(categoryTitle);
+      } else {
+        newSet.add(categoryTitle);
+      }
+      return newSet;
+    });
+  };
   const skillCategories = [
     {
       title: "Frontend Development",
@@ -57,33 +95,125 @@ const Tech = () => {
           to create comprehensive digital solutions.
         </p>
       </div>
+
+      {/* Expand/Collapse All Button */}
+      <div className="flex justify-center mb-12">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => {
+            const allExpanded = expandedCategories.size === skillCategories.length;
+            if (allExpanded) {
+              // Collapse all
+              setExpandedCategories(new Set());
+            } else {
+              // Expand all
+              setExpandedCategories(new Set(skillCategories.map(cat => cat.title)));
+            }
+          }}
+          className="bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2"
+        >
+          {expandedCategories.size === skillCategories.length ? (
+            <>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+              </svg>
+              Collapse All
+            </>
+          ) : (
+            <>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+              Expand All
+            </>
+          )}
+        </motion.button>
+      </div>
       
       {/* Skill Categories */}
-      <div className="space-y-20">
-        {skillCategories.map((category) => (
-          <div key={category.title} className="w-full">
-            {/* Category Header */}
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-3 mb-4">
-                <div className={`w-8 h-1 bg-gradient-to-r ${category.color} rounded-full`}></div>
-                <h3 className="text-white font-bold md:text-[32px] sm:text-[28px] xs:text-[24px] text-[20px]">
-                  {category.title}
-                </h3>
-                <div className={`w-8 h-1 bg-gradient-to-r ${category.color} rounded-full`}></div>
-              </div>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                {category.description}
-              </p>
-            </div>
-            
-            {/* Technology Icons */}
-            <div className="flex flex-row flex-wrap justify-center gap-10">
-              {category.technologies.map((tech) => (
-                <IconBall key={tech.name} icon={tech.icon} name={tech.name} />
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="space-y-12">
+        {skillCategories.map((category) => {
+          const isExpanded = expandedCategories.has(category.title);
+          
+          return (
+            <motion.div 
+              key={category.title} 
+              className="w-full bg-black-100/50 rounded-2xl p-6 border border-gray-800/50"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.25 }}
+            >
+              {/* Category Header - Clickable */}
+              <motion.div 
+                className="text-center mb-6 cursor-pointer"
+                onClick={() => toggleCategory(category.title)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="inline-flex items-center gap-3 mb-4">
+                  <div className={`w-8 h-1 bg-gradient-to-r ${category.color} rounded-full`}></div>
+                  <h3 className="text-white font-bold md:text-[28px] sm:text-[24px] xs:text-[20px] text-[18px]">
+                    {category.title}
+                  </h3>
+                  <div className={`w-8 h-1 bg-gradient-to-r ${category.color} rounded-full`}></div>
+                </div>
+                
+                <div className="flex items-center justify-center gap-4">
+                  <p className="text-gray-400 text-base max-w-2xl">
+                    {category.description}
+                  </p>
+                  <motion.div
+                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    <svg 
+                      className="w-6 h-6" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M19 9l-7 7-7-7" 
+                      />
+                    </svg>
+                  </motion.div>
+                </div>
+                
+                {/* Technology Count */}
+                <div className="mt-2">
+                  <span className="text-gray-500 text-sm">
+                    {category.technologies.length} technologies
+                  </span>
+                </div>
+              </motion.div>
+              
+              {/* Technology Icons - Collapsible */}
+              <AnimatePresence>
+                {isExpanded && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="flex flex-row flex-wrap justify-center gap-6 pt-4 border-t border-gray-800/30">
+                      {category.technologies.map((tech) => (
+                        <IconBall key={tech.name} icon={tech.icon} name={tech.name} />
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* Skills Summary */}

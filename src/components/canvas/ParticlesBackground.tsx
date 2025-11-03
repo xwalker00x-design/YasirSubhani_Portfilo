@@ -85,9 +85,15 @@ const ParticlesBackground = () => {
     <div className="absolute inset-0 w-full h-full">
       <Canvas
         shadows
-        dpr={[1, 2]}
+        dpr={[1, 1.2]} // Further reduced for mobile compatibility
         camera={{ position: [0, 0, 20], fov: 60 }}
-        gl={{ preserveDrawingBuffer: false, alpha: true }}
+        gl={{ 
+          preserveDrawingBuffer: false, 
+          alpha: true,
+          antialias: false, // Disable antialiasing for better performance
+          powerPreference: "low-power" // Use low-power for better mobile compatibility
+        }}
+        performance={{ min: 0.3 }} // Lower performance threshold for mobile
       >
         <ambientLight intensity={0.2} />
         <directionalLight

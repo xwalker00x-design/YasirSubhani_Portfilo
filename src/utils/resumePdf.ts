@@ -411,6 +411,36 @@ export async function generateResumePdf(personal: PersonalInfo, options: Generat
     doc.setFontSize(11);
     y += 14;
     addBullet(p.description);
+    
+    // Add app store links for apps with store links
+    if (p.name === "Installer App") {
+      // @ts-ignore
+      if ((p as any).appStoreLink) {
+        const appStoreUrl = (p as any).appStoreLink;
+        setPrimary();
+        doc.textWithLink('App Store', margin + 10, y, { url: appStoreUrl });
+        setBody();
+        y += 14;
+      }
+      // @ts-ignore
+      if ((p as any).playStoreLink) {
+        const playStoreUrl = (p as any).playStoreLink;
+        setPrimary();
+        doc.textWithLink('Play Store', margin + 10, y, { url: playStoreUrl });
+        setBody();
+        y += 14;
+      }
+    } else if (p.name === "iSent") {
+      // @ts-ignore
+      if ((p as any).playStoreLink) {
+        const playStoreUrl = (p as any).playStoreLink;
+        setPrimary();
+        doc.textWithLink('Play Store', margin + 10, y, { url: playStoreUrl });
+        setBody();
+        y += 14;
+      }
+    }
+    
     y += 4;
   });
 

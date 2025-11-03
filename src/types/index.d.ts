@@ -26,6 +26,9 @@ export type TProject = {
   }[];
   image: string;
   sourceCodeLink: string;
+  liveLink?: string;
+  appStoreLink?: string;
+  playStoreLink?: string;
 } & Required<Pick<TCommonProps, "name">>;
 
 export type TTechnology = Required<Omit<TCommonProps, "title">>;

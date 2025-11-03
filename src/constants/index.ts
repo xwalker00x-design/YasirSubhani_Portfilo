@@ -186,6 +186,7 @@ export const projects: TProject[] = [
     ],
     image: "/isent/icon.jpg",
     sourceCodeLink: "https://github.com/yasirSub/iSent",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.isent.online_store&pcampaignid=web_share",
   },
   {
     name: "Installer App",
@@ -207,6 +208,8 @@ export const projects: TProject[] = [
     ],
     image: installer1,
     sourceCodeLink: "https://github.com/yasirSub/installer-app",
+    appStoreLink: "https://apps.apple.com/in/app/the-installers/id6475402460",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.theinstallers.theinstallers&pcampaignid=web_share",
   },
   {
     name: "Medikalam - Health App",

@@ -189,24 +189,57 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="space-y-4">
+                {/* Source Code Button */}
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => window.open(project.sourceCodeLink, "_blank")}
-                  className="flex-1 bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                 >
                   <img src={github} alt="github" className="w-5 h-5" />
                   View Source Code
                 </motion.button>
                 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 bg-gradient-to-r from-[#00D4FF] to-[#0099CC] hover:from-[#0099CC] hover:to-[#00D4FF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  🚀 Live Demo (Coming Soon)
-                </motion.button>
+                {/* App Store and Play Store Buttons */}
+                {(project.appStoreLink || project.playStoreLink) && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {project.appStoreLink && (
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => window.open(project.appStoreLink, "_blank")}
+                        className="bg-gradient-to-r from-[#000000] to-[#333333] hover:from-[#333333] hover:to-[#000000] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                      >
+                        <span className="text-xl">🍎</span>
+                        App Store
+                      </motion.button>
+                    )}
+                    
+                    {project.playStoreLink && (
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => window.open(project.playStoreLink, "_blank")}
+                        className="bg-gradient-to-r from-[#00D4FF] to-[#0099CC] hover:from-[#0099CC] hover:to-[#00D4FF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                      >
+                        <span className="text-xl">📱</span>
+                        Play Store
+                      </motion.button>
+                    )}
+                  </div>
+                )}
+                
+                {/* Live Demo Button (if no app store links) */}
+                {!project.appStoreLink && !project.playStoreLink && (
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-gradient-to-r from-[#00D4FF] to-[#0099CC] hover:from-[#0099CC] hover:to-[#00D4FF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    🚀 Live Demo (Coming Soon)
+                  </motion.button>
+                )}
               </div>
             </div>
           </motion.div>
@@ -222,6 +255,8 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
   tags, 
   image, 
   sourceCodeLink, 
+  appStoreLink,
+  playStoreLink,
   index,
   onProjectClick 
 }) => {
@@ -236,7 +271,7 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
         transformStyle: 'preserve-3d',
         perspective: '1000px'
       }}
-      onClick={() => onProjectClick({ name, description, tags, image, sourceCodeLink })}
+      onClick={() => onProjectClick({ name, description, tags, image, sourceCodeLink, appStoreLink, playStoreLink })}
     >
       {/* Project Image - Portrait Style */}
       <div className="relative w-full h-48 overflow-hidden rounded-2xl">
@@ -342,8 +377,12 @@ const Works = () => {
   const displayedProjects = projects.slice(0, 3);
 
   const handleViewAllProjects = () => {
-    // Navigate to the separate projects page
+    // Navigate to the separate projects page and scroll to top
     navigate('/projects');
+    // Scroll to top after navigation
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
   };
 
   const handleProjectClick = (project: TProject) => {

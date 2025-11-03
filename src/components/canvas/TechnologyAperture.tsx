@@ -112,17 +112,23 @@ const TechnologyApertureCanvas = () => {
     <div className="w-full h-full bg-transparent">
       <Canvas
         shadows
-        dpr={[1, 2]}
+        dpr={[1, 1.2]} // Further reduced for mobile compatibility
         camera={{ position: [0, 0, 12], fov: 45 }}
-        gl={{ preserveDrawingBuffer: false, alpha: true }}
+        gl={{ 
+          preserveDrawingBuffer: false, 
+          alpha: true,
+          antialias: false, // Disable antialiasing for better performance
+          powerPreference: "low-power" // Use low-power for better mobile compatibility
+        }}
+        performance={{ min: 0.3 }} // Lower performance threshold for mobile
       >
         <ambientLight intensity={0.6} />
         <directionalLight
           position={[5, 5, 5]}
           intensity={1}
           castShadow
-          shadow-mapSize-width={2048}
-          shadow-mapSize-height={2048}
+          shadow-mapSize-width={512} // Reduced for better performance
+          shadow-mapSize-height={512} // Reduced for better performance
         />
         <pointLight position={[-5, -5, -5]} intensity={0.4} />
         

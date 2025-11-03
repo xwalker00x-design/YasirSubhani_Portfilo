@@ -16,7 +16,7 @@ const Computers: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
         penumbra={1}
         intensity={1}
         castShadow
-        shadow-mapSize={1024}
+        shadow-mapSize={512} // Reduced shadow map size for better performance
       />
       <pointLight intensity={1} />
       <primitive
@@ -74,36 +74,31 @@ const ComputersCanvas = ({ onError }: { onError?: () => void }) => {
   }
 
   return (
-    <>
-      {isMobile ? (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white">
-            <h3 className="text-xl font-semibold mb-2">Mobile View</h3>
-            <p className="text-gray-300">3D content optimized for desktop</p>
-          </div>
-        </div>
-      ) : (
-        <Canvas
-          frameloop="demand"
-          shadows
-          dpr={[1, 2]}
-          camera={{ position: [20, 3, 5], fov: 25 }}
-          gl={{ preserveDrawingBuffer: true }}
-          onError={() => setHasError(true)}
-        >
-          <Suspense fallback={<CanvasLoader />}>
-            <OrbitControls
-              enablePan={false}
-              enableZoom={false}
-              maxPolarAngle={Math.PI / 2}
-              minPolarAngle={Math.PI / 2}
-            />
-            <Computers isMobile={isMobile} />
-          </Suspense>
-          <Preload all />
-        </Canvas>
-      )}
-    </>
+    <Canvas
+      frameloop="demand"
+      shadows
+      dpr={isMobile ? [1, 1] : [1, 1.5]} // Lower DPR for mobile for better performance
+      camera={{ position: [20, 3, 5], fov: 25 }}
+      gl={{ 
+        preserveDrawingBuffer: true,
+        antialias: false, // Disable antialiasing for better performance
+        alpha: true,
+        powerPreference: isMobile ? "low-power" : "high-performance" // Use low-power for mobile
+      }}
+      performance={{ min: isMobile ? 0.3 : 0.5 }} // Lower performance threshold for mobile
+      onError={() => setHasError(true)}
+    >
+      <Suspense fallback={<CanvasLoader />}>
+        <OrbitControls
+          enablePan={false}
+          enableZoom={false}
+          maxPolarAngle={Math.PI / 2}
+          minPolarAngle={Math.PI / 2}
+        />
+        <Computers isMobile={isMobile} />
+      </Suspense>
+      <Preload all />
+    </Canvas>
   );
 };
 

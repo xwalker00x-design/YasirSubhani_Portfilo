@@ -55,6 +55,17 @@ export function generateResumeText(personal: PersonalInfo, options: GenerateOpti
     const desc: string = p.description || "";
     lines.push(`${p.name}`);
     lines.push(`- ${desc}`);
+    
+    // Add app store links for apps with store links
+    if (p.name === "Installer App") {
+      // @ts-ignore
+      if (p.appStoreLink) lines.push(`- App Store: ${p.appStoreLink}`);
+      // @ts-ignore
+      if (p.playStoreLink) lines.push(`- Play Store: ${p.playStoreLink}`);
+    } else if (p.name === "iSent") {
+      // @ts-ignore
+      if (p.playStoreLink) lines.push(`- Play Store: ${p.playStoreLink}`);
+    }
   });
   lines.push("");
 
