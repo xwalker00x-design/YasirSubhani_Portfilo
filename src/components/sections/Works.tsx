@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { projects } from "../../constants";
-import { github, close } from "../../assets";
+import { close } from "../../assets";
 import { TProject } from "../../types";
 import { SectionWrapper } from "../../hoc";
 import {
@@ -124,6 +124,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                       src={screenshots[currentImageIndex]}
                       alt={`${project.name} screenshot ${currentImageIndex + 1}`}
                       className="w-full h-auto max-h-[70vh] object-contain"
+                      loading="lazy"
+                      decoding="async"
                     />
                     
                     {/* Navigation Arrows */}
@@ -190,17 +192,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
               {/* Action Buttons */}
               <div className="space-y-4">
-                {/* Source Code Button */}
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => window.open(project.sourceCodeLink, "_blank")}
-                  className="w-full bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-                >
-                  <img src={github} alt="github" className="w-5 h-5" />
-                  View Source Code
-                </motion.button>
-                
                 {/* App Store and Play Store Buttons */}
                 {(project.appStoreLink || project.playStoreLink) && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -279,6 +270,8 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
           src={image}
           alt={name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          loading="lazy"
+          decoding="async"
         />
         
         {/* Overlay with project info */}
@@ -289,24 +282,7 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
           </div>
         </div>
 
-        {/* GitHub Link - Top Right */}
-        <div className="absolute top-3 right-3">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={(e) => {
-              e.stopPropagation();
-              window.open(sourceCodeLink, "_blank");
-            }}
-            className="black-gradient w-8 h-8 rounded-full flex justify-center items-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            <img
-              src={github}
-              alt="github"
-              className="w-4 h-4 object-contain"
-            />
-          </motion.div>
-        </div>
+        {/* GitHub Link hidden */}
 
         {/* Technology Tags - Top Left */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-1">
@@ -351,18 +327,7 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
           )}
         </div>
 
-        {/* Action Button */}
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={(e) => {
-            e.stopPropagation();
-            window.open(sourceCodeLink, "_blank");
-          }}
-          className="w-full bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white py-2 px-4 rounded-lg text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
-        >
-          View Source Code
-        </motion.button>
+        {/* Source code button hidden */}
       </div>
     </motion.div>
   );

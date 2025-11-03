@@ -1,6 +1,6 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import { AdaptiveDpr, OrbitControls, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../layout/Loader";
 
@@ -14,9 +14,8 @@ const Computers: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
         position={[-20, 50, 10]}
         angle={0.12}
         penumbra={1}
-        intensity={1}
-        castShadow
-        shadow-mapSize={512} // Reduced shadow map size for better performance
+        intensity={0.8}
+        castShadow={false}
       />
       <pointLight intensity={1} />
       <primitive
@@ -32,6 +31,8 @@ const Computers: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
 const ComputersCanvas = ({ onError }: { onError?: () => void }) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState<boolean>(false);
 
   useEffect(() => {
     // Add a listener for changes to the screen size
@@ -54,6 +55,21 @@ const ComputersCanvas = ({ onError }: { onError?: () => void }) => {
     };
   }, []);
 
+  // Only render the canvas when in viewport
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setInView(entry.isIntersecting);
+      },
+      { root: null, threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   // Handle errors and notify parent component
   useEffect(() => {
     if (hasError && onError) {
@@ -74,10 +90,16 @@ const ComputersCanvas = ({ onError }: { onError?: () => void }) => {
   }
 
   return (
+    <div ref={containerRef} className="w-full h-full">
+      {/* Static poster on small screens for performance */}
+      {isMobile && (
+        <img src="/pc-setup.png" alt="3D preview" className="w-full h-full object-contain" loading="lazy" decoding="async" />
+      )}
+      {!isMobile && inView && (
     <Canvas
       frameloop="demand"
-      shadows
-      dpr={isMobile ? [1, 1] : [1, 1.5]} // Lower DPR for mobile for better performance
+      shadows={false}
+      dpr={[1, 1]} // Lower DPR for better performance
       camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ 
         preserveDrawingBuffer: true,
@@ -88,6 +110,7 @@ const ComputersCanvas = ({ onError }: { onError?: () => void }) => {
       performance={{ min: isMobile ? 0.3 : 0.5 }} // Lower performance threshold for mobile
       onError={() => setHasError(true)}
     >
+      <AdaptiveDpr pixelated />
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
           enablePan={false}
@@ -97,8 +120,9 @@ const ComputersCanvas = ({ onError }: { onError?: () => void }) => {
         />
         <Computers isMobile={isMobile} />
       </Suspense>
-      <Preload all />
     </Canvas>
+      )}
+    </div>
   );
 };
 

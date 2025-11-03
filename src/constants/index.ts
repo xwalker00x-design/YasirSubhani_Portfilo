@@ -1051,10 +1051,26 @@ export const testimonials: TTestimonial[] = [
   {
     testimonial:
       "Yasir's AI automation skills helped us streamline our business processes significantly. Highly recommended!",
-    name: "Lisa Wang",
+    name: "Aisha Verma",
     designation: "CEO",
-    company: "AI Solutions",
+    company: "Bharat AI Labs",
     image: "https://randomuser.me/api/portraits/women/6.jpg",
+  },
+  {
+    testimonial:
+      "We engaged Yasir for a critical release. His problem-solving and delivery speed were impressive—shipped on time without compromising quality.",
+    name: "Arjun Mehta",
+    designation: "Founder",
+    company: "DevCraft India",
+    image: "https://randomuser.me/api/portraits/men/11.jpg",
+  },
+  {
+    testimonial:
+      "Yasir modernized our stack and optimized performance across the board. Page load times improved noticeably for our users in India.",
+    name: "Priya Nair",
+    designation: "Engineering Manager",
+    company: "InnoSoft Pvt Ltd",
+    image: "https://randomuser.me/api/portraits/women/12.jpg",
   },
 ];
  

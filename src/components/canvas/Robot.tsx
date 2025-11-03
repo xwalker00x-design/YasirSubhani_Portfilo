@@ -1,20 +1,15 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Preload } from "@react-three/drei";
+import { AdaptiveDpr, OrbitControls, Preload } from "@react-three/drei";
 import * as THREE from "three";
 
-const RobotModel = ({ mousePosition }: { mousePosition: { x: number; y: number } }) => {
+const RobotModel = () => {
   const robotRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
     if (robotRef.current) {
-      // Smooth rotation based on mouse position
-      const targetRotationY = mousePosition.x * 0.3;
-      const targetRotationX = mousePosition.y * 0.2;
-      
-      robotRef.current.rotation.y += (targetRotationY - robotRef.current.rotation.y) * 0.05;
-      robotRef.current.rotation.x += (targetRotationX - robotRef.current.rotation.x) * 0.05;
-      
+      // Idle subtle motion only (no mouse interaction)
+      robotRef.current.rotation.y += 0.002;
       // Add subtle floating animation
       robotRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
     }
@@ -71,24 +66,24 @@ const RobotModel = ({ mousePosition }: { mousePosition: { x: number; y: number }
 };
 
 const RobotCanvas = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false as any);
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      const x = (event.clientX / window.innerWidth) * 2 - 1;
-      const y = -(event.clientY / window.innerHeight) * 2 + 1;
-      setMousePosition({ x, y });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const mq = window.matchMedia('(max-width: 640px)');
+    const apply = () => setIsMobile(mq.matches as any);
+    apply();
+    mq.addEventListener?.('change', apply);
+    return () => mq.removeEventListener?.('change', apply);
   }, []);
 
   return (
-    <div className="w-full h-full bg-transparent">
+    <div ref={containerRef} className="w-full h-full bg-transparent">
+      {isMobile ? (
+        <img src="/rog-phone-3.png" alt="Robot" className="w-full h-full object-contain opacity-20" loading="lazy" decoding="async" />
+      ) : (
       <Canvas
-        shadows
-        dpr={[1, 1.2]} // Further reduced for mobile compatibility
+        shadows={false}
+        dpr={[1, 1]} // Further reduced for mobile compatibility
         camera={{ position: [0, 0, 6], fov: 60 }}
         gl={{ 
           preserveDrawingBuffer: false, 
@@ -98,6 +93,7 @@ const RobotCanvas = () => {
         }}
         performance={{ min: 0.3 }} // Lower performance threshold for mobile
       >
+        <AdaptiveDpr pixelated />
         <ambientLight intensity={0.4} />
         <directionalLight
           position={[5, 5, 5]}
@@ -114,7 +110,7 @@ const RobotCanvas = () => {
             <meshStandardMaterial color="green" />
           </mesh>
         }>
-          <RobotModel mousePosition={mousePosition} />
+          <RobotModel />
         </Suspense>
         
         <OrbitControls
@@ -126,6 +122,7 @@ const RobotCanvas = () => {
         />
         <Preload all />
       </Canvas>
+      )}
     </div>
   );
 };

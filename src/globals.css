@@ -21,7 +21,7 @@
     background-color: #0f172a;
     color: #ffffff;
     overflow-x: hidden;
-    cursor: none; /* Hide default cursor */
+    cursor: auto; /* Show default cursor */
   }
 
   /* Custom Cursor */
@@ -177,10 +177,7 @@
     outline-offset: 2px;
   }
 
-  /* Smooth transitions for all elements */
-  * {
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+  /* Avoid global transitions on every element to reduce layout/repaint cost */
 }
 
 @layer components {

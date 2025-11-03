@@ -12,7 +12,7 @@ const ResumePage = () => {
     location: "Kolkata, India",
     linkedin: "linkedin.com/in/yasirsubhani",
     github: "github.com/yasirSub",
-    website: "https://yasir-subhani-portfilo.vercel.app/",
+    website: "https://yasirsubhani.me",
     yearsExperience: "4+ years experience",
   });
   const [summary, setSummary] = useState(

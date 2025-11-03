@@ -1,15 +1,9 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import { AdaptiveDpr, OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
-const ParticlesModel = ({ 
-  scrollY, 
-  mousePosition 
-}: { 
-  scrollY: number; 
-  mousePosition: { x: number; y: number } 
-}) => {
+const ParticlesModel = ({ scrollY }: { scrollY: number }) => {
   const particlesRef = useRef<THREE.Group>(null);
   const { scene } = useGLTF("/particles_tests_-_3.glb");
 
@@ -19,12 +13,7 @@ const ParticlesModel = ({
       const scrollRotation = scrollY * 0.0005;
       particlesRef.current.rotation.y = scrollRotation;
       
-      // Subtle mouse interaction
-      const mouseRotationY = mousePosition.x * 0.1;
-      const mouseRotationX = mousePosition.y * 0.05;
-      
-      particlesRef.current.rotation.y += mouseRotationY * 0.01;
-      particlesRef.current.rotation.x += mouseRotationX * 0.01;
+      // No mouse interaction
       
       // Floating animation
       const floatY = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
@@ -58,34 +47,56 @@ const ParticlesModel = ({
 };
 
 const ParticlesBackground = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [scrollY, setScrollY] = useState(0);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState<boolean>(false);
+  const [reducedMotion, setReducedMotion] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      const x = (event.clientX / window.innerWidth) * 2 - 1;
-      const y = -(event.clientY / window.innerHeight) * 2 + 1;
-      setMousePosition({ x, y });
-    };
+    // Reduced motion preference
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(media.matches);
+    const onChange = () => setReducedMotion(media.matches);
+    media.addEventListener?.("change", onChange);
 
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+    // In-view detection
+    const el = containerRef.current;
+    let observer: IntersectionObserver | null = null;
+    if (el) {
+      observer = new IntersectionObserver(
+        (entries) => setInView(entries[0].isIntersecting),
+        { threshold: 0.05 }
+      );
+      observer.observe(el);
+    }
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("scroll", handleScroll);
-    
+    // No scroll-driven updates
+
+    // Detect mobile
+    const mq = window.matchMedia('(max-width: 640px)');
+    const apply = () => setIsMobile(mq.matches);
+    apply();
+    mq.addEventListener?.('change', apply);
+
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("scroll", handleScroll);
+      media.removeEventListener?.("change", onChange);
+      // no-op
+      observer?.disconnect();
+      mq.removeEventListener?.('change', apply);
     };
   }, []);
 
   return (
-    <div className="absolute inset-0 w-full h-full">
+    <div ref={containerRef} className="absolute inset-0 w-full h-full">
+      {/* Poster on mobile or when reduced motion is enabled */}
+      {(isMobile || reducedMotion) && (
+        <img src="/images.png" alt="Background" className="w-full h-full object-cover opacity-20" loading="lazy" decoding="async" />
+      )}
+      {!isMobile && !reducedMotion && inView && (
       <Canvas
-        shadows
-        dpr={[1, 1.2]} // Further reduced for mobile compatibility
+        shadows={false}
+        frameloop="demand"
+        dpr={[1, 1]} // Further reduced for mobile compatibility
         camera={{ position: [0, 0, 20], fov: 60 }}
         gl={{ 
           preserveDrawingBuffer: false, 
@@ -95,6 +106,7 @@ const ParticlesBackground = () => {
         }}
         performance={{ min: 0.3 }} // Lower performance threshold for mobile
       >
+        <AdaptiveDpr pixelated />
         <ambientLight intensity={0.2} />
         <directionalLight
           position={[5, 5, 5]}
@@ -103,10 +115,7 @@ const ParticlesBackground = () => {
         />
         
         <Suspense fallback={null}>
-          <ParticlesModel 
-            scrollY={scrollY} 
-            mousePosition={mousePosition} 
-          />
+          <ParticlesModel scrollY={0} />
         </Suspense>
         
         <OrbitControls
@@ -114,8 +123,8 @@ const ParticlesBackground = () => {
           enablePan={false}
           enableRotate={false}
         />
-        <Preload all />
       </Canvas>
+      )}
     </div>
   );
 };

@@ -1,8 +1,31 @@
 import { motion } from "framer-motion";
-import ParticlesBackground from "../canvas/ParticlesBackground";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
+const ParticlesBackgroundLazy = lazy(() => import("../canvas/ParticlesBackground"));
 import { downloadResumePdf } from "../../utils/resumePdf";
 
 const Hero = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState<boolean>(false);
+  const [idleReady, setIdleReady] = useState<boolean>(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => setInView(entries[0].isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    const idle = (cb: () => void) => {
+      if ("requestIdleCallback" in window) {
+        (window as any).requestIdleCallback(cb, { timeout: 1500 });
+      } else {
+        setTimeout(cb, 800);
+      }
+    };
+    idle(() => setIdleReady(true));
+    return () => observer.disconnect();
+  }, []);
   const handleCall = () => {
     window.location.href = "tel:+918271819813";
   };
@@ -17,16 +40,20 @@ const Hero = () => {
       location: "Kolkata, India",
       linkedin: "linkedin.com/in/yasirsubhani",
       github: "github.com/yasirSub",
-      website: "https://yasir-subhani-portfilo.vercel.app/",
+      website: "https://yasirsubhani.me",
       yearsExperience: "4+ years experience",
     } as const;
     downloadResumePdf(personal);
   };
 
   return (
-    <section className="relative mx-auto min-h-screen w-full overflow-hidden flex items-center">
-      {/* Animated Particles Background */}
-      <ParticlesBackground />
+    <section ref={containerRef} className="relative mx-auto min-h-screen w-full overflow-hidden flex items-center">
+      {/* Animated Particles Background (lazy + in-view + idle) */}
+      {inView && idleReady && (
+        <Suspense fallback={null}>
+          <ParticlesBackgroundLazy />
+        </Suspense>
+      )}
       
       {/* Enhanced Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-800/80 to-slate-900/90" />

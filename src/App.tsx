@@ -10,13 +10,13 @@ import { TradingFinance } from "./components";
 import { Music } from "./components";
 import { Photography } from "./components";
 import { ResumePage } from "./components";
-import CustomCursor from "./components/CustomCursor";
+// Custom cursor removed for performance
 
 function App() {
   return (
     <BrowserRouter>
       <div className="relative z-0 bg-primary">
-        <CustomCursor />
+        {/* CustomCursor removed */}
         <Navbar />
         <Routes>
           <Route path="/" element={

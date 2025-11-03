@@ -79,7 +79,7 @@ const AboutPage = () => {
 
           {/* Small QR badge linking to portfolio */}
           <div className="flex justify-center mt-2">
-            <a href="https://yasir-subhani-portfilo.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-secondary border border-gray-700 rounded-lg px-3 py-1 hover:text-white hover:border-[#915EFF] transition-colors">
+            <a href="https://yasirsubhani.me" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-secondary border border-gray-700 rounded-lg px-3 py-1 hover:text-white hover:border-[#915EFF] transition-colors">
               <span>Portfolio</span>
               <span className="inline-block w-3 h-3 bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] rounded-sm" />
             </a>

@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { projects } from "../../constants";
-import { github, close } from "../../assets";
+import { close } from "../../assets";
 import { TProject } from "../../types";
 import {
   installer2,
@@ -188,17 +188,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
               {/* Action Buttons */}
               <div className="space-y-4">
-                {/* Source Code Button */}
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => window.open(project.sourceCodeLink, "_blank")}
-                  className="w-full bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-                >
-                  <img src={github} alt="github" className="w-5 h-5" />
-                  View Source Code
-                </motion.button>
-                
                 {/* App Store and Play Store Buttons */}
                 {(project.appStoreLink || project.playStoreLink) && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -310,9 +299,7 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
       </div>
 
       {/* Click hint */}
-      <div className="mt-4 text-center">
-        <span className="text-[#915EFF] text-sm font-medium">Click to view details</span>
-      </div>
+      <div className="mt-4 text-center" />
     </motion.div>
   );
 };
@@ -393,7 +380,7 @@ const ProjectsPage = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-white text-lg max-w-2xl mx-auto"
           >
-            Click on any project to view detailed information, screenshots, and access source code
+            Click on any project to view detailed information and screenshots
           </motion.p>
         </motion.div>
 

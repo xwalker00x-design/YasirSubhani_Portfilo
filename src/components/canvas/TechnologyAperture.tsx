@@ -1,30 +1,20 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import { AdaptiveDpr, OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
-const TechnologyApertureModel = ({ 
-  scrollY, 
-  mousePosition 
-}: { 
-  scrollY: number; 
-  mousePosition: { x: number; y: number } 
-}) => {
+const TechnologyApertureModel = ({ scrollY }: { scrollY: number }) => {
   const apertureRef = useRef<THREE.Group>(null);
   const { scene } = useGLTF("/technology_aperture_out.glb");
 
+  const lastColorUpdateRef = useRef<number>(0);
   useFrame((state) => {
     if (apertureRef.current) {
       // Scroll-based rotation
       const scrollRotation = scrollY * 0.001;
       apertureRef.current.rotation.y = scrollRotation;
       
-      // Mouse-based rotation
-      const mouseRotationY = mousePosition.x * 0.5;
-      const mouseRotationX = mousePosition.y * 0.3;
-      
-      apertureRef.current.rotation.y += mouseRotationY * 0.02;
-      apertureRef.current.rotation.x += mouseRotationX * 0.02;
+      // No mouse-based rotation
       
       // Floating animation
       const floatY = Math.sin(state.clock.elapsedTime * 0.8) * 0.2;
@@ -34,26 +24,28 @@ const TechnologyApertureModel = ({
       const scale = 1 + Math.sin(scrollY * 0.01) * 0.1;
       apertureRef.current.scale.setScalar(scale);
       
-      // Color animation based on scroll
-      const hue = (scrollY * 0.1) % 360;
-      const color = new THREE.Color().setHSL(hue / 360, 0.8, 0.6);
-      
-      // Apply color to all materials in the model
-      scene.traverse((child) => {
-        if (child instanceof THREE.Mesh && child.material) {
-          if (Array.isArray(child.material)) {
-            child.material.forEach(mat => {
-              if (mat instanceof THREE.MeshStandardMaterial) {
-                mat.color = color;
-                mat.emissive = color.clone().multiplyScalar(0.2);
-              }
-            });
-          } else if (child.material instanceof THREE.MeshStandardMaterial) {
-            child.material.color = color;
-            child.material.emissive = color.clone().multiplyScalar(0.2);
+      // Color animation based on scroll (throttled to ~5 fps)
+      const now = state.clock.elapsedTime;
+      if (now - lastColorUpdateRef.current > 0.2) {
+        lastColorUpdateRef.current = now;
+        const hue = (scrollY * 0.1) % 360;
+        const color = new THREE.Color().setHSL(hue / 360, 0.8, 0.6);
+        scene.traverse((child) => {
+          if (child instanceof THREE.Mesh && child.material) {
+            if (Array.isArray(child.material)) {
+              child.material.forEach((mat) => {
+                if (mat instanceof THREE.MeshStandardMaterial) {
+                  mat.color.copy(color);
+                  mat.emissive.copy(color).multiplyScalar(0.2);
+                }
+              });
+            } else if (child.material instanceof THREE.MeshStandardMaterial) {
+              child.material.color.copy(color);
+              child.material.emissive.copy(color).multiplyScalar(0.2);
+            }
           }
-        }
-      });
+        });
+      }
     }
   });
 
@@ -85,34 +77,54 @@ const TechnologyApertureModel = ({
 };
 
 const TechnologyApertureCanvas = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [scrollY, setScrollY] = useState(0);
+  // No scroll state to avoid unnecessary updates
+  const scrollY = 0;
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState<boolean>(false);
+  const [reducedMotion, setReducedMotion] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      const x = (event.clientX / window.innerWidth) * 2 - 1;
-      const y = -(event.clientY / window.innerHeight) * 2 + 1;
-      setMousePosition({ x, y });
-    };
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(media.matches);
+    const onChange = () => setReducedMotion(media.matches);
+    media.addEventListener?.("change", onChange);
 
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+    const el = containerRef.current;
+    let observer: IntersectionObserver | null = null;
+    if (el) {
+      observer = new IntersectionObserver(
+        (entries) => setInView(entries[0].isIntersecting),
+        { threshold: 0.1 }
+      );
+      observer.observe(el);
+    }
+    // No scroll listener to avoid layout thrash
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("scroll", handleScroll);
+    // detect mobile
+    const mq = window.matchMedia('(max-width: 640px)');
+    const apply = () => setIsMobile(mq.matches);
+    apply();
+    mq.addEventListener?.('change', apply);
     
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("scroll", handleScroll);
+      media.removeEventListener?.("change", onChange);
+      // no-op
+      observer?.disconnect();
+      mq.removeEventListener?.('change', apply);
     };
   }, []);
 
   return (
-    <div className="w-full h-full bg-transparent">
+    <div ref={containerRef} className="w-full h-full bg-transparent">
+      {(isMobile || reducedMotion) && (
+        <img src="/images.png" alt="Aperture" className="w-full h-full object-contain opacity-20" loading="lazy" decoding="async" />
+      )}
+      {!isMobile && !reducedMotion && inView && (
       <Canvas
-        shadows
-        dpr={[1, 1.2]} // Further reduced for mobile compatibility
+        shadows={false}
+        frameloop="demand"
+        dpr={[1, 1]} // Further reduced for mobile compatibility
         camera={{ position: [0, 0, 12], fov: 45 }}
         gl={{ 
           preserveDrawingBuffer: false, 
@@ -122,6 +134,7 @@ const TechnologyApertureCanvas = () => {
         }}
         performance={{ min: 0.3 }} // Lower performance threshold for mobile
       >
+        <AdaptiveDpr pixelated />
         <ambientLight intensity={0.6} />
         <directionalLight
           position={[5, 5, 5]}
@@ -138,10 +151,7 @@ const TechnologyApertureCanvas = () => {
             <meshStandardMaterial color="#3b82f6" />
           </mesh>
         }>
-          <TechnologyApertureModel 
-            scrollY={scrollY} 
-            mousePosition={mousePosition} 
-          />
+          <TechnologyApertureModel scrollY={scrollY} />
         </Suspense>
         
         <OrbitControls
@@ -151,8 +161,8 @@ const TechnologyApertureCanvas = () => {
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
-        <Preload all />
       </Canvas>
+      )}
     </div>
   );
 };

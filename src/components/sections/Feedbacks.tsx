@@ -38,6 +38,8 @@ const FeedbackCard: React.FC<{ index: number } & TTestimonial> = ({
           src={image}
           alt={`feedback_by-${name}`}
           className="h-10 w-10 rounded-full object-cover"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     </div>

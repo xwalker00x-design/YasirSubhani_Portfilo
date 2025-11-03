@@ -11,25 +11,14 @@ const Navbar = () => {
   const [active, setActive] = useState<string | null>();
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  // removed unused scrollProgress state
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || 0;
-      const docHeight = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.offsetHeight,
-        document.body.clientHeight,
-        document.documentElement.clientHeight
-      );
-      const windowHeight = window.innerHeight || 1;
-      const totalScrollable = Math.max(docHeight - windowHeight, 1);
-      const progress = Math.min(Math.max(scrollTop / totalScrollable, 0), 1);
-
-      setScrollProgress(progress);
+      // removed unused docHeight/windowHeight
+      // progress calculation removed
       setScrolled(scrollTop > 50);
       
       // Close mobile menu when scrolling
@@ -83,15 +72,13 @@ const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1000 ease-in-out hidden sm:block ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out hidden sm:block ${
         scrolled 
-            ? "py-2 bg-blue-500/20 backdrop-blur-2xl shadow-2xl border border-blue-400/40 rounded-full mx-auto mt-4 w-fit px-8" 
-            : "py-6 bg-blue-500/5 backdrop-blur-sm rounded-b-3xl"
+            ? "py-2 bg-blue-500/10 shadow-md border-b border-blue-400/20"
+            : "py-6 bg-blue-500/5"
       }`}
     >
-      <div className={`mx-auto flex items-center justify-between transition-all duration-1000 ease-in-out ${
-        scrolled ? "gap-8" : "w-full max-w-7xl " + styles.paddingX
-      }`}>
+      <div className={`mx-auto w-full max-w-7xl ${styles.paddingX} flex items-center justify-between transition-all duration-500 ease-in-out`}>
         {/* Logo */}
         <motion.div
           whileHover={{ scale: 1.05 }}
@@ -106,28 +93,13 @@ const Navbar = () => {
               window.scrollTo(0, 0);
             }}
           >
-            <motion.div
-              animate={{ 
-                rotate: scrolled ? [0, 5, -5, 0] : [0, 0, 0, 0],
-                scale: scrolled ? [1, 1.1, 1] : 1
-              }}
-              transition={{ duration: 0.5 }}
-              className="relative"
-            >
+            <motion.div className="relative">
               <motion.img 
                 src="/images.png" 
                 alt="Logo" 
-                className={`object-contain rounded-full shadow-lg transition-all duration-1000 ease-in-out ${
-                  scrolled ? "h-6 w-6" : "h-12 w-12"
-                }`}
+                className="object-contain rounded-full shadow-lg h-10 w-10"
               />
-              {scrolled && (
-                <motion.div
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  className="absolute -top-1 -right-1 w-3 h-3 bg-[#915EFF] rounded-full shadow-lg"
-                />
-              )}
+              {/* Removed scrolled indicator dot */}
             </motion.div>
           </Link>
         </motion.div>
@@ -150,11 +122,7 @@ const Navbar = () => {
                   e.preventDefault();
                   handleNavClick(nav.id);
                 }}
-                className={`cursor-pointer font-medium transition-all duration-700 relative ${
-                  scrolled 
-                    ? "text-[12px]" 
-                    : "text-[18px]"
-                } ${
+              className={`cursor-pointer font-medium transition-all duration-300 relative text-[16px] ${
                   active === nav.id 
                     ? "text-blue-400" 
                     : "text-secondary hover:text-white"
@@ -180,16 +148,7 @@ const Navbar = () => {
                 />
               </motion.a>
               
-              {/* Active indicator dot */}
-              {active === nav.id && (
-                <motion.div
-                  layoutId="activeDot"
-                  className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-blue-400 rounded-full shadow-lg"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              )}
+              {/* Active indicator dot removed */}
             </motion.li>
           ))}
           <li>
@@ -224,7 +183,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.8, y: -20 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="absolute right-0 top-16 z-10 mx-4 my-2 min-w-[180px] rounded-2xl p-4 bg-blue-500/15 backdrop-blur-2xl border border-blue-400/30 shadow-2xl"
+                className="absolute right-0 top-16 z-10 mx-4 my-2 min-w-[180px] p-4 bg-slate-900/95 border border-blue-400/20 shadow-md"
               >
                 <ul className="flex flex-1 list-none flex-col items-start justify-end gap-4">
                   {navLinks.map((nav, index) => (
@@ -274,14 +233,7 @@ const Navbar = () => {
         </motion.div>
       </div>
 
-      {/* Scroll Progress Bar */}
-      {scrolled && (
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: scrollProgress }}
-            className="absolute bottom-0 left-3 right-3 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full origin-left"
-          />
-       )}
+      {/* Scroll Progress Bar removed */}
       </motion.nav>
 
       {/* Mobile Navbar - Punch Hole Effect (Bigger) */}
@@ -289,15 +241,13 @@ const Navbar = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1000 ease-in-out sm:hidden ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out sm:hidden ${
           scrolled 
-            ? "py-4 bg-blue-500/20 backdrop-blur-2xl shadow-2xl border border-blue-400/40 rounded-full mx-auto mt-2 w-fit px-8" 
-            : "py-5 bg-blue-500/5 backdrop-blur-sm rounded-b-3xl"
+            ? "py-3 bg-blue-500/10 shadow-md border-b border-blue-400/20"
+            : "py-5 bg-blue-500/5"
         }`}
       >
-        <div className={`mx-auto flex items-center justify-between transition-all duration-1000 ease-in-out ${
-          scrolled ? "gap-8" : "w-full max-w-7xl " + styles.paddingX
-        }`}>
+        <div className={`mx-auto w-full max-w-7xl ${styles.paddingX} flex items-center justify-between transition-all duration-500 ease-in-out`}>
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -347,7 +297,7 @@ const Navbar = () => {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.8, y: -20 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="absolute right-0 top-16 z-10 mx-4 my-2 min-w-[180px] rounded-2xl p-4 bg-blue-700/80 backdrop-blur-2xl border-2 border-blue-400 shadow-2xl"
+                  className="absolute right-0 top-16 z-10 mx-4 my-2 min-w-[180px] p-4 bg-slate-900/95 border border-blue-400/20 shadow-md"
                 >
                   <ul className="flex flex-1 list-none flex-col items-start justify-end gap-4">
                     {navLinks.map((nav, index) => (
@@ -397,14 +347,7 @@ const Navbar = () => {
           </motion.div>
         </div>
 
-        {/* Mobile Scroll Progress Bar */}
-        {scrolled && (
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: scrollProgress }}
-            className="absolute bottom-0 left-3 right-3 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full origin-left"
-          />
-      )}
+        {/* Mobile Scroll Progress Bar removed */}
     </motion.nav>
     </>
   );
