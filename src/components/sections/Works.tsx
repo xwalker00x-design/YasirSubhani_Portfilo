@@ -31,14 +31,24 @@ interface ProjectModalProps {
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+  const getPreferredStoreLink = () => {
+    if (typeof navigator === "undefined") return undefined;
+    const ua = navigator.userAgent || navigator.vendor;
+    const isIOS = /iPad|iPhone|iPod/.test(ua);
+    const isAndroid = /Android/.test(ua);
+
+    if (isIOS) return project.appStoreLink;
+    if (isAndroid) return project.playStoreLink;
+    return undefined;
+  };
+
   // Get multiple screenshots for each project based on available images
   const getProjectScreenshots = (projectName: string) => {
     const screenshots: string[] = [];
-    
+
     // Add the main project image
     screenshots.push(project.image);
-    
+
     // Add additional screenshots based on project type - ONLY for the specific project
     if (projectName.toLowerCase().includes('installer') && projectName.toLowerCase().includes('app')) {
       // ONLY for "Installer App" project
@@ -71,7 +81,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
       // No duplicate images to avoid confusion
       screenshots.push(project.image);
     }
-    
+
     return screenshots;
   };
 
@@ -127,7 +137,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                       loading="lazy"
                       decoding="async"
                     />
-                    
+
                     {/* Navigation Arrows */}
                     <button
                       onClick={prevImage}
@@ -142,22 +152,21 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                       →
                     </button>
                   </div>
-                  
+
                   {/* Image Indicators */}
                   <div className="flex justify-center mt-4 space-x-2">
                     {screenshots.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
-                        className={`w-3 h-3 rounded-full transition-all ${
-                          index === currentImageIndex
+                        className={`w-3 h-3 rounded-full transition-all ${index === currentImageIndex
                             ? "bg-[#915EFF] scale-125"
                             : "bg-gray-600 hover:bg-gray-500"
-                        }`}
+                          }`}
                       />
                     ))}
                   </div>
-                  
+
                   {/* Screenshot Counter */}
                   <div className="text-center mt-2">
                     <span className="text-gray-400 text-sm">
@@ -194,33 +203,47 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
               <div className="space-y-4">
                 {/* App Store and Play Store Buttons */}
                 {(project.appStoreLink || project.playStoreLink) && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {project.appStoreLink && (
+                  <div className="space-y-4">
+                    {getPreferredStoreLink() && (
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => window.open(project.appStoreLink, "_blank")}
-                        className="bg-gradient-to-r from-[#000000] to-[#333333] hover:from-[#333333] hover:to-[#000000] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                        onClick={() => window.open(getPreferredStoreLink(), "_blank")}
+                        className="w-full bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                       >
-                        <span className="text-xl">🍎</span>
-                        App Store
+                        <span className="text-xl">⬇️</span>
+                        Download for your device
                       </motion.button>
                     )}
-                    
-                    {project.playStoreLink && (
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => window.open(project.playStoreLink, "_blank")}
-                        className="bg-gradient-to-r from-[#00D4FF] to-[#0099CC] hover:from-[#0099CC] hover:to-[#00D4FF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-                      >
-                        <span className="text-xl">📱</span>
-                        Play Store
-                      </motion.button>
-                    )}
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {project.appStoreLink && (
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => window.open(project.appStoreLink, "_blank")}
+                          className="bg-gradient-to-r from-[#000000] to-[#333333] hover:from-[#333333] hover:to-[#000000] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                        >
+                          <span className="text-xl">🍎</span>
+                          App Store
+                        </motion.button>
+                      )}
+
+                      {project.playStoreLink && (
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => window.open(project.playStoreLink, "_blank")}
+                          className="bg-gradient-to-r from-[#00D4FF] to-[#0099CC] hover:from-[#0099CC] hover:to-[#00D4FF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                        >
+                          <span className="text-xl">📱</span>
+                          Play Store
+                        </motion.button>
+                      )}
+                    </div>
                   </div>
                 )}
-                
+
                 {/* Live Demo Button (if no app store links) */}
                 {!project.appStoreLink && !project.playStoreLink && (
                   <motion.button
@@ -240,16 +263,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
   );
 };
 
-const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project: TProject) => void }> = ({ 
-  name, 
-  description, 
-  tags, 
-  image, 
-  sourceCodeLink, 
+const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project: TProject) => void }> = ({
+  name,
+  description,
+  tags,
+  image,
+  sourceCodeLink,
   appStoreLink,
   playStoreLink,
   index,
-  onProjectClick 
+  onProjectClick
 }) => {
   return (
     <motion.div
@@ -273,7 +296,7 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
           loading="lazy"
           decoding="async"
         />
-        
+
         {/* Overlay with project info */}
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex flex-col justify-end p-4">
           <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -337,7 +360,7 @@ const Works = () => {
   const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   // Show only first 3 projects in the main section
   const displayedProjects = projects.slice(0, 3);
 
@@ -370,7 +393,7 @@ const Works = () => {
         viewport={{ once: true, amount: 0.25 }}
         className="text-center mb-16"
       >
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -378,7 +401,7 @@ const Works = () => {
         >
           My work
         </motion.h2>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -386,7 +409,7 @@ const Works = () => {
         >
           Projects.
         </motion.p>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -405,8 +428,8 @@ const Works = () => {
         className="w-full flex justify-center mb-16"
       >
         <p className="mt-2 text-secondary text-[17px] max-w-3xl leading-[30px] text-center">
-          Following projects showcases my skills and experience through real-world examples of my work. 
-          Each project reflects my ability to solve complex problems, work with different technologies, 
+          Following projects showcases my skills and experience through real-world examples of my work.
+          Each project reflects my ability to solve complex problems, work with different technologies,
           and manage projects effectively.
         </p>
       </motion.div>
@@ -420,17 +443,17 @@ const Works = () => {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
       >
         {displayedProjects.map((project, index) => (
-          <ProjectCard 
-            key={`project-${index}`} 
-            index={index} 
-            {...project} 
+          <ProjectCard
+            key={`project-${index}`}
+            index={index}
+            {...project}
             onProjectClick={handleProjectClick}
           />
         ))}
       </motion.div>
 
       {/* View More Button */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}

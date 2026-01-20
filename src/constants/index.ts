@@ -167,28 +167,6 @@ export const experiences: TExperience[] = [
 
 export const projects: TProject[] = [
   {
-    name: "iSent",
-    description:
-      "Delivery-based mobile app with multiple operational modes. Current build includes Ride (driver) and Store (merchant) modes, with User mode planned. Features order assignment, live tracking, store inventory, and role-specific workflows.",
-    tags: [
-      {
-        name: "flutter",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "dart",
-        color: "green-text-gradient",
-      },
-      {
-        name: "mobile",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: "/isent/icon.jpg",
-    sourceCodeLink: "https://github.com/yasirSub/iSent",
-    playStoreLink: "https://play.google.com/store/apps/details?id=com.isent.online_store&pcampaignid=web_share",
-  },
-  {
     name: "Installer App",
     description:
       "A comprehensive mobile application installer with advanced features and modern UI/UX design. Features include app installation management, system optimization, and user-friendly interface for device management.",
@@ -210,6 +188,52 @@ export const projects: TProject[] = [
     sourceCodeLink: "https://github.com/yasirSub/installer-app",
     appStoreLink: "https://apps.apple.com/in/app/the-installers/id6475402460",
     playStoreLink: "https://play.google.com/store/apps/details?id=com.theinstallers.theinstallers&pcampaignid=web_share",
+    featured: true,
+  },
+  {
+    name: "SkoolWala ERP",
+    description:
+      "School ERP platform with Laravel backend and Flutter frontend. Manages fees, courses, attendance, ID cards, and core operations for schools with a unified dashboard.",
+    tags: [
+      {
+        name: "laravel",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "flutter",
+        color: "green-text-gradient",
+      },
+      {
+        name: "erp",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "https://skoolwala.com/assets/frontend/images/saas/5a0975fa236612e096d0fa7ad1969970.png",
+    sourceCodeLink: "https://skoolwala.com/",
+    liveLink: "https://skoolwala.com/",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.skoolwala.skoolwala&pcampaignid=web_share",
+  },
+  {
+    name: "iSent",
+    description:
+      "Delivery-based mobile app with multiple operational modes. Current build includes Ride (driver) and Store (merchant) modes, with User mode planned. Features order assignment, live tracking, store inventory, and role-specific workflows.",
+    tags: [
+      {
+        name: "flutter",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "dart",
+        color: "green-text-gradient",
+      },
+      {
+        name: "mobile",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "/isent/icon.jpg",
+    sourceCodeLink: "https://github.com/yasirSub/iSent",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.isent.online_store&pcampaignid=web_share",
   },
   {
     name: "Medikalam - Health App",
@@ -1073,4 +1097,3 @@ export const testimonials: TTestimonial[] = [
     image: "https://randomuser.me/api/portraits/women/12.jpg",
   },
 ];
- 

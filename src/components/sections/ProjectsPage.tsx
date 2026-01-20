@@ -29,14 +29,24 @@ interface ProjectModalProps {
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+  const getPreferredStoreLink = () => {
+    if (typeof navigator === "undefined") return undefined;
+    const ua = navigator.userAgent || navigator.vendor;
+    const isIOS = /iPad|iPhone|iPod/.test(ua);
+    const isAndroid = /Android/.test(ua);
+
+    if (isIOS) return project.appStoreLink;
+    if (isAndroid) return project.playStoreLink;
+    return undefined;
+  };
+
   // Get multiple screenshots for each project based on available images
   const getProjectScreenshots = (projectName: string) => {
     const screenshots: string[] = [];
-    
+
     // Add the main project image
     screenshots.push(project.image);
-    
+
     // Add additional screenshots based on project type - ONLY for the specific project
     if (projectName.toLowerCase().includes('installer') && projectName.toLowerCase().includes('app')) {
       // ONLY for "Installer App" project
@@ -69,7 +79,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
       // No duplicate images to avoid confusion
       screenshots.push(project.image);
     }
-    
+
     return screenshots;
   };
 
@@ -123,7 +133,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                       alt={`${project.name} screenshot ${currentImageIndex + 1}`}
                       className="w-full h-auto max-h-[70vh] object-contain"
                     />
-                    
+
                     {/* Navigation Arrows */}
                     <button
                       onClick={prevImage}
@@ -138,22 +148,21 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                       →
                     </button>
                   </div>
-                  
+
                   {/* Image Indicators */}
                   <div className="flex justify-center mt-4 space-x-2">
                     {screenshots.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
-                        className={`w-3 h-3 rounded-full transition-all ${
-                          index === currentImageIndex
-                            ? "bg-[#915EFF] scale-125"
-                            : "bg-gray-600 hover:bg-gray-500"
-                        }`}
+                        className={`w-3 h-3 rounded-full transition-all ${index === currentImageIndex
+                          ? "bg-[#915EFF] scale-125"
+                          : "bg-gray-600 hover:bg-gray-500"
+                          }`}
                       />
                     ))}
                   </div>
-                  
+
                   {/* Screenshot Counter */}
                   <div className="text-center mt-2">
                     <span className="text-gray-400 text-sm">
@@ -190,33 +199,47 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
               <div className="space-y-4">
                 {/* App Store and Play Store Buttons */}
                 {(project.appStoreLink || project.playStoreLink) && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {project.appStoreLink && (
+                  <div className="space-y-4">
+                    {getPreferredStoreLink() && (
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => window.open(project.appStoreLink, "_blank")}
-                        className="bg-gradient-to-r from-[#000000] to-[#333333] hover:from-[#333333] hover:to-[#000000] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                        onClick={() => window.open(getPreferredStoreLink(), "_blank")}
+                        className="w-full bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                       >
-                        <span className="text-xl">🍎</span>
-                        App Store
+                        <span className="text-xl">⬇️</span>
+                        Download for your device
                       </motion.button>
                     )}
-                    
-                    {project.playStoreLink && (
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => window.open(project.playStoreLink, "_blank")}
-                        className="bg-gradient-to-r from-[#00D4FF] to-[#0099CC] hover:from-[#0099CC] hover:to-[#00D4FF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-                      >
-                        <span className="text-xl">📱</span>
-                        Play Store
-                      </motion.button>
-                    )}
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {project.appStoreLink && (
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => window.open(project.appStoreLink, "_blank")}
+                          className="bg-gradient-to-r from-[#000000] to-[#333333] hover:from-[#333333] hover:to-[#000000] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                        >
+                          <span className="text-xl">🍎</span>
+                          App Store
+                        </motion.button>
+                      )}
+
+                      {project.playStoreLink && (
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => window.open(project.playStoreLink, "_blank")}
+                          className="bg-gradient-to-r from-[#00D4FF] to-[#0099CC] hover:from-[#0099CC] hover:to-[#00D4FF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                        >
+                          <span className="text-xl">📱</span>
+                          Play Store
+                        </motion.button>
+                      )}
+                    </div>
                   </div>
                 )}
-                
+
                 {/* Live Demo Button (if no app store links) */}
                 {!project.appStoreLink && !project.playStoreLink && (
                   <motion.button
@@ -236,24 +259,26 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
   );
 };
 
-const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project: TProject) => void }> = ({ 
-  name, 
-  description, 
-  tags, 
-  image, 
-  sourceCodeLink, 
+const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project: TProject) => void }> = ({
+  name,
+  description,
+  tags,
+  image,
+  sourceCodeLink,
   appStoreLink,
   playStoreLink,
+  featured,
   index,
-  onProjectClick 
+  onProjectClick
 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="bg-black-100 p-4 sm:p-5 rounded-2xl sm:w-[400px] w-full group hover:scale-105 transition-all duration-300 cursor-pointer"
-      onClick={() => onProjectClick({ name, description, tags, image, sourceCodeLink, appStoreLink, playStoreLink })}
+      className={`bg-black-100 p-4 sm:p-5 rounded-2xl sm:w-[400px] w-full group hover:scale-105 transition-all duration-300 cursor-pointer ${featured ? "ring-2 ring-[#915EFF] shadow-[0_0_30px_rgba(145,94,255,0.25)]" : ""
+        }`}
+      onClick={() => onProjectClick({ name, description, tags, image, sourceCodeLink, appStoreLink, playStoreLink, featured })}
     >
       {/* Project Image Container - Fixed aspect ratio for landscape */}
       <div className="relative w-full aspect-video overflow-hidden rounded-2xl">
@@ -263,7 +288,15 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
           className="w-full h-full object-contain rounded-2xl group-hover:scale-110 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-2xl" />
-        
+
+        {featured && (
+          <div className="absolute top-3 right-3">
+            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] text-white shadow-lg">
+              Featured
+            </span>
+          </div>
+        )}
+
         {/* Overlay with project info */}
         <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
           <div className="bg-black bg-opacity-80 p-3 rounded-xl">
@@ -319,23 +352,27 @@ const ProjectsPage = () => {
   }, []);
 
   const categories = [
-    "all", 
-    "flutter", 
-    "react-native", 
-    "ai", 
-    "python", 
-    "mobile", 
-    "web", 
+    "all",
+    "flutter",
+    "react-native",
+    "ai",
+    "python",
+    "mobile",
+    "web",
     "expo"
   ];
-  
-  const filteredProjects = selectedCategory === "all" 
-    ? projects 
-    : projects.filter(project => 
-        project.tags.some(tag => tag.name.toLowerCase().includes(selectedCategory.toLowerCase()))
-      );
 
-  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 12);
+  const filteredProjects = selectedCategory === "all"
+    ? projects
+    : projects.filter(project =>
+      project.tags.some(tag => tag.name.toLowerCase().includes(selectedCategory.toLowerCase()))
+    );
+
+  const sortedProjects = [...filteredProjects].sort(
+    (a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))
+  );
+
+  const displayedProjects = showAll ? sortedProjects : sortedProjects.slice(0, 12);
 
   const handleProjectClick = (project: TProject) => {
     setSelectedProject(project);
@@ -399,14 +436,13 @@ const ProjectsPage = () => {
                 setSelectedCategory(category);
                 setShowAll(false);
               }}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                selectedCategory === category
-                  ? "bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] text-white shadow-lg scale-105"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:scale-105"
-              }`}
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${selectedCategory === category
+                ? "bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] text-white shadow-lg scale-105"
+                : "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:scale-105"
+                }`}
             >
-              {category.charAt(0).toUpperCase() + category.slice(1)} 
-              {category !== "all" && ` (${filteredProjects.filter(project => 
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+              {category !== "all" && ` (${filteredProjects.filter(project =>
                 project.tags.some(tag => tag.name.toLowerCase().includes(category.toLowerCase()))
               ).length})`}
             </button>
@@ -422,9 +458,9 @@ const ProjectsPage = () => {
         >
           {displayedProjects.length > 0 ? (
             displayedProjects.map((project, index) => (
-              <ProjectCard 
-                key={`project-${index}`} 
-                index={index} 
+              <ProjectCard
+                key={`project-${index}`}
+                index={index}
                 {...project}
                 onProjectClick={handleProjectClick}
               />
@@ -435,8 +471,8 @@ const ProjectsPage = () => {
               <p className="text-gray-300">Try selecting a different category</p>
               <div className="mt-4 p-4 bg-gray-800 rounded-lg">
                 <p className="text-sm text-gray-400">
-                  Debug: Total projects: {projects.length}, 
-                  Filtered: {filteredProjects.length}, 
+                  Debug: Total projects: {projects.length},
+                  Filtered: {filteredProjects.length},
                   Category: {selectedCategory}
                 </p>
               </div>
@@ -446,8 +482,8 @@ const ProjectsPage = () => {
 
         {/* Simple fallback grid for mobile compatibility */}
         <div className="grid grid-cols-1 sm:hidden gap-4 mb-12">
-          {projects.slice(0, 6).map((project, index) => (
-            <div 
+          {sortedProjects.slice(0, 6).map((project, index) => (
+            <div
               key={`fallback-${index}`}
               className="bg-gray-800 p-4 rounded-lg"
               onClick={() => handleProjectClick(project)}
@@ -456,7 +492,7 @@ const ProjectsPage = () => {
               <p className="text-gray-300 text-sm">{project.description}</p>
               <div className="mt-2 flex flex-wrap gap-1">
                 {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                  <span 
+                  <span
                     key={tagIndex}
                     className="text-xs bg-blue-600 text-white px-2 py-1 rounded"
                   >

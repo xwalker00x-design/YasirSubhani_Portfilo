@@ -29,6 +29,7 @@ export type TProject = {
   liveLink?: string;
   appStoreLink?: string;
   playStoreLink?: string;
+  featured?: boolean;
 } & Required<Pick<TCommonProps, "name">>;
 
 export type TTechnology = Required<Omit<TCommonProps, "title">>;
