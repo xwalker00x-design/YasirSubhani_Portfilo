@@ -1,197 +1,186 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { styles } from "../../constants/styles";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useRef } from "react";
+
+const Magnetic = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springConfig = { stiffness: 150, damping: 15, mass: 0.1 };
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = ref.current.getBoundingClientRect();
+    const centerX = left + width / 2;
+    const centerY = top + height / 2;
+    const distanceX = clientX - centerX;
+    const distanceY = clientY - centerY;
+    
+    // Magnetic pull distance
+    const pull = 0.3; 
+    x.set(distanceX * pull);
+    y.set(distanceY * pull);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ x: springX, y: springY }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-t from-black-100 to-primary py-8 mt-16 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-1/4 w-32 h-32 bg-[#915EFF] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-[#7B4FD9] rounded-full blur-3xl" />
-      </div>
+    <footer className="relative mt-20 pb-10 overflow-hidden bg-[#030308]">
+      {/* Decorative Gradient Line */}
+      <div className="section-divider" />
 
-      <div className={`${styles.padding} max-w-6xl mx-auto relative z-10`}>
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          {/* Personal Info - More Compact */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-3"
-          >
-            <div className="flex items-center space-x-3">
-              <motion.img 
-                src="/images.png" 
-                alt="YS Logo" 
-                className="h-8 w-8 object-contain rounded-full shadow-lg"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.3 }}
-              />
-              <h3 className="text-white text-xl font-bold">Yasir Subhani</h3>
-            </div>
-            <p className="text-secondary text-xs leading-relaxed">
-              Web & Android App Developer specializing in Flutter, AI automation, 
-              and full-stack development.
-            </p>
-            <div className="flex items-center space-x-3 text-xs">
-              <motion.a
-                href="mailto:yasir.subhani123@gmail.com"
-                className="text-secondary hover:text-[#915EFF] transition-colors flex items-center gap-1"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                📧 Email
-              </motion.a>
-              <motion.a
-                href="tel:+918271819813"
-                className="text-secondary hover:text-[#915EFF] transition-colors flex items-center gap-1"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                📱 Phone
-              </motion.a>
-            </div>
-            <span className="text-secondary text-xs flex items-center gap-1">
-              📍 Kolkata, India
-            </span>
-          </motion.div>
-
-          {/* Quick Links - More Compact */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-3"
-          >
-            <h4 className="text-white text-lg font-semibold border-b border-[#915EFF]/30 pb-2">
-              Quick Links
-            </h4>
-            <ul className="space-y-2">
-              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                <a href="#about" className="text-secondary hover:text-[#915EFF] transition-colors text-sm">
-                  About
-                </a>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                <Link to="/about" className="text-secondary hover:text-[#915EFF] transition-colors text-sm">
-                  About Me
-                </Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                <a href="#work" className="text-secondary hover:text-[#915EFF] transition-colors text-sm">
-                  Experience
-                </a>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                <a href="#skills" className="text-secondary hover:text-[#915EFF] transition-colors text-sm">
-                  Skills
-                </a>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                <Link to="/projects" className="text-secondary hover:text-[#915EFF] transition-colors text-sm">
-                  Projects
-                </Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                <a href="#contact" className="text-secondary hover:text-[#915EFF] transition-colors text-sm">
-                  Contact
-                </a>
-              </motion.li>
-            </ul>
-          </motion.div>
-
-          {/* Social Media & Contact - More Compact */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-3"
-          >
-            <h4 className="text-white text-lg font-semibold border-b border-[#915EFF]/30 pb-2">
-              Connect With Me
-            </h4>
-            <div className="space-y-2">
-              {[
-                { icon: "💼", label: "LinkedIn", link: "https://linkedin.com/in/yasirsubhani" },
-                { icon: "🐙", label: "GitHub", link: "https://github.com/" },
-                { icon: "📧", label: "Email", link: "mailto:yasir.subhani123@gmail.com" },
-                { icon: "📱", label: "Phone", link: "tel:+918271819813" }
-              ].map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.link}
-                  target={social.link.startsWith('http') ? "_blank" : undefined}
-                  rel={social.link.startsWith('http') ? "noopener noreferrer" : undefined}
-                  className="flex items-center space-x-2 text-secondary hover:text-[#915EFF] transition-colors text-sm group"
-                  whileHover={{ x: 5, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  <span className="text-lg group-hover:scale-110 transition-transform duration-200">
-                    {social.icon}
-                  </span>
-                  <span>{social.label}</span>
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Bottom Section - More Compact */}
+      <div className="mx-auto max-w-7xl px-6 pt-20">
+        {/* Hire Me / CTA Box */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="border-t border-[#915EFF]/20 pt-4"
+          viewport={{ once: true }}
+          className="relative overflow-hidden rounded-[2rem] p-10 mb-20 text-center"
+          style={{
+            background: 'linear-gradient(135deg, rgba(145,94,255,0.1) 0%, rgba(59,130,246,0.1) 100%)',
+            border: '1px solid rgba(255,255,255,0.05)',
+            boxShadow: 'inset 0 0 40px rgba(0,0,0,0.5)'
+          }}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-            <p className="text-secondary text-xs">
-              © {currentYear} Yasir Subhani. All rights reserved.
-            </p>
-            <div className="flex space-x-4">
-              {[
-                { label: "Privacy Policy", link: "#" },
-                { label: "Terms of Service", link: "#" }
-              ].map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.link}
-                  className="text-secondary hover:text-[#915EFF] transition-colors text-xs"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
-                >
-                  {item.label}
-                </motion.a>
-              ))}
-            </div>
+          {/* Orbs */}
+          <div className="ambient-orb ambient-orb-purple w-64 h-64 -top-32 -left-32 opacity-10" />
+          <div className="ambient-orb ambient-orb-blue w-64 h-64 -bottom-32 -right-32 opacity-10" />
+
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">
+            Let's build something <span className="text-[#a78bfa]">extraordinary</span>.
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+            I'm currently available for freelance projects and full-time opportunities. 
+            If you have an idea, let's turn it into reality.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <motion.a
+              href="mailto:yasir.subhani123@gmail.com"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-4 bg-[#915EFF] text-white font-bold rounded-2xl shadow-[0_0_30px_rgba(145,94,255,0.4)] transition-all"
+            >
+              Start a Conversation
+            </motion.a>
+            <motion.a
+              href="tel:+918271819813"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl backdrop-blur-sm transition-all"
+            >
+              Book a Call
+            </motion.a>
           </div>
         </motion.div>
 
-        {/* Back to Top Button */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center mt-4"
-        >
-          <motion.button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            ↑ Back to Top
-          </motion.button>
-        </motion.div>
+        {/* Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+          <div className="col-span-1 md:col-span-1">
+            <Link to="/" className="flex items-center gap-3 mb-6 group">
+              <img src="/images.png" alt="Logo" className="w-10 h-10 rounded-full border border-white/10 group-hover:scale-110 transition-transform" />
+              <span className="text-white font-black text-2xl tracking-tighter">YS.</span>
+            </Link>
+            <p className="text-gray-400 leading-relaxed text-[15px]">
+              Full-Stack Developer specializing in high-performance Web & Mobile applications 
+              with AI integration.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold text-lg mb-6">Explore</h4>
+            <ul className="space-y-4">
+              {['Home', 'About', 'Work', 'Skills', 'Projects'].map(item => (
+                <li key={item}>
+                  <a href={`#${item.toLowerCase()}`} className="text-gray-500 hover:text-[#915EFF] transition-colors text-[15px]">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold text-lg mb-6">Contact</h4>
+            <ul className="space-y-4">
+              <li>
+                <a href="mailto:yasir.subhani123@gmail.com" className="text-gray-500 hover:text-white transition-colors text-[15px] block">
+                  yasir.subhani123@gmail.com
+                </a>
+              </li>
+              <li>
+                <span className="text-gray-500 text-[15px]">
+                  Kolkata, India
+                </span>
+              </li>
+              <li>
+                <a href="tel:+918271819813" className="text-gray-500 hover:text-white transition-colors text-[15px]">
+                  +91 8271 819 813
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold text-lg mb-6">Social</h4>
+            <div className="flex gap-4">
+              {[
+                { name: 'LinkedIn', url: 'https://linkedin.com/in/yasirsubhani' },
+                { name: 'GitHub', url: 'https://github.com/yasirSub' },
+                { name: 'Twitter', url: 'https://twitter.com' },
+                { name: 'Instagram', url: 'https://instagram.com' }
+              ].map((social) => (
+                <Magnetic key={social.name}>
+                  <motion.a 
+                    href={social.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-gray-500 hover:text-[#915EFF] transition-colors"
+                  >
+                    <span className="sr-only">{social.name}</span>
+                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:border-[#915EFF]/50 transition-colors bg-white/5 backdrop-blur-sm">
+                       {social.name === 'LinkedIn' && 'In'}
+                       {social.name === 'GitHub' && 'Gh'}
+                       {social.name === 'Twitter' && 'Tw'}
+                       {social.name === 'Instagram' && 'Ig'}
+                    </div>
+                  </motion.a>
+                </Magnetic>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom copyright */}
+        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-600 text-[13px]">
+          <p>© {currentYear} Yasir Subhani. Designed with passion.</p>
+          <div className="flex gap-8">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          </div>
+        </div>
       </div>
     </footer>
   );

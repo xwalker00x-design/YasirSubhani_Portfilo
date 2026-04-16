@@ -47,17 +47,32 @@ import {
   installer4,
   installer5,
   installerStarting,
+  installerIcon,
   medikalam,
+  medikalam_icon,
   medikalam2,
   medikalam3,
   medikalam4,
   medikalam5,
   medikalam6,
+  skoolwala_icon,
   medikalamStart,
   medikalamStart2,
   sigma,
   sigmaTravel,
   sigmaHome,
+  sony_headphone,
+  careondemand_icon,
+  careondemand_web_1,
+  careondemand_web_2,
+  careondemand_web_3,
+  careondemand_web_new_1,
+  careondemand_web_new_2,
+  realtorone_icon,
+  realtorone_1,
+  realtorone_2,
+  realtorone_3,
+  isent_icon,
 } from "../assets";
 
 export const navLinks: TNavLink[] = [
@@ -76,6 +91,10 @@ export const navLinks: TNavLink[] = [
   {
     id: "projects",
     title: "Projects",
+  },
+  {
+    id: "github",
+    title: "GitHub",
   },
   {
     id: "contact",
@@ -112,29 +131,16 @@ export const services: TService[] = [
 
 export const experiences: TExperience[] = [
   {
-    title: "Full-Stack Developer",
-    companyName: "WorkSaar (Firmbeginners It Solutions Pvt Ltd)",
-    icon: creator,
-    iconBg: "#915EFF",
-    date: "Jan 2024 - 2025",
-    points: [
-      "Currently working as a Full-Stack Developer on cutting-edge web applications",
-      "Developing scalable solutions using modern technologies and best practices",
-      "Collaborating with cross-functional teams to deliver high-quality products",
-      "Implementing AI integration and automation features for enhanced user experience",
-    ],
-  },
-  {
-    title: "Mobile Developer",
-    companyName: "MSL Techno Solutions Pvt. Ltd",
-    icon: mobile,
+    title: "Web Developer",
+    companyName: "Freizeitmedia",
+    icon: web,
     iconBg: "#383E56",
-    date: "May 2023 - Dec 2023",
+    date: "Jan 2020 - Feb 2022",
     points: [
-      "Developed a health-focused Android app using Flutter/Dart",
-      "Designed a user-friendly interface and implemented real-time database features",
-      "Collaborated with cross-functional teams to deliver high-quality mobile applications",
-      "Optimized app performance and user experience for better engagement",
+      "Started journey as a Web Developer focused on WordPress-based projects",
+      "Focused on UI/UX design and backend performance improvements",
+      "Developed responsive websites for various global clients",
+      "Maintained and optimized existing web applications to improve functionality",
     ],
   },
   {
@@ -144,23 +150,36 @@ export const experiences: TExperience[] = [
     iconBg: "#E6DEDD",
     date: "May 2022 - Apr 2023",
     points: [
-      "Built scalable web applications with AI automation & API integration",
-      "Developed business solutions with secure database architecture",
-      "Optimized performance & security for better user experience",
-      "Implemented modern web technologies and best practices",
+      "Built scalable web applications with specialized AI automation & API integration",
+      "Developed business solutions with secure and optimized database architecture",
+      "Implemented modern web technologies and industry best practices",
+      "Enhanced system security and optimized performance for better user experience",
     ],
   },
   {
-    title: "Web Developer",
-    companyName: "Freizeitmedia",
-    icon: web,
+    title: "Mobile Developer",
+    companyName: "MSL Techno Solutions Pvt. Ltd",
+    icon: mobile,
     iconBg: "#383E56",
-    date: "Jan 2020 - Feb 2022",
+    date: "May 2023 - Dec 2023",
     points: [
-      "Worked on WordPress-based projects and optimized website functionality",
-      "Focused on UI/UX design and backend performance improvements",
-      "Developed responsive websites for various clients",
-      "Maintained and updated existing web applications",
+      "Pivoted into mobile development, building a health-focused Android app with Flutter",
+      "Designed user-friendly interfaces with real-time database synchronization",
+      "Collaborated with cross-functional teams to deliver high-quality mobile products",
+      "Optimized app performance and user engagement through data-driven design",
+    ],
+  },
+  {
+    title: "Full-Stack Developer",
+    companyName: "WorkSaar (Firmbeginners It Solutions Pvt Ltd)",
+    icon: creator,
+    iconBg: "#915EFF",
+    date: "Jan 2024 - Present",
+    points: [
+      "Currently leading development of cutting-edge web applications",
+      "Developing highly scalable solutions using state-of-the-art technologies",
+      "Integrating advanced AI features and automation into enterprise workflows",
+      "Mentoring and collaborating to deliver top-tier digital products",
     ],
   },
 ];
@@ -184,7 +203,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: installer1,
+    image: installerIcon,
     sourceCodeLink: "https://github.com/yasirSub/installer-app",
     appStoreLink: "https://apps.apple.com/in/app/the-installers/id6475402460",
     playStoreLink: "https://play.google.com/store/apps/details?id=com.theinstallers.theinstallers&pcampaignid=web_share",
@@ -208,15 +227,106 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: "https://skoolwala.com/assets/frontend/images/saas/5a0975fa236612e096d0fa7ad1969970.png",
+    image: skoolwala_icon,
     sourceCodeLink: "https://skoolwala.com/",
     liveLink: "https://skoolwala.com/",
     playStoreLink: "https://play.google.com/store/apps/details?id=com.skoolwala.skoolwala&pcampaignid=web_share",
   },
   {
-    name: "iSent",
+    name: "Sony WH-1000XM6 Landing Page",
     description:
-      "Delivery-based mobile app with multiple operational modes. Current build includes Ride (driver) and Store (merchant) modes, with User mode planned. Features order assignment, live tracking, store inventory, and role-specific workflows.",
+      "A premium, cinematic landing page for the Sony WH-1000XM6 headphones. Featuring smooth animations, high-fidelity visuals, and a modern design aesthetic to showcase the peak of audio technology.",
+    tags: [
+      {
+        name: "web",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "landing-page",
+        color: "green-text-gradient",
+      },
+      {
+        name: "design",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: sony_headphone,
+    sourceCodeLink: "https://github.com/yasirSub/website--headphone",
+    liveLink: "https://yasirsub.github.io/website--headphone/",
+    featured: true,
+  },
+  {
+    name: "Care On Demand",
+    description:
+      "A complete healthcare ecosystem featuring a professional web platform and a robust medical application. Providing on-demand health services, patient management, and professional care coordination across Ontario.",
+    tags: [
+      {
+        name: "web",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mobile-app",
+        color: "green-text-gradient",
+      },
+      {
+        name: "healthcare",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: careondemand_icon,
+    sourceCodeLink: "https://www.careondemand.org/",
+    liveLink: "https://www.careondemand.org/",
+    featured: true,
+  },
+  {
+    name: "RealtorOne Website",
+    description:
+      "A premium real estate web platform featuring comprehensive property listings, specialized search tools, and agent coordination features. Built for high-conversion property exploration and streamlined user experience.",
+    tags: [
+      {
+        name: "web",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "real-estate",
+        color: "green-text-gradient",
+      },
+      {
+        name: "laravel",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: realtorone_icon,
+    sourceCodeLink: "https://github.com/yasirSub/RealtorOne-Web",
+    liveLink: "https://realtorone.org/",
+    featured: true,
+  },
+  {
+    name: "RealtorOne App",
+    description:
+      "A high-performance mobile application for realtor-client engagement. Features secure OTP authentication, Google integration, and real-time property tracking with a smooth, mobile-first design.",
+    tags: [
+      {
+        name: "mobile-app",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "flutter",
+        color: "green-text-gradient",
+      },
+      {
+        name: "dart",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: realtorone_icon,
+    sourceCodeLink: "https://github.com/yasirSub/RealtorOne",
+    featured: true,
+  },
+  {
+    name: "iSent - Store",
+    description:
+      "A merchant-centric delivery management app. Features inventory management, order fulfillment, and real-time shipment tracking. Part of the larger iSent ecosystem with role-specific operational modes.",
     tags: [
       {
         name: "flutter",
@@ -231,9 +341,9 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: "/isent/icon.jpg",
+    image: isent_icon,
     sourceCodeLink: "https://github.com/yasirSub/iSent",
-    playStoreLink: "https://play.google.com/store/apps/details?id=com.isent.online_store&pcampaignid=web_share",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.isent.online_store&hl=en_IN",
   },
   {
     name: "Medikalam - Health App",
@@ -253,7 +363,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: medikalam,
+    image: medikalam_icon,
     sourceCodeLink: "https://github.com/yasirSub/medikalam-app",
   },
   {

@@ -56,52 +56,87 @@ const About = () => {
       <Header useMotion={true} {...config.sections.about} />
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
         className="max-w-4xl mx-auto text-center"
       >
-        <div className="bg-black-100 p-8 rounded-2xl border border-gray-800 relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-[#915EFF] rounded-full -translate-x-16 -translate-y-16"></div>
-            <div className="absolute bottom-0 right-0 w-24 h-24 bg-[#915EFF] rounded-full translate-x-12 translate-y-12"></div>
-          </div>
-          
+        <div
+          className="relative p-8 rounded-2xl overflow-hidden"
+          style={{
+            background: 'linear-gradient(145deg, rgba(18,18,35,0.95) 0%, rgba(12,12,22,0.98) 100%)',
+            border: '1px solid rgba(145,94,255,0.2)',
+            boxShadow: '0 0 40px rgba(145,94,255,0.08), inset 0 0 60px rgba(0,0,0,0.3)',
+          }}
+        >
+          {/* Ambient orbs */}
+          <div className="ambient-orb ambient-orb-purple w-48 h-48 -top-12 -left-12" />
+          <div className="ambient-orb ambient-orb-blue w-40 h-40 -bottom-10 -right-10" style={{ animationDelay: '3s' }} />
+          <div className="ambient-orb ambient-orb-cyan w-32 h-32 top-1/2 left-1/2" style={{ animationDelay: '5s' }} />
+
+          {/* Top shimmer bar */}
+          <div
+            className="absolute top-0 left-0 right-0 h-[1px]"
+            style={{ background: 'linear-gradient(90deg, transparent, rgba(145,94,255,0.6), rgba(59,130,246,0.6), transparent)' }}
+          />
+
           {/* Content */}
           <div className="relative z-10">
             {/* Icon Badge */}
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] rounded-full mb-6">
+            <div
+              className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6"
+              style={{
+                background: 'linear-gradient(135deg, #915EFF 0%, #3b82f6 100%)',
+                boxShadow: '0 0 20px rgba(145,94,255,0.4)'
+              }}
+            >
               <span className="text-2xl">🚀</span>
             </div>
-            
+
             {/* Title */}
-            <h2 className="text-white text-3xl font-bold mb-4">
+            <h2
+              className="text-3xl font-bold mb-5"
+              style={{
+                background: 'linear-gradient(135deg, #ffffff 20%, #c4b5fd 60%, #93c5fd 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
               Introduction Overview
             </h2>
-            
+
             {/* Description */}
-            <div className="space-y-4 text-secondary leading-relaxed">
+            <div className="space-y-4 text-gray-400 leading-relaxed text-[15px] sm:text-[16px]">
               <p>
-                Hi, I'm <span className="text-white font-semibold">Yasir Subhani</span>, a passionate 
-                Full-Stack Developer with expertise in Flutter, AI automation, and modern web technologies. 
-                I excel in integrating AI tools, optimizing databases, and building scalable applications.
+                Hi, I'm <span className="text-white font-semibold">Yasir Subhani</span>, a passionate{" "}
+                <span className="text-[#a78bfa] font-medium">Full-Stack Developer</span> with expertise in Flutter,{" "}
+                AI automation, and modern web technologies. I excel in integrating AI tools, optimizing
+                databases, and building scalable applications.
               </p>
               <p>
-                With over 4 years of experience, I create efficient and user-friendly digital solutions 
-                that drive business growth. My focus is on delivering innovative applications that solve 
-                real-world problems while maintaining high code quality and performance.
+                With over{" "}
+                <span className="text-[#60a5fa] font-medium">4 years of experience</span>, I create efficient
+                and user-friendly digital solutions that drive business growth. My focus is on delivering
+                innovative applications that solve real-world problems.
               </p>
             </div>
-            
+
             {/* Read More Button */}
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleReadMore}
-              className="mt-6 bg-[#915EFF] hover:bg-[#7B4FD9] text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 shadow-lg"
+              className="mt-8 inline-flex items-center gap-2 text-white font-semibold px-7 py-3 rounded-xl transition-all duration-300"
+              style={{
+                background: 'linear-gradient(135deg, #915EFF 0%, #5b21b6 100%)',
+                boxShadow: '0 0 20px rgba(145,94,255,0.3)'
+              }}
             >
               Read More About Me
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
             </motion.button>
           </div>
         </div>

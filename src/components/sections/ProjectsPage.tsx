@@ -4,11 +4,16 @@ import { projects } from "../../constants";
 import { close } from "../../assets";
 import { TProject } from "../../types";
 import {
+  installer1,
   installer2,
   installer3,
   installer4,
   installer5,
   installerStarting,
+  installer_new_1,
+  installer_new_2,
+  installer_new_3,
+  installer_new_4,
   medikalam2,
   medikalam3,
   medikalam4,
@@ -19,6 +24,37 @@ import {
   sigma,
   sigmaTravel,
   sigmaHome,
+  skoolwala_new_1,
+  skoolwala_new_2,
+  skoolwala_new_3,
+  skoolwala_new_4,
+  skoolwala_new_5,
+  careondemand_1,
+  careondemand_2,
+  careondemand_3,
+  careondemand_4,
+  careondemand_5,
+  careondemand_6,
+  careondemand_7,
+  careondemand_web_1,
+  careondemand_web_2,
+  careondemand_web_3,
+  careondemand_web_new_1,
+  careondemand_web_new_2,
+  realtorone_1,
+  realtorone_2,
+  realtorone_3,
+  realtorone_4,
+  realtorone_5,
+  realtorone_6,
+  realtorone_7,
+  realtorone_web_1,
+  realtorone_web_2,
+  realtorone_web_3,
+  realtorone_web_4,
+  realtorone_web_5,
+  realtorone_web_6,
+  realtorone_web_7,
 } from "../../assets";
 
 interface ProjectModalProps {
@@ -50,6 +86,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
     // Add additional screenshots based on project type - ONLY for the specific project
     if (projectName.toLowerCase().includes('installer') && projectName.toLowerCase().includes('app')) {
       // ONLY for "Installer App" project
+      screenshots.push(installer_new_1);
+      screenshots.push(installer_new_2);
+      screenshots.push(installer_new_3);
+      screenshots.push(installer_new_4);
+      screenshots.push(installer1);
       screenshots.push(installer2);
       screenshots.push(installer3);
       screenshots.push(installer4);
@@ -64,6 +105,45 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
       screenshots.push(medikalam6);
       screenshots.push(medikalamStart);
       screenshots.push(medikalamStart2);
+    } else if (projectName.toLowerCase().includes('skoolwala')) {
+      // ONLY for "SkoolWala ERP" project
+      screenshots.push(skoolwala_new_1);
+      screenshots.push(skoolwala_new_2);
+      screenshots.push(skoolwala_new_3);
+      screenshots.push(skoolwala_new_4);
+      screenshots.push(skoolwala_new_5);
+    } else if (projectName.toLowerCase().includes('realtorone') && projectName.toLowerCase().includes('website')) {
+      // ONLY for "RealtorOne Website" project
+      screenshots.push(realtorone_web_1);
+      screenshots.push(realtorone_web_2);
+      screenshots.push(realtorone_web_3);
+      screenshots.push(realtorone_web_4);
+      screenshots.push(realtorone_web_5);
+      screenshots.push(realtorone_web_6);
+      screenshots.push(realtorone_web_7);
+    } else if (projectName.toLowerCase().includes('realtorone') && projectName.toLowerCase().includes('app')) {
+      // ONLY for "RealtorOne App" project
+      screenshots.push(realtorone_1);
+      screenshots.push(realtorone_2);
+      screenshots.push(realtorone_3);
+      screenshots.push(realtorone_4);
+      screenshots.push(realtorone_5);
+      screenshots.push(realtorone_6);
+      screenshots.push(realtorone_7);
+    } else if (projectName.toLowerCase().includes('care on demand')) {
+      // ONLY for "Care On Demand" project
+      screenshots.push(careondemand_web_new_1);
+      screenshots.push(careondemand_web_new_2);
+      screenshots.push(careondemand_web_1);
+      screenshots.push(careondemand_web_2);
+      screenshots.push(careondemand_web_3);
+      screenshots.push(careondemand_1);
+      screenshots.push(careondemand_2);
+      screenshots.push(careondemand_3);
+      screenshots.push(careondemand_4);
+      screenshots.push(careondemand_5);
+      screenshots.push(careondemand_6);
+      screenshots.push(careondemand_7);
     } else if (projectName.toLowerCase().includes('sigma') && projectName.toLowerCase().includes('travel')) {
       // ONLY for "Sigma Travel" project
       screenshots.push(sigma);
@@ -240,12 +320,25 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                   </div>
                 )}
 
-                {/* Live Demo Button (if no app store links) */}
-                {!project.appStoreLink && !project.playStoreLink && (
+                {/* Live Demo / Website Button */}
+                {project.liveLink && (
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full bg-gradient-to-r from-[#00D4FF] to-[#0099CC] hover:from-[#0099CC] hover:to-[#00D4FF] text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                    onClick={() => window.open(project.liveLink, "_blank")}
+                    className="w-full bg-gradient-to-r from-[#915EFF] to-[#3b82f6] text-white px-6 py-4 rounded-xl font-black uppercase tracking-widest transition-all duration-300 shadow-[0_10px_30px_rgba(145,94,255,0.4)] flex items-center justify-center gap-3"
+                  >
+                    <span>VISIT LIVE WEBSITE</span>
+                    <span className="text-xl">🌐</span>
+                  </motion.button>
+                )}
+
+                {/* fallback for projects without specific links */}
+                {!project.appStoreLink && !project.playStoreLink && !project.liveLink && (
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-gradient-to-r from-gray-700 to-gray-900 text-white px-6 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg cursor-not-allowed opacity-50"
                   >
                     🚀 Live Demo (Coming Soon)
                   </motion.button>
@@ -269,6 +362,7 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
   playStoreLink,
   featured,
   index,
+  liveLink,
   onProjectClick
 }) => {
   return (
@@ -278,7 +372,7 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className={`bg-black-100 p-4 sm:p-5 rounded-2xl sm:w-[400px] w-full group hover:scale-105 transition-all duration-300 cursor-pointer ${featured ? "ring-2 ring-[#915EFF] shadow-[0_0_30px_rgba(145,94,255,0.25)]" : ""
         }`}
-      onClick={() => onProjectClick({ name, description, tags, image, sourceCodeLink, appStoreLink, playStoreLink, featured })}
+      onClick={() => onProjectClick({ name, description, tags, image, sourceCodeLink, appStoreLink, playStoreLink, featured, liveLink })}
     >
       {/* Project Image Container - Fixed aspect ratio for landscape */}
       <div className="relative w-full aspect-video overflow-hidden rounded-2xl">

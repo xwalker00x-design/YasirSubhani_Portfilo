@@ -1,22 +1,33 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Navbar, Footer, FloatingButtons } from "./components";
-import { Hero, About, Experience, Tech, Works, Feedbacks, Contact } from "./components";
-import { Gear } from "./components";
-import { AboutPage } from "./components";
-import { ProjectsPage } from "./components";
-import { OtherPursuits } from "./components";
-import { BeyondCode } from "./components";
-import { TradingFinance } from "./components";
-import { Music } from "./components";
-import { Photography } from "./components";
-import { ResumePage } from "./components";
-// Custom cursor removed for performance
+import { 
+  Navbar, 
+  Footer, 
+  FloatingButtons, 
+  CustomCursor,
+  Hero, 
+  About, 
+  Experience, 
+  Tech, 
+  Works, 
+  Feedbacks, 
+  Contact,
+  Gear,
+  AboutPage,
+  ProjectsPage,
+  OtherPursuits,
+  BeyondCode,
+  TradingFinance,
+  Music,
+  Photography,
+  ResumePage,
+  Github
+} from "./components";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="relative z-0 bg-primary">
-        {/* CustomCursor removed */}
+        <CustomCursor />
         <Navbar />
         <Routes>
           <Route path="/" element={
@@ -37,6 +48,7 @@ function App() {
               </section>
               <section id="projects">
                 <Works />
+                <Github />
               </section>
               <section id="feedbacks">
                 <Feedbacks />

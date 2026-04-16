@@ -1,46 +1,42 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 
 import { styles } from "../../constants/styles";
 import { navLinks } from "../../constants";
 import { menu, close } from "../../assets";
 
-
 const Navbar = () => {
   const [active, setActive] = useState<string | null>();
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  // removed unused scrollProgress state
   const location = useLocation();
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || 0;
-      // removed unused docHeight/windowHeight
-      // progress calculation removed
       setScrolled(scrollTop > 50);
-      
-      // Close mobile menu when scrolling
-      if (toggle) {
-        setToggle(false);
-      }
+      if (toggle) setToggle(false);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Initialize on mount
     handleScroll();
 
     const navbarHighlighter = () => {
       const sections = document.querySelectorAll("section[id]");
-
       sections.forEach((current) => {
         const sectionId = current.getAttribute("id");
         // @ts-ignore
         const sectionHeight = current.offsetHeight as number;
         const rect = current.getBoundingClientRect();
         const sectionTop = rect.top - sectionHeight * 0.2;
-
         if (sectionTop < 0 && sectionTop + sectionHeight > 0) {
           setActive(sectionId);
         }
@@ -48,12 +44,11 @@ const Navbar = () => {
     };
 
     window.addEventListener("scroll", navbarHighlighter, { passive: true });
-
     return () => {
       window.removeEventListener("scroll", handleScroll as EventListener);
       window.removeEventListener("scroll", navbarHighlighter as EventListener);
     };
-  }, []);
+  }, [toggle]);
 
   const handleNavClick = (navId: string) => {
     if (location.pathname !== '/') {
@@ -67,192 +62,28 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Desktop Navbar with Punch Hole Effect */}
-    <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out hidden sm:block ${
-        scrolled 
-            ? "py-2 bg-blue-500/10 shadow-md border-b border-blue-400/20"
-            : "py-6 bg-blue-500/5"
-      }`}
-    >
-      <div className={`mx-auto w-full max-w-7xl ${styles.paddingX} flex items-center justify-between transition-all duration-500 ease-in-out`}>
-        {/* Logo */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-3"
-        >
-          <Link
-            to="/"
-            className="flex items-center gap-3 group"
-            onClick={() => {
-              setActive("");
-              window.scrollTo(0, 0);
-            }}
-          >
-            <motion.div className="relative">
-              <motion.img 
-                src="/images.png" 
-                alt="Logo" 
-                className="object-contain rounded-full shadow-lg h-10 w-10"
-              />
-              {/* Removed scrolled indicator dot */}
-            </motion.div>
-          </Link>
-        </motion.div>
-
-        {/* Desktop Navigation */}
-        <ul className={`hidden list-none flex-row sm:flex transition-all duration-1000 ease-in-out ${
-          scrolled ? "gap-6" : "gap-8"
-        }`}>
-          {navLinks.map((nav, index) => (
-            <motion.li
-              key={nav.id}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative group"
-            >
-              <motion.a
-                href={`#${nav.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(nav.id);
-                }}
-              className={`cursor-pointer font-medium transition-all duration-300 relative text-[16px] ${
-                  active === nav.id 
-                    ? "text-blue-400" 
-                    : "text-secondary hover:text-white"
-                }`}
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {nav.title}
-                {/* Animated underline */}
-                <motion.div
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"
-                  animate={{ 
-                    width: active === nav.id ? "100%" : "0%",
-                    opacity: active === nav.id ? 1 : 0
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-                {/* Hover underline */}
-                <motion.div
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
-              
-              {/* Active indicator dot removed */}
-            </motion.li>
-          ))}
-          <li>
-            <Link to="/gear" className={`${scrolled ? "text-[12px]" : "text-[18px]"} text-secondary hover:text-white`}>
-              Gear
-            </Link>
-          </li>
-        </ul>
-
-        {/* Mobile Menu Button */}
-        <motion.div 
-          className="flex flex-1 items-center justify-end sm:hidden"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <motion.img
-            src={toggle ? close : menu}
-            alt="menu"
-            className={`object-contain cursor-pointer transition-all duration-700 ${
-              scrolled ? "h-4 w-4" : "h-8 w-8"
-            }`}
-            onClick={() => setToggle(!toggle)}
-            animate={{ rotate: toggle ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-          />
-
-          {/* Mobile Menu */}
-          <AnimatePresence>
-            {toggle && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: -20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: -20 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="absolute right-0 top-16 z-10 mx-4 my-2 min-w-[180px] p-4 bg-slate-900/95 border border-blue-400/20 shadow-md"
-              >
-                <ul className="flex flex-1 list-none flex-col items-start justify-end gap-4">
-                  {navLinks.map((nav, index) => (
-                    <motion.li
-                      key={nav.id}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="w-full"
-                    >
-                      <motion.a
-                        href={`#${nav.id}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleNavClick(nav.id);
-                        }}
-                        className={`font-poppins cursor-pointer font-medium w-full block py-2 px-4 rounded-lg transition-all duration-300 ${
-                          active === nav.id 
-                            ? "text-blue-400 bg-blue-500/20" 
-                            : "text-secondary hover:text-white hover:bg-blue-500/10"
-                        }`}
-                        whileHover={{ x: 5 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        {nav.title}
-                      </motion.a>
-                    </motion.li>
-                  ))}
-                  <motion.li
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
-                    className="w-full"
-                  >
-                    <Link
-                      to="/gear"
-                      onClick={() => setToggle(false)}
-                      className="font-poppins cursor-pointer font-medium w-full block py-2 px-4 rounded-lg transition-all duration-300 text-secondary hover:text-white hover:bg-blue-500/10"
-                    >
-                      Gear
-                    </Link>
-                  </motion.li>
-                </ul>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </div>
-
-      {/* Scroll Progress Bar removed */}
-      </motion.nav>
-
-      {/* Mobile Navbar - Punch Hole Effect (Bigger) */}
+      {/* Desktop Navbar */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out sm:hidden ${
-          scrolled 
-            ? "py-3 bg-blue-500/10 shadow-md border-b border-blue-400/20"
-            : "py-5 bg-blue-500/5"
+        transition={{ duration: 0.8 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out hidden sm:block ${
+          scrolled ? "py-4" : "py-6"
         }`}
       >
-        <div className={`mx-auto w-full max-w-7xl ${styles.paddingX} flex items-center justify-between transition-all duration-500 ease-in-out`}>
-          {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-3"
+        {/* Scroll Progress Bar */}
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#915EFF] via-[#3b82f6] to-[#a78bfa] origin-left z-[60]"
+          style={{ scaleX }}
+        />
+
+        <div className={`mx-auto w-full max-w-7xl ${styles.paddingX}`}>
+          <div 
+            className={`flex items-center justify-between px-8 py-3 rounded-2xl transition-all duration-500 ${
+              scrolled 
+                ? "bg-[#0a0a14]/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]" 
+                : "bg-transparent border border-transparent"
+            }`}
           >
             <Link
               to="/"
@@ -262,93 +93,104 @@ const Navbar = () => {
                 window.scrollTo(0, 0);
               }}
             >
-              <motion.img 
-                src="/images.png" 
-                alt="Logo" 
-                className={`object-contain rounded-full shadow-lg transition-all duration-1000 ease-in-out ${
-                  scrolled ? "h-8 w-8" : "h-10 w-10"
-                }`}
-              />
+              <div className="relative overflow-hidden rounded-full w-10 h-10 border border-white/10 group-hover:border-[#915EFF]/50 transition-colors">
+                <img 
+                  src="/images.png" 
+                  alt="Logo" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <span className="text-white font-bold text-[18px] tracking-tight group-hover:text-[#915EFF] transition-colors">
+                Yasir<span className="text-gray-500">Subhani</span>
+              </span>
             </Link>
-          </motion.div>
 
-          {/* Mobile Menu Button */}
-          <motion.div 
-            className="flex flex-1 items-center justify-end"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.img
-              src={toggle ? close : menu}
-              alt="menu"
-              className={`object-contain cursor-pointer transition-all duration-1000 ease-in-out ${
-                scrolled ? "h-6 w-6" : "h-7 w-7"
-              }`}
-              onClick={() => setToggle(!toggle)}
-              animate={{ rotate: toggle ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-            />
+            <ul className="flex flex-row gap-8 list-none">
+              {navLinks.map((nav) => (
+                <li key={nav.id} className="relative py-2">
+                  <a
+                    href={`#${nav.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(nav.id);
+                    }}
+                    className={`text-[15px] font-medium tracking-wide transition-all duration-300 ${
+                      active === nav.id ? "text-[#a78bfa]" : "text-gray-400 hover:text-white"
+                    }`}
+                  >
+                    {nav.title}
+                  </a>
+                  {active === nav.id && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full"
+                      style={{ background: 'linear-gradient(90deg, #915EFF, #3b82f6)' }}
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </li>
+              ))}
+              <li className="py-2">
+                <Link to="/gear" className="text-[15px] font-medium text-gray-400 hover:text-white transition-all">
+                  Gear
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </motion.nav>
 
-            {/* Mobile Menu */}
-            <AnimatePresence>
-              {toggle && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: -20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.8, y: -20 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="absolute right-0 top-16 z-10 mx-4 my-2 min-w-[180px] p-4 bg-slate-900/95 border border-blue-400/20 shadow-md"
-                >
-                  <ul className="flex flex-1 list-none flex-col items-start justify-end gap-4">
-                    {navLinks.map((nav, index) => (
-                      <motion.li
-                        key={nav.id}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                        className="w-full"
-                      >
-                        <motion.a
-                          href={`#${nav.id}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavClick(nav.id);
-                          }}
-                          className={`font-poppins cursor-pointer font-medium w-full block py-2 px-4 rounded-lg transition-all duration-300 ${
-                            active === nav.id 
-                              ? "text-white bg-blue-600" 
-                              : "text-white hover:text-blue-100 hover:bg-blue-600/50"
-                          }`}
-                          whileHover={{ x: 5 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          {nav.title}
-                        </motion.a>
-                      </motion.li>
-                    ))}
-                    <motion.li
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
-                      className="w-full"
-                    >
-                      <Link
-                        to="/gear"
-                        onClick={() => setToggle(false)}
-                        className="font-poppins cursor-pointer font-medium w-full block py-2 px-4 rounded-lg transition-all duration-300 text-white hover:text-blue-100 hover:bg-blue-600/50"
-                      >
-                        Gear
-                      </Link>
-                    </motion.li>
-                  </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
+      {/* Mobile Navbar */}
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out sm:hidden ${
+          scrolled ? "py-3 bg-[#0a0a14]/80 backdrop-blur-lg border-b border-white/10" : "py-5"
+        }`}
+      >
+        <div className={`mx-auto w-full px-6 flex items-center justify-between`}>
+          <Link to="/" onClick={() => { setActive(""); window.scrollTo(0, 0); }}>
+            <img src="/images.png" alt="Logo" className="w-9 h-9 rounded-full border border-white/10" />
+          </Link>
+
+          <div className="flex items-center gap-4">
+            <button onClick={() => setToggle(!toggle)} className="p-2">
+              <img src={toggle ? close : menu} alt="menu" className="w-6 h-6 object-contain" />
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Scroll Progress Bar removed */}
-    </motion.nav>
+        <AnimatePresence>
+          {toggle && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="bg-[#0a0a14]/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+            >
+              <ul className="flex flex-col p-6 gap-4">
+                {navLinks.map((nav) => (
+                  <li key={nav.id}>
+                    <a
+                      href={`#${nav.id}`}
+                      onClick={(e) => { e.preventDefault(); handleNavClick(nav.id); }}
+                      className={`text-[18px] font-medium block py-2 ${active === nav.id ? "text-[#915EFF]" : "text-gray-400"}`}
+                    >
+                      {nav.title}
+                    </a>
+                  </li>
+                ))}
+                <li>
+                  <Link to="/gear" onClick={() => setToggle(false)} className="text-[18px] font-medium block py-2 text-gray-400">
+                    Gear
+                  </Link>
+                </li>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
     </>
   );
 };
