@@ -50,6 +50,20 @@ import {
   installerIcon,
   medikalam,
   medikalam_icon,
+  wesync_icon,
+  news_app_icon,
+  rider_app_icon,
+  android_studio_icon,
+  image_editing_icon,
+  user_app_icon,
+  wcab_icon,
+  signa_icon,
+  equxx_icon,
+  packwise_icon,
+  calorie_tracker_icon,
+  whatsapp_ai_icon,
+  ai_world_exploration_icon,
+  ai_world_2024_icon,
   medikalam2,
   medikalam3,
   medikalam4,
@@ -174,12 +188,24 @@ export const experiences: TExperience[] = [
     companyName: "WorkSaar (Firmbeginners It Solutions Pvt Ltd)",
     icon: creator,
     iconBg: "#915EFF",
-    date: "Jan 2024 - Present",
+    date: "Jan 2024 - Dec 2024",
     points: [
-      "Currently leading development of cutting-edge web applications",
-      "Developing highly scalable solutions using state-of-the-art technologies",
-      "Integrating advanced AI features and automation into enterprise workflows",
-      "Mentoring and collaborating to deliver top-tier digital products",
+      "Led full-stack architecture for high-traffic enterprise applications focusing on performance.",
+      "Engineered automated workflows with integrated AI modules for data processing.",
+      "Collaborated with cross-functional teams to deploy scalable cloud infrastructures.",
+    ],
+  },
+  {
+    title: "Full-Stack Consultant",
+    companyName: "Freelance Operative",
+    icon: backend,
+    iconBg: "#383E56",
+    date: "Jan 2025 - Present",
+    points: [
+      "Currently architecting end-to-end digital solutions for international clientele.",
+      "Implementing cutting-edge AI integrations and RAG pipelines for knowledge management.",
+      "Delivering high-performance, mobile-first ecosystem designs with focus on maximum ROI.",
+      "Consulting on digital transformation strategies and cloud infrastructure optimization.",
     ],
   },
 ];
@@ -188,7 +214,7 @@ export const projects: TProject[] = [
   {
     name: "Installer App",
     description:
-      "A comprehensive mobile application installer with advanced features and modern UI/UX design. Features include app installation management, system optimization, and user-friendly interface for device management.",
+      "A high-performance system utility engineered for the iOS/Android ecosystem. Implements low-level device management protocols, optimized data streaming for package delivery, and a cinematic glassmorphism-based UI for seamless user interactions.",
     tags: [
       {
         name: "mobile",
@@ -212,7 +238,7 @@ export const projects: TProject[] = [
   {
     name: "SkoolWala ERP",
     description:
-      "School ERP platform with Laravel backend and Flutter frontend. Manages fees, courses, attendance, ID cards, and core operations for schools with a unified dashboard.",
+      "An enterprise-grade educational resource planning platform. Orchestrates a Laravel-based backend and Flutter frontend to manage complex operational workflows including fee regulation, student lifecycle management, and real-time administrative intelligence.",
     tags: [
       {
         name: "laravel",
@@ -235,7 +261,7 @@ export const projects: TProject[] = [
   {
     name: "Sony WH-1000XM6 Landing Page",
     description:
-      "A premium, cinematic landing page for the Sony WH-1000XM6 headphones. Featuring smooth animations, high-fidelity visuals, and a modern design aesthetic to showcase the peak of audio technology.",
+      "An immersive, highnd landing page engineered for Sony's audio flagship. Features highnd Framer Motion orchestrations, optimized 3D asset delivery, and cinematic visual storytelling to reflect a premium brand identity.",
     tags: [
       {
         name: "web",
@@ -258,7 +284,7 @@ export const projects: TProject[] = [
   {
     name: "Care On Demand",
     description:
-      "A complete healthcare ecosystem featuring a professional web platform and a robust medical application. Providing on-demand health services, patient management, and professional care coordination across Ontario.",
+      "A comprehensive digital health infrastructure for the Ontario medical sector. Orchestrates complex provider-patient workflows, secure medical record persistence, and real-time appointment logistics within a centralized professional platform.",
     tags: [
       {
         name: "web",
@@ -281,7 +307,7 @@ export const projects: TProject[] = [
   {
     name: "RealtorOne Website",
     description:
-      "A premium real estate web platform featuring comprehensive property listings, specialized search tools, and agent coordination features. Built for high-conversion property exploration and streamlined user experience.",
+      "A luxury real estate intelligence platform. Implements highnd property filtering, multi-agent coordination frameworks, and high-fidelity visual catalogs to transform the property acquisition pipeline.",
     tags: [
       {
         name: "web",
@@ -304,7 +330,7 @@ export const projects: TProject[] = [
   {
     name: "RealtorOne App",
     description:
-      "A high-performance mobile application for realtor-client engagement. Features secure OTP authentication, Google integration, and real-time property tracking with a smooth, mobile-first design.",
+      "A state-of-the-art mobile brokerage tool for Realtors. Features secure OTP-based authentication, real-time property cloud synchronization, and a mobile-first interface optimized for property investment workflows.",
     tags: [
       {
         name: "mobile-app",
@@ -326,7 +352,7 @@ export const projects: TProject[] = [
   {
     name: "iSent - Store",
     description:
-      "A merchant-centric delivery management app. Features inventory management, order fulfillment, and real-time shipment tracking. Part of the larger iSent ecosystem with role-specific operational modes.",
+      "A merchant-centric delivery management framework. Features complex inventory tracking architectures, real-time fulfillment monitoring, and advanced shipment logistics for modern merchant ecosystems.",
     tags: [
       {
         name: "flutter",
@@ -348,7 +374,7 @@ export const projects: TProject[] = [
   {
     name: "Medikalam - Health App",
     description:
-      "A comprehensive health and medical application designed to provide users with medical information, health tracking, and wellness management. Features include symptom checker, medication reminders, and health monitoring tools.",
+      "An advanced wellness intelligence engine. Leverages data-driven health tracking, medical record digitization, and professional wellness management tools to empower user healthcare decisions with high-security data structures.",
     tags: [
       {
         name: "health",
@@ -369,7 +395,7 @@ export const projects: TProject[] = [
   {
     name: "PackWise Travel App",
     description:
-      "An AI-powered travel app with smart packing list generation based on trip details and preferences. Features trip management, AI-powered packing suggestions, smart checklist categories, and sharing functionality.",
+      "An AI-orchestrated travel companion. Features smart packing list generation using LLM integration, intelligent trip lifecycle management, and collaborative sharing protocols for modern travelers.",
     tags: [
       {
         name: "react-native",
@@ -384,7 +410,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: sigmaTravel,
+    image: packwise_icon,
     sourceCodeLink: "https://github.com/yasirSub/packwise-travel-app",
   },
   {
@@ -405,7 +431,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: installer1,
+    image: wesync_icon,
     sourceCodeLink: "https://github.com/yasirSub/WeSync",
   },
   {
@@ -426,7 +452,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: medikalam,
+    image: calorie_tracker_icon,
     sourceCodeLink: "https://github.com/yasirSub/calorie-tracker-app",
   },
   {
@@ -447,7 +473,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: installer2,
+    image: whatsapp_ai_icon,
     sourceCodeLink: "https://github.com/yasirSub/whatsapp-auto-responder",
   },
   {
@@ -472,27 +498,6 @@ export const projects: TProject[] = [
     sourceCodeLink: "https://github.com/yasirSub/travel-app-expo",
   },
   {
-    name: "Orb1 - Service Management",
-    description:
-      "A modern web application for service management built with modern web technologies. Features service tracking, management tools, and responsive design.",
-    tags: [
-      {
-        name: "web",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "javascript",
-        color: "green-text-gradient",
-      },
-      {
-        name: "service",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: sigmaHome,
-    sourceCodeLink: "https://github.com/yasirSub/orb1",
-  },
-  {
     name: "News App",
     description:
       "A mobile news application built with modern mobile development technologies. Features news aggregation, user preferences, and real-time updates.",
@@ -510,7 +515,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: installer3,
+    image: news_app_icon,
     sourceCodeLink: "https://github.com/yasirSub/NewsApp",
   },
   {
@@ -531,8 +536,8 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: installer4,
-    sourceCodeLink: "https://github.com/yasirSub/Rider-App---v3.3",
+    image: rider_app_icon,
+    sourceCodeLink: "https://github.com/yasirSub/riderapp-v3.3",
   },
   {
     name: "AI World Exploration",
@@ -552,7 +557,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: installer5,
+    image: ai_world_exploration_icon,
     sourceCodeLink: "https://github.com/yasirSub/welcome-to-Ai-world",
   },
   {
@@ -594,8 +599,8 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: mobile,
-    sourceCodeLink: "https://github.com/yasirSub/AndroidStudioV1",
+    image: android_studio_icon,
+    sourceCodeLink: "https://github.com/yasirSub/Android-Studio-V1",
   },
   {
     name: "Image Editing App",
@@ -615,7 +620,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: medikalam2,
+    image: image_editing_icon,
     sourceCodeLink: "https://github.com/yasirSub/ImageEditing",
   },
   {
@@ -636,8 +641,8 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: medikalam3,
-    sourceCodeLink: "https://github.com/yasirSub/UserApp",
+    image: user_app_icon,
+    sourceCodeLink: "https://github.com/yasirSub/user-app",
   },
   {
     name: "WCAB Flutter V1",
@@ -657,7 +662,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: medikalam4,
+    image: wcab_icon,
     sourceCodeLink: "https://github.com/yasirSub/wcab-flutter-v1",
   },
   {
@@ -678,7 +683,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: sigma,
+    image: signa_icon,
     sourceCodeLink: "https://github.com/yasirSub/signa",
   },
   {
@@ -699,7 +704,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: medikalam5,
+    image: equxx_icon,
     sourceCodeLink: "https://github.com/yasirSub/equxx",
   },
   {
@@ -741,7 +746,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: medikalamStart,
+    image: wesync_icon,
     sourceCodeLink: "https://github.com/yasirSub/wesync-mcp",
   },
   {
@@ -804,29 +809,8 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: installer1,
+    image: whatsapp_ai_icon,
     sourceCodeLink: "https://github.com/yasirSub/whatsapp-auto-reply-ai",
-  },
-  {
-    name: "Portfolio",
-    description:
-      "A modern portfolio website showcasing development skills and projects with responsive design.",
-    tags: [
-      {
-        name: "web",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "portfolio",
-        color: "green-text-gradient",
-      },
-      {
-        name: "responsive",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: sigmaHome,
-    sourceCodeLink: "https://github.com/yasirSub/portfolio-",
   },
   {
     name: "Node.js Setup",
@@ -892,27 +876,6 @@ export const projects: TProject[] = [
     sourceCodeLink: "https://github.com/yasirSub/gc",
   },
   {
-    name: "Portfi",
-    description:
-      "A portfolio project with modern design and development showcase.",
-    tags: [
-      {
-        name: "portfolio",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "web",
-        color: "green-text-gradient",
-      },
-      {
-        name: "design",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: sigmaHome,
-    sourceCodeLink: "https://github.com/yasirSub/portfi",
-  },
-  {
     name: "YasirSubhani",
     description:
       "Personal GitHub profile and development showcase repository.",
@@ -972,7 +935,7 @@ export const projects: TProject[] = [
         color: "pink-text-gradient",
       },
     ],
-    image: installerStarting,
+    image: ai_world_2024_icon,
     sourceCodeLink: "https://github.com/yasirSub/welcome-to-ai-world-2024",
   },
   {

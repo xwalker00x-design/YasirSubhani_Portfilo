@@ -12,6 +12,20 @@ import installer_new_3 from "./appsimages/installer_new_3.png";
 import installer_new_4 from "./appsimages/installer_new_4.png";
 import medikalam from "./appsimages/medikalam.jpg";
 import medikalam_icon from "./appsimages/medikalam_icon.png";
+import wesync_icon from "./appsimages/wesync_icon.png";
+import news_app_icon from "./appsimages/news_app_icon.png";
+import rider_app_icon from "./appsimages/rider_app_icon.png";
+import android_studio_icon from "./appsimages/android_studio_icon.png";
+import image_editing_icon from "./appsimages/image_editing_icon.png";
+import user_app_icon from "./appsimages/user_app_icon.png";
+import wcab_icon from "./appsimages/wcab_icon.png";
+import signa_icon from "./appsimages/signa_icon.png";
+import equxx_icon from "./appsimages/equxx_icon.png";
+import packwise_icon from "./appsimages/packwise_icon.png";
+import calorie_tracker_icon from "./appsimages/calorie_tracker_icon.png";
+import whatsapp_ai_icon from "./appsimages/whatsapp_ai_icon.png";
+import ai_world_exploration_icon from "./appsimages/ai_world_exploration_icon.png";
+import ai_world_2024_icon from "./appsimages/ai_world_2024_icon.png";
 import skoolwala_icon from "./appsimages/skoolwala_icon.png";
 import skoolwala_new_1 from "./appsimages/skoolwala_new_1.png";
 import skoolwala_new_2 from "./appsimages/skoolwala_new_2.png";
@@ -172,6 +186,20 @@ export {
   installer_new_4,
   medikalam,
   medikalam_icon,
+  wesync_icon,
+  news_app_icon,
+  rider_app_icon,
+  android_studio_icon,
+  image_editing_icon,
+  user_app_icon,
+  wcab_icon,
+  signa_icon,
+  equxx_icon,
+  packwise_icon,
+  calorie_tracker_icon,
+  whatsapp_ai_icon,
+  ai_world_exploration_icon,
+  ai_world_2024_icon,
   skoolwala_icon,
   skoolwala_new_1,
   skoolwala_new_2,

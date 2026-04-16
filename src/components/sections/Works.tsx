@@ -229,17 +229,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                         </motion.a>
                       )}
                       
-                      {project.sourceCodeLink && (
-                        <motion.a
-                          href={project.sourceCodeLink}
-                          target="_blank"
-                          whileHover={{ scale: 1.02 }}
-                          className="flex items-center justify-center gap-3 w-full py-5 bg-white/5 border border-white/10 text-white font-black rounded-2xl hover:bg-white/10 transition-all opacity-60 hover:opacity-100"
-                        >
-                          <span>VIEW REPOSITORY</span>
-                          <span className="text-xl">📁</span>
-                        </motion.a>
-                      )}
+                       {/* Repository links hidden as requested */}
                    </div>
                 </div>
             </div>
@@ -269,7 +259,7 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.4 }}
       whileHover={{ y: -10 }}
-      onClick={() => onProjectClick({ name, description, tags, image, sourceCodeLink, appStoreLink, playStoreLink, liveLink })}
+      onClick={() => onProjectClick({ name, description, tags, image, appStoreLink, playStoreLink, liveLink })}
       className="group relative bg-[#0a0a14] rounded-[2rem] overflow-hidden border border-white/5 hover:border-[#915EFF]/30 transition-all cursor-pointer shadow-2xl"
     >
       <div className="relative h-64 overflow-hidden">

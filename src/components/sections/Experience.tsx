@@ -5,9 +5,10 @@ import { SectionWrapper } from "../../hoc";
 
 const ExperienceCard = ({ experience, index }: { experience: any, index: number }) => {
   const isEven = index % 2 === 0;
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className={`flex flex-col md:flex-row items-center w-full mb-20 ${isEven ? 'md:flex-row-reverse' : ''}`}>
+    <div className={`flex flex-col md:flex-row items-center w-full mb-12 ${isEven ? 'md:flex-row-reverse' : ''}`}>
       {/* Date Pillar (Mobile) */}
       <div className="md:hidden mb-4 text-[#a78bfa] font-black tracking-tighter text-xl">
         {experience.date}
@@ -20,37 +21,54 @@ const ExperienceCard = ({ experience, index }: { experience: any, index: number 
         viewport={{ once: true, margin: "-100px" }}
         className="w-full md:w-[45%] group"
       >
-        <div className="relative p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl hover:border-[#915EFF]/30 transition-all duration-500 shadow-2xl overflow-hidden">
+        <div 
+          onMouseEnter={() => setIsExpanded(true)}
+          onMouseLeave={() => setIsExpanded(false)}
+          className="relative p-6 px-8 rounded-[2rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl hover:border-[#915EFF]/30 transition-all duration-500 shadow-2xl overflow-hidden cursor-pointer"
+        >
           {/* Accent Glow */}
-          <div className="absolute top-0 left-0 w-2 h-full bg-[#915EFF] opacity-50 group-hover:w-full group-hover:opacity-[0.03] transition-all duration-500" />
+          <div className={`absolute top-0 left-0 w-2 h-full bg-[#915EFF] transition-all duration-500 ${isExpanded ? 'opacity-[0.03] w-full' : 'opacity-50'}`} />
           
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-14 h-14 rounded-2xl bg-white/5 p-2 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-12 rounded-2xl bg-white/5 p-2 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
               <img src={experience.icon} alt={experience.companyName} className="w-full h-full object-contain" />
             </div>
             <div>
-              <h3 className="text-white font-black text-2xl tracking-tight">{experience.title}</h3>
-              <p className="text-[#a78bfa] font-bold text-sm tracking-wide">{experience.companyName}</p>
+              <h3 className="text-white font-black text-xl tracking-tight">{experience.title}</h3>
+              <p className="text-[#a78bfa] font-bold text-[13px] tracking-wide opacity-80">{experience.companyName}</p>
             </div>
           </div>
 
-          <ul className="space-y-4">
-            {experience.points.map((point: string, i: number) => (
-              <li key={i} className="flex gap-3 text-gray-400 text-[14px] leading-relaxed">
-                <span className="text-[#915EFF] font-bold">›</span>
-                {point}
-              </li>
-            ))}
-          </ul>
+          <motion.div 
+             animate={{ height: isExpanded ? "auto" : "85px" }}
+             transition={{ type: "spring", stiffness: 300, damping: 30 }}
+             className="relative overflow-hidden"
+          >
+            <ul className="space-y-4">
+              {experience.points.map((point: string, i: number) => (
+                <li key={i} className="flex gap-3 text-gray-400 text-[14px] leading-relaxed">
+                  <span className="text-[#915EFF] font-bold">›</span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+            
+            {!isExpanded && (
+              <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#0d0d17] to-transparent pointer-events-none" />
+            )}
+          </motion.div>
+
+          <div className="mt-4 text-[#a78bfa] text-[11px] font-black uppercase tracking-[0.2em] transition-colors flex items-center gap-2">
+            <span className={isExpanded ? "text-white" : ""}>
+              {isExpanded ? "ANALYZING_INTEL ▲" : "ACCESS_DATA ▼"}
+            </span>
+          </div>
         </div>
       </motion.div>
 
       {/* Center Spacer for Line */}
       <div className="hidden md:flex flex-1 justify-center relative">
-        <div className="w-10 h-10 rounded-full bg-[#05050a] border-4 border-[#915EFF] z-10 shadow-[0_0_20px_rgba(145,94,255,0.5)]" />
-        <div className="absolute top-1/2 left-full ml-4 whitespace-nowrap text-gray-600 font-black text-xl tracking-tighter group-hover:text-white transition-colors">
-           {/* Date logic for side alignment */}
-        </div>
+        <div className="w-8 h-8 rounded-full bg-[#05050a] border-4 border-[#915EFF] z-10 shadow-[0_0_20px_rgba(145,94,255,0.5)] transition-transform group-hover:scale-125" />
       </div>
 
       {/* Date (Desktop) */}
@@ -58,7 +76,7 @@ const ExperienceCard = ({ experience, index }: { experience: any, index: number 
         <motion.span 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="text-gray-600 font-black text-4xl tracking-tighter block group-hover:text-[#a78bfa] transition-colors"
+          className="text-gray-700 font-black text-3xl tracking-tighter block group-hover:text-[#a78bfa] transition-colors"
         >
           {experience.date}
         </motion.span>

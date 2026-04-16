@@ -142,7 +142,7 @@ const Tech = () => {
             </p>
           </div>
           <div className="flex flex-wrap justify-center md:justify-end gap-2 max-w-xs">
-            {["RAG", "LLMs", "LangChain", "OpenAI", "Geimini"].map(t => (
+            {["RAG", "LLMs", "LangChain", "OpenAI", "Gemini"].map(t => (
               <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-[#a78bfa]">{t}</span>
             ))}
           </div>

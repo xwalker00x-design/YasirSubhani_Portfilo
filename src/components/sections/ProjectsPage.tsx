@@ -369,64 +369,53 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`bg-black-100 p-4 sm:p-5 rounded-2xl sm:w-[400px] w-full group hover:scale-105 transition-all duration-300 cursor-pointer ${featured ? "ring-2 ring-[#915EFF] shadow-[0_0_30px_rgba(145,94,255,0.25)]" : ""
-        }`}
-      onClick={() => onProjectClick({ name, description, tags, image, sourceCodeLink, appStoreLink, playStoreLink, featured, liveLink })}
+      transition={{ duration: 0.6, delay: index * 0.05 }}
+      whileHover={{ y: -10 }}
+      className={`group relative h-full flex flex-col bg-[#0f0f1a]/80 border ${featured ? 'border-[#915EFF]/50' : 'border-white/5'} backdrop-blur-xl p-6 rounded-[2.5rem] transition-all duration-500 cursor-pointer overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(145,94,255,0.15)]`}
+      onClick={() => onProjectClick({ name, description, tags, image, appStoreLink, playStoreLink, featured, liveLink })}
     >
-      {/* Project Image Container - Fixed aspect ratio for landscape */}
-      <div className="relative w-full aspect-video overflow-hidden rounded-2xl">
-        <img
+      {/* Dynamic Background Glow */}
+      <div className={`absolute -top-24 -right-24 w-48 h-48 rounded-full blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-1000 ${featured ? 'bg-[#915EFF]' : 'bg-blue-500'}`} />
+
+      {/* Project Image Container */}
+      <div className="relative w-full aspect-square md:aspect-video rounded-[1.5rem] overflow-hidden bg-black/40 border border-white/5 flex items-center justify-center p-4">
+        <motion.img
           src={image}
           alt={name}
-          className="w-full h-full object-contain rounded-2xl group-hover:scale-110 transition-transform duration-500"
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.7 }}
+          className="w-full h-full object-contain rounded-xl drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-2xl" />
-
+        
         {featured && (
-          <div className="absolute top-3 right-3">
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] text-white shadow-lg">
-              Featured
-            </span>
+          <div className="absolute top-4 left-4 z-10">
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#915EFF]/10 border border-[#915EFF]/30 backdrop-blur-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#915EFF] animate-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-widest text-[#a78bfa]">Featured</span>
+            </div>
           </div>
         )}
-
-        {/* Overlay with project info */}
-        <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <div className="bg-black bg-opacity-80 p-3 rounded-xl">
-            <h3 className="text-white font-semibold text-sm mb-1">{name}</h3>
-            <p className="text-gray-300 text-xs line-clamp-2">{description}</p>
-          </div>
-        </div>
       </div>
 
-      <div className="mt-5">
-        <h3 className="text-white font-bold text-[20px] group-hover:text-[#915EFF] transition-colors duration-300">
+      <div className="mt-8 flex-grow flex flex-col">
+        <h3 className="text-white font-black text-2xl mb-3 tracking-tighter group-hover:text-[#915EFF] transition-colors duration-300 line-clamp-1">
           {name}
         </h3>
-        <p className="mt-2 text-secondary text-[14px] leading-relaxed line-clamp-3">
+        <p className="text-gray-400 text-sm leading-relaxed line-clamp-3 mb-6 font-medium">
           {description}
         </p>
-      </div>
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        {tags.slice(0, 3).map((tag) => (
-          <span
-            key={tag.name}
-            className={`text-[12px] px-2 py-1 rounded-full ${tag.color} bg-opacity-20 backdrop-blur-sm`}
-          >
-            #{tag.name}
-          </span>
-        ))}
-        {tags.length > 3 && (
-          <span className="text-[12px] px-2 py-1 rounded-full bg-gray-600 text-gray-300">
-            +{tags.length - 3} more
-          </span>
-        )}
+        <div className="mt-auto flex flex-wrap gap-2">
+          {tags.slice(0, 3).map((tag) => (
+            <span
+              key={tag.name}
+              className={`text-[10px] px-3 py-1.5 rounded-xl font-black uppercase tracking-widest ${tag.color} bg-white/[0.03] border border-white/5 opacity-60 group-hover:opacity-100 transition-opacity shadow-sm`}
+            >
+              #{tag.name}
+            </span>
+          ))}
+        </div>
       </div>
-
-      {/* Click hint */}
-      <div className="mt-4 text-center" />
     </motion.div>
   );
 };
@@ -545,10 +534,10 @@ const ProjectsPage = () => {
 
         {/* Projects Grid */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8 mb-12"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 mb-20 px-4"
         >
           {displayedProjects.length > 0 ? (
             displayedProjects.map((project, index) => (
@@ -560,16 +549,10 @@ const ProjectsPage = () => {
               />
             ))
           ) : (
-            <div className="col-span-full text-center text-white">
-              <h3 className="text-xl font-semibold mb-2">No projects found</h3>
-              <p className="text-gray-300">Try selecting a different category</p>
-              <div className="mt-4 p-4 bg-gray-800 rounded-lg">
-                <p className="text-sm text-gray-400">
-                  Debug: Total projects: {projects.length},
-                  Filtered: {filteredProjects.length},
-                  Category: {selectedCategory}
-                </p>
-              </div>
+            <div className="col-span-full py-20 text-center text-white border border-white/5 rounded-[3rem] bg-white/[0.02] backdrop-blur-md">
+              <div className="text-6xl mb-6 opacity-20">🔍</div>
+              <h3 className="text-3xl font-black mb-2">Operation Halted</h3>
+              <p className="text-gray-400">No data intelligence found for this sector.</p>
             </div>
           )}
         </motion.div>

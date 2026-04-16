@@ -14,6 +14,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
   body {
@@ -161,22 +163,27 @@
     }
   }
 
-  /* Premium scrollbar */
+  /* Premium Agency Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #0d0d1a;
+    background: #020205; /* Deepest black */
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #915EFF, #3b82f6);
-    border-radius: 8px;
+    background: linear-gradient(to bottom, #915EFF, #3b82f6);
+    border-radius: 20px;
+    border: 2px solid #020205;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #a78bfa, #60a5fa);
+    background: #a78bfa;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
   }
 
   /* Selection styling */

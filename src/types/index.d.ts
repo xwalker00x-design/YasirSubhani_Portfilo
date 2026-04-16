@@ -25,7 +25,7 @@ export type TProject = {
     color: string;
   }[];
   image: string;
-  sourceCodeLink: string;
+  sourceCodeLink?: string;
   liveLink?: string;
   appStoreLink?: string;
   playStoreLink?: string;

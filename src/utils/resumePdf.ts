@@ -397,16 +397,7 @@ export async function generateResumePdf(personal: PersonalInfo, options: Generat
     doc.setFontSize(12);
     setBody();
     doc.text(p.name, margin, y);
-    // project link (if available)
-    // @ts-ignore allow sourceCodeLink existence from site TProject
-    const link: string | undefined = (p as any).sourceCodeLink;
-    if (link) {
-      const url = link.startsWith('http') ? link : `https://${link}`;
-      const nameWidth = doc.getTextWidth(p.name) + 8;
-      setPrimary();
-      doc.textWithLink('(link)', margin + nameWidth, y, { url });
-      setBody();
-    }
+    // Project links hidden as requested
     doc.setFont("helvetica", "normal");
     doc.setFontSize(11);
     y += 14;

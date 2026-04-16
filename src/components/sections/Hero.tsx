@@ -62,6 +62,44 @@ const Hero = () => {
         </Suspense>
       </div>
 
+      {/* Technical HUD Overlay (Agency Style) */}
+      <div className="absolute top-24 left-10 hidden xl:flex flex-col gap-4 z-20 pointer-events-none">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1 }}
+          className="flex flex-col gap-1 border-l-2 border-[#915EFF]/30 pl-4 py-2"
+        >
+          <span className="text-[10px] text-gray-500 font-black tracking-[0.3em] uppercase">Sector</span>
+          <span className="text-white text-xs font-bold font-mono tracking-widest">FULLSTACK_ARC_01</span>
+        </motion.div>
+        
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.2 }}
+          className="flex flex-col gap-1 border-l-2 border-blue-500/30 pl-4 py-2"
+        >
+          <span className="text-[10px] text-gray-500 font-black tracking-[0.3em] uppercase">Intelligence</span>
+          <span className="text-white text-xs font-bold font-mono tracking-widest">AI_DRIVEN_LOGIC</span>
+        </motion.div>
+      </div>
+
+      <div className="absolute top-24 right-10 hidden xl:flex flex-col items-end gap-4 z-20 pointer-events-none">
+        <motion.div 
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.4 }}
+          className="flex flex-col items-end gap-1 border-r-2 border-[#915EFF]/30 pr-4 py-2"
+        >
+          <span className="text-[10px] text-gray-500 font-black tracking-[0.3em] uppercase">Status</span>
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-white text-xs font-bold font-mono tracking-widest uppercase">Operational</span>
+          </div>
+        </motion.div>
+      </div>
+
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center">
         <motion.div
@@ -73,30 +111,29 @@ const Hero = () => {
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#915EFF]/40 bg-[#915EFF]/10 mb-10">
              <span className="w-2 h-2 rounded-full bg-[#915EFF] animate-pulse" />
-             <span className="text-[#a78bfa] text-xs font-bold uppercase tracking-[0.2em]">Available for projects</span>
+             <span className="text-[#a78bfa] text-xs font-bold uppercase tracking-[0.2em]">Ready for Strategic Deployment</span>
           </div>
 
-          <h1 className="text-white font-black text-[48px] sm:text-[72px] md:text-[90px] lg:text-[110px] leading-[1] tracking-tighter mb-8">
+          <h1 className="text-white font-black text-[48px] sm:text-[72px] md:text-[90px] lg:text-[110px] leading-[0.9] tracking-tighter mb-8">
             <span className="text-white">Design.</span> <br className="sm:hidden" />
             <span className="bg-gradient-to-r from-[#915EFF] via-[#3b82f6] to-[#a78bfa] bg-clip-text text-transparent italic">Develop.</span> <br className="sm:hidden" />
             <span className="text-white">Deploy.</span>
           </h1>
 
-          <p className="text-gray-400 text-lg sm:text-2xl max-w-2xl mx-auto leading-relaxed mb-12">
-            I'm <span className="text-white font-bold">Yasir Subhani</span>, a Full-Stack Developer 
-            engineering high-performance <span className="text-white">Web & Mobile</span> solutions 
-            empowered by AI.
+          <p className="text-gray-400 text-lg sm:text-2xl max-w-2xl mx-auto leading-relaxed mb-12 font-medium">
+            I'm <span className="text-white font-black uppercase tracking-tighter">Yasir Subhani</span>, a Full-Stack Architect 
+            engineering high-performance <span className="text-white border-b border-[#915EFF]/40 italic">digital ecosystems</span> powered by intelligence.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6">
             <Magnetic>
               <motion.button
-                onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-[#7B4FD9] text-white font-black rounded-2xl shadow-[0_10px_40px_rgba(123,79,217,0.4)] transition-all"
+                className="px-10 py-5 bg-[#7B4FD9] text-white font-black rounded-2xl shadow-[0_15px_60px_rgba(123,79,217,0.4)] transition-all tracking-widest text-sm"
               >
-                EXPLORE MY WORK
+                INITIALIZE EXPLORATION
               </motion.button>
             </Magnetic>
             
@@ -105,9 +142,9 @@ const Hero = () => {
                 onClick={handleCall}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl backdrop-blur-sm transition-all"
+                className="px-10 py-5 bg-white/5 border border-white/10 text-white font-black rounded-2xl backdrop-blur-md transition-all tracking-widest text-sm"
               >
-                BOOK A CALL
+                SECURE CHANNEL
               </motion.button>
             </Magnetic>
           </div>
