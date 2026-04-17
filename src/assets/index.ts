@@ -1,4 +1,5 @@
 // App Images
+import ai_core_icon from "./appsimages/ai_core_icon.png";
 import installer1 from "./appsimages/installer1.jpg";
 import installer2 from "./appsimages/installer2.jpg";
 import installer3 from "./appsimages/installer3.jpg";
@@ -128,6 +129,7 @@ import whatsapp from "./whatsapp.svg";
 import pageUp from "./page-up.svg";
 
 export {
+  ai_core_icon,
   mobile,
   backend,
   creator,

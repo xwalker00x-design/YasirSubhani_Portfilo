@@ -245,7 +245,6 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
   description,
   tags,
   image,
-  sourceCodeLink,
   appStoreLink,
   playStoreLink,
   liveLink,
