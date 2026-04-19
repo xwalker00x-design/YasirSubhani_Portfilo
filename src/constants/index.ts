@@ -74,6 +74,9 @@ import {
   aws,
   hostinger,
   cloud,
+  ai,
+  machineLearning,
+  ai_core_icon,
 } from "../assets";
 
 export const navLinks: TNavLink[] = [
