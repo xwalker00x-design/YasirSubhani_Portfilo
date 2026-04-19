@@ -125,61 +125,61 @@ const Tech = () => {
         </AnimatePresence>
       </motion.div>
 
-      {/* Hyper-Cinematic Neural Deck */}
+      {/* Hyper-Cinematic Performance Deck */}
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className="mt-32 relative group"
       >
-        <div className="absolute -inset-[1px] rounded-[3.5rem] bg-gradient-to-r from-transparent via-[#915EFF]/40 to-transparent bg-[length:200%_100%] animate-[pan_3s_linear_infinity] opacity-40 blur-[1px]" />
+        <div className="absolute -inset-[1px] rounded-[3.5rem] bg-gradient-to-r from-transparent via-[#3b82f6]/40 to-transparent bg-[length:200%_100%] animate-[pan_3s_linear_infinity] opacity-40 blur-[1px]" />
         
         <div className="relative p-12 rounded-[3.5rem] bg-[#020205]/80 border border-white/5 overflow-hidden backdrop-blur-3xl shadow-[0_0_100px_rgba(0,0,0,1)]">
            <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:32px:32px]" />
-           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#915EFF]/10 blur-[150px] rounded-full translate-x-1/2 -translate-y-1/2" />
+           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#3b82f6]/10 blur-[150px] rounded-full translate-x-1/2 -translate-y-1/2" />
            
            <div className="flex flex-col xl:flex-row items-center gap-16 relative z-20">
-              {/* Cinematic AI Core Image */}
+              {/* Cinematic System Core Image */}
               <div className="relative group/core">
-                 <div className="w-56 h-56 rounded-[2.5rem] bg-gradient-to-br from-[#915EFF] via-[#3b82f6] to-[#a78bfa] p-[1px] animate-pulse">
+                 <div className="w-56 h-56 rounded-[2.5rem] bg-gradient-to-br from-[#3b82f6] via-[#915EFF] to-[#3b82f6] p-[1px] animate-pulse">
                     <div className="w-full h-full rounded-[2.4rem] bg-[#020205] overflow-hidden flex items-center justify-center p-2 relative">
-                       <img src={ai_core_icon} alt="AI Core" className="w-full h-full object-cover rounded-[2rem] group-hover/core:scale-110 transition-transform duration-1000" />
+                       <img src={ai_core_icon} alt="System Core" className="w-full h-full object-cover rounded-[2rem] group-hover/core:scale-110 transition-transform duration-1000 grayscale group-hover/core:grayscale-0" />
                        {/* Scanner Overlay */}
                        <motion.div 
                          animate={{ top: ["-10%", "110%"] }} 
                          transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-                         className="absolute left-0 w-full h-1 bg-[#915EFF]/50 blur-sm z-30" 
+                         className="absolute left-0 w-full h-1 bg-[#3b82f6]/50 blur-sm z-30" 
                        />
                     </div>
                  </div>
-                 <div className="absolute -inset-8 bg-[#915EFF]/20 blur-[60px] rounded-full -z-10 animate-pulse" />
+                 <div className="absolute -inset-8 bg-[#3b82f6]/20 blur-[60px] rounded-full -z-10 animate-pulse" />
               </div>
 
               <div className="flex-1 text-center xl:text-left">
                  <div className="flex items-center justify-center xl:justify-start gap-4 mb-8">
-                    <span className="text-[#a78bfa] font-black tracking-[0.4em] text-[10px] uppercase bg-white/[0.03] px-4 py-1.5 rounded-full border border-white/10">Architecture_v2.0</span>
+                    <span className="text-[#3b82f6] font-black tracking-[0.4em] text-[10px] uppercase bg-white/[0.03] px-4 py-1.5 rounded-full border border-white/10">Architecture_v3.0</span>
                     <div className="h-[1px] w-24 bg-gradient-to-r from-white/20 to-transparent" />
                  </div>
                  
                  <h3 className="text-white font-black text-4xl md:text-7xl tracking-[ -0.05em] mb-8 leading-[0.9]">
-                    Neural <br /> <span className="bg-gradient-to-r from-[#915EFF] via-[#3b82f6] to-[#a78bfa] bg-clip-text text-transparent italic">Automation.</span>
+                    System <br /> <span className="bg-gradient-to-r from-[#3b82f6] via-[#915EFF] to-[#3b82f6] bg-clip-text text-transparent italic">Performance.</span>
                  </h3>
                  
                  <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl font-medium">
-                    Designing autonomous intelligence corridors. I engineer 
-                    <span className="text-white mx-1.5 font-black hover:text-[#915EFF] transition-colors">Advanced RAG Architectures</span> 
-                    and high-performance LLM integrations that transform standard applications into 
-                    reactive, agentic systems.
+                    Architecting resilient digital ecosystems. I engineer 
+                    <span className="text-white mx-1.5 font-black hover:text-[#3b82f6] transition-colors">High-Concurrency Infrastructures</span> 
+                    and scalable full-stack pipelines that ensure absolute stability, security, and 
+                    ultra-low latency performance.
                  </p>
               </div>
 
-              {/* Advanced Controls */}
+              {/* Advanced System Controls */}
               <div className="grid grid-cols-2 gap-4 w-full xl:w-auto">
                 {[
-                  { l: "N_SYNC", v: "100%", i: "🧠", c: "from-purple-500" },
-                  { l: "R_ENGINE", v: "v4.2", i: "⚙️", c: "from-blue-500" },
-                  { l: "A_CORE", v: "READY", i: "🤖", c: "from-[#915EFF]" },
-                  { l: "LATENCY", v: "2ms", i: "⚡", c: "from-emerald-400" }
+                  { l: "UPTIME", v: "99.9%", i: "📡", c: "from-blue-500" },
+                  { l: "RESP_TIME", v: "14ms", i: "⚡", c: "from-emerald-400" },
+                  { l: "SECURITY", v: "ACTIVE", i: "🛡️", c: "from-[#915EFF]" },
+                  { l: "SCALING", v: "AUTO", i: "📈", c: "from-blue-400" }
                 ].map((p, idx) => (
                   <motion.div 
                     key={p.l}
