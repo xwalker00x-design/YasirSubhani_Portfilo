@@ -3,10 +3,26 @@ import { Suspense, lazy } from "react";
 const ParticlesBackgroundLazy = lazy(() => import("../canvas/ParticlesBackground"));
 const StarsCanvas = lazy(() => import("../canvas/Stars"));
 import Magnetic from "../atoms/Magnetic";
+import { downloadResumePdf } from "../../utils/resumePdf";
 
 const Hero = () => {
   const handleCall = () => {
     window.location.href = "tel:+918271819813";
+  };
+
+  const handleQuickDownloadResume = () => {
+    const personal = {
+      name: "Yasir Subhani",
+      role: "Full-Stack Developer",
+      email: "yasir.subhani123@gmail.com",
+      phone: "+91 8271819813",
+      location: "Kolkata, India",
+      linkedin: "linkedin.com/in/yasirsubhani",
+      github: "github.com/yasirSub",
+      website: "https://yasirsubhani.me",
+      yearsExperience: "4+ years experience",
+    };
+    downloadResumePdf(personal);
   };
 
   return (
@@ -131,7 +147,7 @@ const Hero = () => {
                 onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-5 bg-[#7B4FD9] text-white font-black rounded-2xl shadow-[0_15px_60px_rgba(123,79,217,0.4)] transition-all tracking-widest text-sm"
+                className="px-8 py-4 bg-[#7B4FD9] text-white font-black rounded-2xl shadow-[0_15px_60px_rgba(123,79,217,0.4)] transition-all tracking-widest text-sm"
               >
                 INITIALIZE EXPLORATION
               </motion.button>
@@ -139,10 +155,21 @@ const Hero = () => {
             
             <Magnetic>
               <motion.button
+                onClick={handleQuickDownloadResume}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-white/5 border border-white/10 text-[#a78bfa] font-black rounded-2xl backdrop-blur-md transition-all tracking-widest text-sm shadow-[0_0_30px_rgba(145,94,255,0.1)]"
+              >
+                DOWNLOAD RESUME
+              </motion.button>
+            </Magnetic>
+
+            <Magnetic>
+              <motion.button
                 onClick={handleCall}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-5 bg-white/5 border border-white/10 text-white font-black rounded-2xl backdrop-blur-md transition-all tracking-widest text-sm"
+                className="px-8 py-4 bg-white/5 border border-white/10 text-white font-black rounded-2xl backdrop-blur-md transition-all tracking-widest text-sm"
               >
                 SECURE CHANNEL
               </motion.button>

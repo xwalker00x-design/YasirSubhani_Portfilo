@@ -71,6 +71,9 @@ import {
   careondemand_icon,
   realtorone_icon,
   isent_icon,
+  aws,
+  hostinger,
+  cloud,
 } from "../assets";
 
 export const navLinks: TNavLink[] = [
@@ -1021,6 +1024,49 @@ export const backendTechnologies: TTechnology[] = [
   },
 ];
 
+// Cloud & Hosting Technologies
+export const aiTechnologies: TTechnology[] = [
+  {
+    name: "Gemini AI",
+    icon: ai,
+  },
+  {
+    name: "OpenAI / GPT",
+    icon: ai,
+  },
+  {
+    name: "Claude AI",
+    icon: ai,
+  },
+  {
+    name: "LangChain",
+    icon: machineLearning,
+  },
+  {
+    name: "RAG Pipelines",
+    icon: machineLearning,
+  },
+  {
+    name: "AI Agents",
+    icon: ai_core_icon,
+  },
+];
+
+export const cloudTechnologies: TTechnology[] = [
+  {
+    name: "AWS",
+    icon: aws,
+  },
+  {
+    name: "Hostinger",
+    icon: hostinger,
+  },
+  {
+    name: "Cloud Computing",
+    icon: cloud,
+  },
+];
+
 // Design & Creative Tools
 export const designTools: TTechnology[] = [
   {
@@ -1106,6 +1152,8 @@ export const technologies: TTechnology[] = [
   ...frontendTechnologies,
   ...mobileTechnologies,
   ...backendTechnologies,
+  ...aiTechnologies,
+  ...cloudTechnologies,
   ...designTools,
   ...developmentTools,
 ];

@@ -131,6 +131,11 @@ const Navbar = () => {
                 </li>
               ))}
               <li className="py-2">
+                <Link to="/resume" className="text-[15px] font-medium text-gray-400 hover:text-white transition-all">
+                  Resume
+                </Link>
+              </li>
+              <li className="py-2">
                 <Link to="/gear" className="text-[15px] font-medium text-gray-400 hover:text-white transition-all">
                   Gear
                 </Link>
@@ -181,6 +186,11 @@ const Navbar = () => {
                     </a>
                   </li>
                 ))}
+                <li>
+                  <Link to="/resume" onClick={() => setToggle(false)} className="text-[18px] font-medium block py-2 text-gray-400">
+                    Resume
+                  </Link>
+                </li>
                 <li>
                   <Link to="/gear" onClick={() => setToggle(false)} className="text-[18px] font-medium block py-2 text-gray-400">
                     Gear

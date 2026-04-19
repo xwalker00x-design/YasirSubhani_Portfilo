@@ -127,6 +127,9 @@ import web from "./web.png";
 import herobg from "./herobg.png";
 import whatsapp from "./whatsapp.svg";
 import pageUp from "./page-up.svg";
+import aws from "./tech/aws.png";
+import hostinger from "./tech/hostinger.png";
+import cloud from "./tech/cloud.png";
 
 export {
   ai_core_icon,
@@ -257,4 +260,7 @@ export {
   // Additional assets
   whatsapp,
   pageUp,
+  aws,
+  hostinger,
+  cloud,
 };

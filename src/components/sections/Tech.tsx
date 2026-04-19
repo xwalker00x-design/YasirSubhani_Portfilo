@@ -5,6 +5,8 @@ import {
   frontendTechnologies, 
   mobileTechnologies, 
   backendTechnologies, 
+  aiTechnologies,
+  cloudTechnologies,
   designTools, 
   developmentTools 
 } from "../../constants";
@@ -25,6 +27,9 @@ const SkillCard = ({ name, icon }: SkillCardProps) => {
     if (n.includes('node')) return 'rgba(131, 205, 41, 0.4)';
     if (n.includes('laravel')) return 'rgba(255, 45, 32, 0.4)';
     if (n.includes('python')) return 'rgba(55, 118, 171, 0.4)';
+    if (n.includes('aws')) return 'rgba(255, 153, 0, 0.4)';
+    if (n.includes('hostinger')) return 'rgba(103, 58, 183, 0.4)';
+    if (n.includes('cloud')) return 'rgba(3, 169, 244, 0.4)';
     if (n.includes('ai') || n.includes('gemini')) return 'rgba(145, 94, 255, 0.5)';
     return 'rgba(255, 255, 255, 0.1)'; 
   };
@@ -55,12 +60,14 @@ const SkillCard = ({ name, icon }: SkillCardProps) => {
 };
 
 const Tech = () => {
-  const [activeTab, setActiveTab] = useState("Frontend");
+  const [activeTab, setActiveTab] = useState("AI");
 
   const skillCategories = [
+    { title: "AI", technologies: aiTechnologies, icon: "🤖" },
     { title: "Frontend", technologies: frontendTechnologies, icon: "💻" },
     { title: "Mobile", technologies: mobileTechnologies, icon: "📱" },
     { title: "Backend", technologies: backendTechnologies, icon: "⚙️" },
+    { title: "Cloud", technologies: cloudTechnologies, icon: "☁️" },
     { title: "Design", technologies: designTools, icon: "🎨" },
     { title: "Tools", technologies: developmentTools, icon: "🛠️" },
   ];
