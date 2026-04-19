@@ -305,7 +305,7 @@ const AboutPage = () => {
                 {[
                   { icon: "💻", skill: "Full-Stack Development" },
                   { icon: "📱", skill: "Mobile App Development (Flutter/Dart)" },
-                  { icon: "🤖", skill: "Advanced AI Solutions (LLMs, RAG, Agents)" },
+                  { icon: "🤖", skill: "AI Integration & Automation" },
                   { icon: "☁️", skill: "Cloud & Hosting Solutions (AWS/Hostinger)" },
                   { icon: "🗄️", skill: "Database Design & Optimization" },
                   { icon: "🎨", skill: "UI/UX Design" }
@@ -354,11 +354,9 @@ const AboutPage = () => {
                 Professional Focus
               </h3>
               <p className="text-secondary leading-relaxed group-hover:text-white transition-colors duration-300">
-                I specialize in creating next-generation digital solutions that leverage 
-                <span className="text-[#915EFF] mx-1 font-black">Agentic AI Systems</span>. 
-                My focus is on architecting high-performance neural architectures, integrating 
-                advanced LLM pipelines (Gemini/GPT/Claude), and building reactive, 
-                intelligent ecosystems that redefine user interaction.
+                I specialize in creating innovative digital solutions that drive business growth. 
+                My expertise lies in integrating AI tools, optimizing databases, and building 
+                scalable applications that deliver exceptional user experiences.
               </p>
             </motion.div>
           </motion.div>

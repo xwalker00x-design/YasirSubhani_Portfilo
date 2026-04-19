@@ -1,6 +1,6 @@
 import jsPDF from "jspdf";
 import QRCode from "qrcode";
-import { experiences, projects, frontendTechnologies, mobileTechnologies, backendTechnologies, aiTechnologies, cloudTechnologies, designTools, developmentTools } from "../constants";
+import { experiences, projects, frontendTechnologies, mobileTechnologies, backendTechnologies, cloudTechnologies, designTools, developmentTools } from "../constants";
 
 type PersonalInfo = {
   name: string;
@@ -307,7 +307,6 @@ export async function generateResumePdf(personal: PersonalInfo, options: Generat
   // Skills (moved up)
   addSectionTitle("Skills");
   const skillsGroups = [
-    { title: "AI & Machine Learning", items: aiTechnologies.map(t => t.name) },
     { title: "Frontend", items: frontendTechnologies.map(t => t.name) },
     { title: "Mobile", items: mobileTechnologies.map(t => t.name) },
     { title: "Backend", items: backendTechnologies.map(t => t.name) },

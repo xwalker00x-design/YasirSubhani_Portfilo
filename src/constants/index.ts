@@ -74,9 +74,6 @@ import {
   aws,
   hostinger,
   cloud,
-  ai,
-  machineLearning,
-  ai_core_icon,
 } from "../assets";
 
 export const navLinks: TNavLink[] = [
@@ -1028,33 +1025,6 @@ export const backendTechnologies: TTechnology[] = [
 ];
 
 // Cloud & Hosting Technologies
-export const aiTechnologies: TTechnology[] = [
-  {
-    name: "Gemini AI",
-    icon: ai,
-  },
-  {
-    name: "OpenAI / GPT",
-    icon: ai,
-  },
-  {
-    name: "Claude AI",
-    icon: ai,
-  },
-  {
-    name: "LangChain",
-    icon: machineLearning,
-  },
-  {
-    name: "RAG Pipelines",
-    icon: machineLearning,
-  },
-  {
-    name: "AI Agents",
-    icon: ai_core_icon,
-  },
-];
-
 export const cloudTechnologies: TTechnology[] = [
   {
     name: "AWS",
@@ -1155,7 +1125,6 @@ export const technologies: TTechnology[] = [
   ...frontendTechnologies,
   ...mobileTechnologies,
   ...backendTechnologies,
-  ...aiTechnologies,
   ...cloudTechnologies,
   ...designTools,
   ...developmentTools,

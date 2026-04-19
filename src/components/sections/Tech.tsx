@@ -5,7 +5,6 @@ import {
   frontendTechnologies, 
   mobileTechnologies, 
   backendTechnologies, 
-  aiTechnologies,
   cloudTechnologies,
   designTools, 
   developmentTools 
@@ -60,10 +59,9 @@ const SkillCard = ({ name, icon }: SkillCardProps) => {
 };
 
 const Tech = () => {
-  const [activeTab, setActiveTab] = useState("AI");
+  const [activeTab, setActiveTab] = useState("Frontend");
 
   const skillCategories = [
-    { title: "AI", technologies: aiTechnologies, icon: "🤖" },
     { title: "Frontend", technologies: frontendTechnologies, icon: "💻" },
     { title: "Mobile", technologies: mobileTechnologies, icon: "📱" },
     { title: "Backend", technologies: backendTechnologies, icon: "⚙️" },
