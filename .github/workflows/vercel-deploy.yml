@@ -9,16 +9,21 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # Secrets live in the VERCEL_TOKEN environment (not repository secrets).
-    # All three names must exist in that one environment — see repo Settings → Environments.
-    environment: VERCEL_TOKEN
-    env:
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Load VERCEL_TOKEN
+        environment: VERCEL_TOKEN
+        run: echo "VERCEL_TOKEN=${{ secrets.VERCEL_TOKEN }}" >> "$GITHUB_ENV"
+
+      - name: Load VERCEL_ORG_ID
+        environment: VERCEL_ORG_ID
+        run: echo "VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}" >> "$GITHUB_ENV"
+
+      - name: Load VERCEL_PROJECT_ID
+        environment: VERCEL_PROJECT_ID
+        run: echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID }}" >> "$GITHUB_ENV"
 
       - name: Validate Vercel secrets
         run: |
@@ -27,8 +32,8 @@ jobs:
           [ -z "$VERCEL_ORG_ID" ] && missing+=("VERCEL_ORG_ID")
           [ -z "$VERCEL_PROJECT_ID" ] && missing+=("VERCEL_PROJECT_ID")
           if [ ${#missing[@]} -gt 0 ]; then
-            echo "Missing secrets in GitHub environment 'VERCEL_TOKEN': ${missing[*]}"
-            echo "Add all three at: Settings → Environments → VERCEL_TOKEN → Environment secrets"
+            echo "Missing: ${missing[*]}"
+            echo "Each name must exist as a secret in its matching GitHub environment."
             exit 1
           fi
 
@@ -59,5 +64,3 @@ jobs:
 
       - name: Deploy to Vercel (Production)
         run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
-
-
