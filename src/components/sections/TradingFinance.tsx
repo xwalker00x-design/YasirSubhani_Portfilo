@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { SectionWrapper } from "../../hoc";
 import { styles } from "../../constants/styles";
-import { tradeShieldLogo } from "../../assets";
+import TradeShieldLogo from "../tradeshield/TradeShieldLogo";
 
 const TradingFinance = () => {
   const { scrollYProgress } = useScroll();
@@ -120,11 +120,7 @@ const TradingFinance = () => {
              }}
            >
              <div className="relative">
-               <img
-                 src={tradeShieldLogo}
-                 alt="Trade Shield"
-                 className="w-16 h-16 object-contain drop-shadow-2xl"
-               />
+               <TradeShieldLogo className="w-16 h-16" />
                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-green-500/30 rounded-full blur-lg animate-pulse"></div>
              </div>
            </motion.div>
@@ -151,10 +147,9 @@ const TradingFinance = () => {
                      opacity: logoOpacity
                    }}
                  >
-                   <img
-                     src={tradeShieldLogo}
-                     alt="Trade Shield Logo"
-                     className="w-32 h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 object-contain drop-shadow-2xl"
+                   <TradeShieldLogo
+                     glow="hero"
+                     className="w-32 h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48"
                    />
                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-green-500/20 rounded-full blur-xl animate-pulse"></div>
                    <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-full blur-2xl animate-pulse delay-1000"></div>

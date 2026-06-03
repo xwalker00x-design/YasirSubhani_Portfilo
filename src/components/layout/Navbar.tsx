@@ -50,6 +50,8 @@ const Navbar = () => {
     };
   }, [toggle]);
 
+  const isTradingRoute = location.pathname.startsWith("/trading");
+
   const handleNavClick = (navId: string) => {
     if (location.pathname !== '/') {
       window.location.href = `/#${navId}`;
@@ -131,13 +133,20 @@ const Navbar = () => {
                 </li>
               ))}
               <li className="py-2">
-                <Link to="/resume" className="text-[15px] font-medium text-gray-400 hover:text-white transition-all">
-                  Resume
+                <Link to="/gear" className="text-[15px] font-medium text-gray-400 hover:text-white transition-all">
+                  Gear
                 </Link>
               </li>
               <li className="py-2">
-                <Link to="/gear" className="text-[15px] font-medium text-gray-400 hover:text-white transition-all">
-                  Gear
+                <Link
+                  to="/trading"
+                  className={`text-[14px] font-semibold px-3 py-1.5 rounded-lg transition-all ${
+                    isTradingRoute
+                      ? "text-emerald-300 bg-emerald-500/15 border border-emerald-500/30"
+                      : "text-emerald-400 border border-emerald-500/25 bg-emerald-500/10 hover:bg-emerald-500/20 hover:text-emerald-300"
+                  }`}
+                >
+                  TradeShield
                 </Link>
               </li>
             </ul>
@@ -187,13 +196,17 @@ const Navbar = () => {
                   </li>
                 ))}
                 <li>
-                  <Link to="/resume" onClick={() => setToggle(false)} className="text-[18px] font-medium block py-2 text-gray-400">
-                    Resume
+                  <Link to="/gear" onClick={() => setToggle(false)} className="text-[18px] font-medium block py-2 text-gray-400">
+                    Gear
                   </Link>
                 </li>
                 <li>
-                  <Link to="/gear" onClick={() => setToggle(false)} className="text-[18px] font-medium block py-2 text-gray-400">
-                    Gear
+                  <Link
+                    to="/trading"
+                    onClick={() => setToggle(false)}
+                    className="text-[18px] font-semibold block py-2 text-emerald-400"
+                  >
+                    TradeShield →
                   </Link>
                 </li>
               </ul>

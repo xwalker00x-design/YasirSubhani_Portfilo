@@ -5,12 +5,12 @@ const BeyondCode = () => {
   const interestAreas = [
     {
       title: "Trading & Finance",
-      subtitle: "The Trade Shield",
-      description: "Analyzing market trends, developing technical strategies, and exploring the psychology of trading.",
+      subtitle: "TradeShield",
+      description: "Custom MT5 & TradingView indicators, EA modifications, and trading tools built for client needs.",
       icon: "📈",
       gradient: "from-[#00b09b] to-[#96c93d]",
-      route: "/trading-finance",
-      stats: "2+ Years Experience"
+      route: "/trading",
+      stats: "MT5 · TradingView"
     },
     {
       title: "Music Production",

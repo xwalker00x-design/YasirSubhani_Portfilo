@@ -14,7 +14,7 @@ type PersonalInfo = {
   yearsExperience?: string;
 };
 
-type GenerateOptions = {
+export type GenerateOptions = {
   summary?: string;
   additionalProjects?: Array<{ name: string; description: string; }>;
   highlights?: string[];

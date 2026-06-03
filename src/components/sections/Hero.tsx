@@ -3,6 +3,7 @@ import { Suspense, lazy } from "react";
 const ParticlesBackgroundLazy = lazy(() => import("../canvas/ParticlesBackground"));
 const StarsCanvas = lazy(() => import("../canvas/Stars"));
 import Magnetic from "../atoms/Magnetic";
+import { loadResumeDataAsync, toPdfOptions } from "../../data/resumeStore";
 import { downloadResumePdf } from "../../utils/resumePdf";
 
 const Hero = () => {
@@ -10,19 +11,9 @@ const Hero = () => {
     window.location.href = "tel:+918271819813";
   };
 
-  const handleQuickDownloadResume = () => {
-    const personal = {
-      name: "Yasir Subhani",
-      role: "Full-Stack Developer",
-      email: "yasir.subhani123@gmail.com",
-      phone: "+91 8271819813",
-      location: "Kolkata, India",
-      linkedin: "linkedin.com/in/yasirsubhani",
-      github: "github.com/yasirSub",
-      website: "https://yasirsubhani.me",
-      yearsExperience: "4+ years experience",
-    };
-    downloadResumePdf(personal);
+  const handleQuickDownloadResume = async () => {
+    const data = await loadResumeDataAsync();
+    downloadResumePdf(data.personal, "YasirSubhani-Resume.pdf", toPdfOptions(data));
   };
 
   return (

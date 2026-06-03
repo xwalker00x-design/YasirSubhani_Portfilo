@@ -458,10 +458,15 @@ const AboutPage = () => {
               // remove unsupported boxShadow typing
             }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => window.location.href = '/resume'}
+            onClick={async () => {
+              const { loadResumeDataAsync, toPdfOptions } = await import("../../data/resumeStore");
+              const { downloadResumePdf } = await import("../../utils/resumePdf");
+              const data = await loadResumeDataAsync();
+              downloadResumePdf(data.personal, "YasirSubhani-Resume.pdf", toPdfOptions(data));
+            }}
             className="bg-gradient-to-r from-[#915EFF] to-[#7B4FD9] hover:from-[#7B4FD9] hover:to-[#915EFF] text-white px-10 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg text-lg"
           >
-            Resume
+            Download Resume
           </motion.button>
         </motion.div>
 

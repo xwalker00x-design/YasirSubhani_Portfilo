@@ -1,0 +1,26 @@
+{
+  "personal": {
+    "name": "Yasir Subhani",
+    "role": "Full-Stack Developer • AI Engineer",
+    "email": "yasir.subhani123@gmail.com",
+    "phone": "+91 8271819813",
+    "location": "Kolkata, India",
+    "linkedin": "linkedin.com/in/yasirsubhani",
+    "github": "github.com/yasirSub",
+    "website": "https://yasirsubhani.me",
+    "yearsExperience": "4+ years experience"
+  },
+  "summary": "Full-Stack Developer & AI Engineer with experience across web/mobile, AI automation, and LLM integration (Claude, Gemini). Skilled in scalable app development, prompt engineering, and database optimization with strong focus on UX and performance.",
+  "customProjects": [],
+  "achievements": [],
+  "certifications": [],
+  "languages": "English, Hindi",
+  "availability": "",
+  "hobbies": "Playing Guitar, Gaming, Stock Market",
+  "aiTools": "Cursor AI, Rocode/Cline, Anthropic Claude, Google Gemini, OpenAI GPT, Gemini CLI, LangChain, LlamaIndex, MCP Servers, Pinecone, FAISS, Whisper, TTS, Vision Models, Function Calling, RAG Pipelines",
+  "aiIdeAgents": "Cursor AI, Rocode/Cline",
+  "aiLlmsFrameworks": "Anthropic Claude, Google Gemini, OpenAI GPT, Gemini CLI, LangChain, LlamaIndex",
+  "aiInfraUtilities": "MCP Servers, Pinecone, FAISS, Whisper, TTS, Vision Models, Function Calling, RAG Pipelines",
+  "workMode": "Work from Home",
+  "compact": true
+}
