@@ -6,6 +6,11 @@ on:
       - main
   workflow_dispatch: {}
 
+# New push cancels an in-flight deploy so only the latest commit is deployed.
+concurrency:
+  group: vercel-production
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -26,35 +31,8 @@ jobs:
           [ -z "$VERCEL_PROJECT_ID" ] && missing+=("VERCEL_PROJECT_ID")
           if [ ${#missing[@]} -gt 0 ]; then
             echo "Missing secrets in environment 'VERCEL_TOKEN': ${missing[*]}"
-            echo "Add all 3 here: https://github.com/yasirSub/YasirSubhani_Portfilo/settings/environments/VERCEL_TOKEN"
-            echo "Environment secrets → Add: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID"
             exit 1
           fi
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install dependencies (CI)
-        run: npm ci
-
-      - name: Build (optional for frameworks that need prebuild)
-        run: |
-          if [ -f package.json ] && cat package.json | jq -e '.scripts.build' >/dev/null; then
-            npm run build
-          else
-            echo "No build script found; continuing"
-          fi
-
-      - name: Install Vercel CLI
-        run: npm i -g vercel@latest
-
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
-
-      - name: Build on Vercel
-        run: vercel build --prod --token="$VERCEL_TOKEN"
-
-      - name: Deploy to Vercel (Production)
-        run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+      - name: Deploy to Vercel (build on Vercel — faster CI)
+        run: npx vercel@41 deploy --prod --yes --token="$VERCEL_TOKEN"
