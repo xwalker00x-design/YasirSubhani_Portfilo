@@ -16,8 +16,8 @@ export const servicePackages: ServicePackage[] = [
   {
     id: "simple-mod",
     name: "Simple modification",
-    priceLabel: "₹2,000 – ₹5,000",
-    priceNote: "Starting from ₹2,000",
+    priceLabel: "₹1,899 – ₹4,999",
+    priceNote: "Starting from ₹1,899",
     description: "Quick changes to an existing indicator or EA you already own.",
     includes: [
       "Colors, labels, inputs, alerts",
@@ -32,8 +32,8 @@ export const servicePackages: ServicePackage[] = [
   {
     id: "medium-mod",
     name: "Medium modification",
-    priceLabel: "₹5,000 – ₹15,000",
-    priceNote: "Most common package",
+    priceLabel: "₹4,999 – ₹12,999",
+    priceNote: "Most popular package",
     description: "Logic updates, notifications, and multi-timeframe behaviour.",
     includes: [
       "New conditions & signal rules",
@@ -49,7 +49,7 @@ export const servicePackages: ServicePackage[] = [
   {
     id: "complex-mod",
     name: "Complex build",
-    priceLabel: "₹15,000 – ₹50,000+",
+    priceLabel: "₹12,999 – ₹39,999+",
     priceNote: "Quote after review",
     description: "Major rewrites, dashboards, scanners, or Pine → MT5 conversion.",
     includes: [
@@ -65,7 +65,7 @@ export const servicePackages: ServicePackage[] = [
   {
     id: "pine-custom",
     name: "TradingView Pine Script",
-    priceLabel: "₹3,000 – ₹20,000",
+    priceLabel: "₹2,499 – ₹14,999",
     priceNote: "Depends on scope",
     description: "Custom indicator or strategy with alerts on TradingView.",
     includes: [
