@@ -33,7 +33,6 @@ jobs:
           [ -z "$VERCEL_PROJECT_ID" ] && missing+=("VERCEL_PROJECT_ID")
           if [ ${#missing[@]} -gt 0 ]; then
             echo "Missing: ${missing[*]}"
-            echo "Each name must exist as a secret in its matching GitHub environment."
             exit 1
           fi
 
