@@ -9,21 +9,13 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Load VERCEL_TOKEN
-        environment: VERCEL_TOKEN
-        run: echo "VERCEL_TOKEN=${{ secrets.VERCEL_TOKEN }}" >> "$GITHUB_ENV"
-
-      - name: Load VERCEL_ORG_ID
-        environment: VERCEL_ORG_ID
-        run: echo "VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}" >> "$GITHUB_ENV"
-
-      - name: Load VERCEL_PROJECT_ID
-        environment: VERCEL_PROJECT_ID
-        run: echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID }}" >> "$GITHUB_ENV"
 
       - name: Validate Vercel secrets
         run: |
@@ -32,7 +24,9 @@ jobs:
           [ -z "$VERCEL_ORG_ID" ] && missing+=("VERCEL_ORG_ID")
           [ -z "$VERCEL_PROJECT_ID" ] && missing+=("VERCEL_PROJECT_ID")
           if [ ${#missing[@]} -gt 0 ]; then
-            echo "Missing: ${missing[*]}"
+            echo "Missing repository secrets: ${missing[*]}"
+            echo "Add at: https://github.com/yasirSub/YasirSubhani_Portfilo/settings/secrets/actions"
+            echo "Use the Repository secrets tab (no Environment column)."
             exit 1
           fi
 
