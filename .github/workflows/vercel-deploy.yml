@@ -6,7 +6,6 @@ on:
       - main
   workflow_dispatch: {}
 
-# New push cancels an in-flight deploy so only the latest commit is deployed.
 concurrency:
   group: vercel-production
   cancel-in-progress: true
@@ -34,5 +33,28 @@ jobs:
             exit 1
           fi
 
-      - name: Deploy to Vercel (build on Vercel — faster CI)
-        run: npx vercel@41 deploy --prod --yes --token="$VERCEL_TOKEN"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache Vercel project config
+        uses: actions/cache@v4
+        with:
+          path: .vercel
+          key: vercel-${{ runner.os }}-${{ hashFiles('vercel.json', 'package-lock.json') }}
+          restore-keys: |
+            vercel-${{ runner.os }}-
+
+      - name: Pull Vercel Environment Information
+        run: npx vercel@latest pull --yes --environment=production --token="$VERCEL_TOKEN"
+
+      - name: Build on Vercel
+        run: npx vercel@latest build --prod --token="$VERCEL_TOKEN"
+
+      - name: Deploy to Vercel (Production)
+        run: npx vercel@latest deploy --prebuilt --prod --token="$VERCEL_TOKEN"
