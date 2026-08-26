@@ -13,7 +13,7 @@ const ResumePage = () => {
     linkedin: "linkedin.com/in/yasirsubhani",
     github: "github.com/yasirSub",
     website: "https://yasirsubhani.me",
-    yearsExperience: "4+ years experience",
+    yearsExperience: "6+ years experience",
   });
   const [summary, setSummary] = useState(
     "Full-Stack Developer & AI Engineer with experience across web/mobile, AI automation, and LLM integration (Claude, Gemini). Skilled in scalable app development, prompt engineering, and database optimization with strong focus on UX and performance."

@@ -45,11 +45,17 @@ export const defaultResumeData: ResumeData = {
     linkedin: "linkedin.com/in/yasirsubhani",
     github: "github.com/yasirSub",
     website: "https://yasirsubhani.me",
-    yearsExperience: "4+ years experience",
+    yearsExperience: "6+ years experience",
   },
   summary:
     "Full-Stack Developer & AI Engineer with experience across web/mobile, AI automation, and LLM integration (Claude, Gemini). Skilled in scalable app development, prompt engineering, and database optimization with strong focus on UX and performance.",
-  customProjects: [],
+  customProjects: [
+    {
+      name: "Pull SaaS (RealtorOne)",
+      description:
+        "Full-stack freelance engagement for RealtorOne (client: R.N. Tiger). Building and evolving Pull SaaS over 7+ months (Feb 2026 – Present) — multi-tenant product features, APIs, dashboards, and production delivery across the stack.",
+    },
+  ],
   achievements: [],
   certifications: [],
   languages: "English, Hindi",

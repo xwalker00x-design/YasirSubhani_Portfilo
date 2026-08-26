@@ -385,10 +385,10 @@ const AboutPage = () => {
           </h3>
           <div className="space-y-6 text-secondary leading-relaxed">
             {[
-              "I'm a passionate Full-Stack Developer with over 4 years of experience in creating innovative digital solutions. My journey in technology began with a curiosity about how things work, which evolved into a deep passion for building applications that solve real-world problems.",
+              "I'm a passionate Full-Stack Developer with over 6 years of experience in creating innovative digital solutions. My journey in technology began with a curiosity about how things work, which evolved into a deep passion for building applications that solve real-world problems.",
               "Currently pursuing my MCA at Amity University, I'm deepening my knowledge in Advanced Computer Science, Software Engineering, and Research methodologies. This advanced education complements my practical experience, allowing me to approach development challenges with both theoretical understanding and hands-on expertise.",
               "My expertise spans across multiple domains - from web development using modern frameworks like React and Laravel, to mobile app development with Flutter, and cutting-edge AI integration. I believe in the power of technology to transform businesses and improve people's lives.",
-              "Currently working at WorkSaar (Firmbeginners It Solutions Pvt Ltd) as a Full-Stack Developer, I'm constantly learning and adapting to new technologies. My approach combines technical expertise with creative problem-solving, ensuring that every project I work on is not just functional, but also user-friendly and scalable.",
+              "After working at WorkSaar (Firmbeginners It Solutions Pvt Ltd) as a Full-Stack Developer through June 2026, I'm now freelancing — building Pull SaaS for RealtorOne (R.N. Tiger) as a full-stack developer. My approach combines technical expertise with creative problem-solving, ensuring that every project I work on is not just functional, but also user-friendly and scalable.",
               "When I'm not coding, you'll find me exploring new AI technologies, contributing to open-source projects, or mentoring aspiring developers. I'm always excited to take on new challenges and collaborate with teams to create something amazing."
             ].map((paragraph, index) => (
               <motion.p

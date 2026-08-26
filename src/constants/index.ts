@@ -175,7 +175,7 @@ export const experiences: TExperience[] = [
     companyName: "WorkSaar (Firmbeginners It Solutions Pvt Ltd)",
     icon: creator,
     iconBg: "#915EFF",
-    date: "Jan 2024 - Dec 2024",
+    date: "Jan 2024 - Jun 2026",
     points: [
       "Led full-stack architecture for high-traffic enterprise applications focusing on performance.",
       "Engineered automated workflows with integrated AI modules for data processing.",
@@ -183,16 +183,16 @@ export const experiences: TExperience[] = [
     ],
   },
   {
-    title: "Full-Stack Consultant",
-    companyName: "Freelance Operative",
+    title: "Full-Stack Developer",
+    companyName: "RealtorOne (R.N. Tiger) — Freelance",
     icon: backend,
     iconBg: "#383E56",
-    date: "Jan 2025 - Present",
+    date: "Feb 2026 - Present",
     points: [
-      "Currently architecting end-to-end digital solutions for international clientele.",
-      "Implementing cutting-edge AI integrations and RAG pipelines for knowledge management.",
-      "Delivering high-performance, mobile-first ecosystem designs with focus on maximum ROI.",
-      "Consulting on digital transformation strategies and cloud infrastructure optimization.",
+      "Building and maintaining Pull SaaS as a full-stack developer for RealtorOne under R.N. Tiger.",
+      "Shipping end-to-end features across frontend, backend, and cloud for a multi-tenant SaaS product.",
+      "Owning product workflows for real-estate operations, integrations, and performance-focused delivery.",
+      "Collaborating directly with the client on roadmap, architecture, and ongoing production releases.",
     ],
   },
 ];
@@ -292,6 +292,28 @@ export const projects: TProject[] = [
     featured: true,
   },
   {
+    name: "Pull SaaS (RealtorOne)",
+    description:
+      "Full-stack freelance engagement for RealtorOne (client: R.N. Tiger). Building and evolving Pull SaaS over 7+ months (Feb 2026 – Present) — multi-tenant product features, APIs, dashboards, and production delivery across the stack.",
+    tags: [
+      {
+        name: "saas",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "full-stack",
+        color: "green-text-gradient",
+      },
+      {
+        name: "freelance",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: realtorone_icon,
+    liveLink: "https://realtorone.org/",
+    featured: true,
+  },
+  {
     name: "RealtorOne Website",
     description:
       "A luxury real estate intelligence platform. Implements highnd property filtering, multi-agent coordination frameworks, and high-fidelity visual catalogs to transform the property acquisition pipeline.",
@@ -317,23 +339,24 @@ export const projects: TProject[] = [
   {
     name: "RealtorOne App",
     description:
-      "A state-of-the-art mobile brokerage tool for Realtors. Features secure OTP-based authentication, real-time property cloud synchronization, and a mobile-first interface optimized for property investment workflows.",
+      "A comprehensive real-estate broker app for agents and producers — lead management, pipeline tracking, and business operations in one mobile ecosystem. Built end-to-end and published on Google Play.",
     tags: [
       {
         name: "mobile-app",
         color: "blue-text-gradient",
       },
       {
-        name: "flutter",
+        name: "broker",
         color: "green-text-gradient",
       },
       {
-        name: "dart",
+        name: "flutter",
         color: "pink-text-gradient",
       },
     ],
     image: realtorone_icon,
     sourceCodeLink: "https://github.com/yasirSub/RealtorOne",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.realtorone.app",
     featured: true,
   },
   {
