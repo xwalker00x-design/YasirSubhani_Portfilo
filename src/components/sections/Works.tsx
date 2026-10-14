@@ -297,7 +297,23 @@ const Works = () => {
     );
   });
 
-  const displayedProjects = filter === "All" ? filteredProjects.slice(0, 6) : filteredProjects;
+  const homeOrder = [
+    "Pull SaaS (RealtorOne)",
+    "RealtorOne App",
+    "RealtorOne Website",
+    "Installer App",
+    "SkoolWala ERP",
+    "Care On Demand",
+  ];
+  const displayedProjects = filter === "All"
+    ? [...filteredProjects]
+        .sort((a, b) => {
+          const ia = homeOrder.indexOf(a.name);
+          const ib = homeOrder.indexOf(b.name);
+          return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+        })
+        .slice(0, 6)
+    : filteredProjects;
 
   const handleProjectClick = (project: TProject) => {
     setSelectedProject(project);
@@ -316,9 +332,12 @@ const Works = () => {
           <span className="text-[#a78bfa] text-xs font-bold uppercase tracking-[0.2em]">Showcase</span>
         </div>
 
-        <h2 className="text-white font-black md:text-[64px] sm:text-[52px] text-[36px] leading-[1.1] mb-8">
+        <h2 className="text-white font-black md:text-[64px] sm:text-[52px] text-[36px] leading-[1.1] mb-4">
           Selected <span className="bg-gradient-to-r from-[#915EFF] to-[#3b82f6] bg-clip-text text-transparent italic">Works.</span>
         </h2>
+        <p className="text-gray-400 max-w-2xl mx-auto mb-8">
+          Live products clients can open: SaaS, a broker app on Google Play, school ERP, and healthcare.
+        </p>
 
         <div className="flex flex-wrap justify-center gap-4 mb-16">
           {categories.map((cat) => (

@@ -29,7 +29,7 @@ const TradeShieldHero = () => {
               transition={{ delay: 0.08 }}
               className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0"
             >
-              Indicators, alerts, and EA fixes — clear INR quote before work starts.
+              Indicators, EAs, Pine Script v6, Telegram alerts, and risk rules — clear INR quote before work starts. No profit promises.
             </motion.p>
 
             <motion.div

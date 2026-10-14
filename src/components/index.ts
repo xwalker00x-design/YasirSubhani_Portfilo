@@ -10,6 +10,7 @@ export { default as FloatingButtons } from "./layout/FloatingButtons";
 export { default as CustomCursor } from "./layout/CustomCursor";
 export { default as Loader } from "./layout/Loader";
 export { default as About } from "./sections/About";
+export { default as ClientWork } from "./sections/ClientWork";
 export { default as AboutPage } from "./sections/AboutPage";
 export { default as BeyondCode } from "./sections/BeyondCode";
 export { default as Contact } from "./sections/Contact";

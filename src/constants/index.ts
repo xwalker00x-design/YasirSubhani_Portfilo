@@ -74,12 +74,19 @@ import {
   aws,
   hostinger,
   cloud,
+  nextjs,
+  rust,
+  postgres,
 } from "../assets";
 
 export const navLinks: TNavLink[] = [
   {
     id: "about",
     title: "About",
+  },
+  {
+    id: "hire",
+    title: "Hire",
   },
   {
     id: "work",
@@ -105,28 +112,20 @@ export const navLinks: TNavLink[] = [
 
 export const services: TService[] = [
   {
-    title: "Web Developer",
+    title: "Web & SaaS",
     icon: web,
   },
   {
-    title: "Mobile Developer",
+    title: "Mobile Apps",
     icon: mobile,
   },
   {
-    title: "Full-Stack Developer",
-    icon: creator,
-  },
-  {
-    title: "UI/UX Designer",
-    icon: photoshop,
-  },
-  {
-    title: "Video Editor",
-    icon: premierePro,
-  },
-  {
-    title: "AI Developer",
+    title: "AI in the product",
     icon: backend,
+  },
+  {
+    title: "Ongoing delivery",
+    icon: creator,
   },
 ];
 
@@ -294,14 +293,14 @@ export const projects: TProject[] = [
   {
     name: "Pull SaaS (RealtorOne)",
     description:
-      "Full-stack freelance engagement for RealtorOne (client: R.N. Tiger). Building and evolving Pull SaaS over 7+ months (Feb 2026 – Present) — multi-tenant product features, APIs, dashboards, and production delivery across the stack.",
+      "SaaS product for real-estate teams. I build the features, APIs, and dashboards clients use every day. Freelance, Feb 2026–present, client R.N. Tiger.",
     tags: [
       {
         name: "saas",
         color: "blue-text-gradient",
       },
       {
-        name: "full-stack",
+        name: "web",
         color: "green-text-gradient",
       },
       {
@@ -316,7 +315,7 @@ export const projects: TProject[] = [
   {
     name: "RealtorOne Website",
     description:
-      "A luxury real estate intelligence platform. Implements highnd property filtering, multi-agent coordination frameworks, and high-fidelity visual catalogs to transform the property acquisition pipeline.",
+      "Real-estate website for agents: property listings, search, and the public site at realtorone.org.",
     tags: [
       {
         name: "web",
@@ -339,7 +338,7 @@ export const projects: TProject[] = [
   {
     name: "RealtorOne App",
     description:
-      "A comprehensive real-estate broker app for agents and producers — lead management, pipeline tracking, and business operations in one mobile ecosystem. Built end-to-end and published on Google Play.",
+      "Broker app for real-estate agents: leads, pipeline, and daily operations. Live on Google Play.",
     tags: [
       {
         name: "mobile-app",
@@ -974,6 +973,14 @@ export const projects: TProject[] = [
 // Frontend Development
 export const frontendTechnologies: TTechnology[] = [
   {
+    name: "TypeScript",
+    icon: typescript,
+  },
+  {
+    name: "Next.js",
+    icon: nextjs,
+  },
+  {
     name: "HTML 5",
     icon: html,
   },
@@ -1021,6 +1028,14 @@ export const mobileTechnologies: TTechnology[] = [
 
 // Backend Development
 export const backendTechnologies: TTechnology[] = [
+  {
+    name: "Rust",
+    icon: rust,
+  },
+  {
+    name: "PostgreSQL",
+    icon: postgres,
+  },
   {
     name: "Node JS",
     icon: nodejs,

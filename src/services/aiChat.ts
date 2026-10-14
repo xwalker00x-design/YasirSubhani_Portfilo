@@ -55,7 +55,8 @@ Featured projects:
 ${projectList}
 
 Contact: yasir.subhani123@gmail.com | +91 8271819813 | Kolkata, India
-If asked about pricing or availability, suggest using the contact form or WhatsApp on the site.
+Availability: open for freelance and contract, remote, Monday–Saturday IST, replies within one business day. Currently building Pull SaaS for RealtorOne.
+If asked about pricing, suggest the contact form or WhatsApp. Do not invent rates.
 Do not invent projects or employers not listed above.`;
 };
 

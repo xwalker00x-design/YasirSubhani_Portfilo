@@ -17,8 +17,7 @@ const TradeShieldAbout = () => (
         align="center"
       />
       <p className="text-gray-400 leading-relaxed text-sm sm:text-base -mt-4 mb-8">
-        I write MT5 and Pine Script for traders who need working code and a clear scope. You get a
-        fixed INR quote after I review your brief or files — usually within 24–48 hours.
+        I write MT5 and Pine Script v6 for traders who need working code: indicators, EA fixes, alerts, and risk rules. You get source for the agreed scope and a fixed INR quote after I review your files — usually within 24–48 hours. I do not sell signals or guarantee returns.
       </p>
       <Link
         to="/"

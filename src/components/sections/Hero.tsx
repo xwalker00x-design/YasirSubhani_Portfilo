@@ -5,11 +5,13 @@ const StarsCanvas = lazy(() => import("../canvas/Stars"));
 import Magnetic from "../atoms/Magnetic";
 import { loadResumeDataAsync, toPdfOptions } from "../../data/resumeStore";
 import { downloadResumePdf } from "../../utils/resumePdf";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 const Hero = () => {
-  const handleCall = () => {
-    window.location.href = "tel:+918271819813";
-  };
+  usePageTitle(
+    "Yasir Subhani | AI App Developer & Full-Stack Developer",
+    "Hire Yasir Subhani, an AI app developer and full-stack developer in Kolkata. Flutter and Android apps, React and Next.js websites, SaaS products, and AI features. Available for remote freelance work."
+  );
 
   const handleQuickDownloadResume = async () => {
     const data = await loadResumeDataAsync();
@@ -77,8 +79,8 @@ const Hero = () => {
           transition={{ delay: 1 }}
           className="flex flex-col gap-1 border-l-2 border-[#915EFF]/30 pl-4 py-2"
         >
-          <span className="text-[10px] text-gray-500 font-black tracking-[0.3em] uppercase">Sector</span>
-          <span className="text-white text-xs font-bold font-mono tracking-widest">FULLSTACK_ARC_01</span>
+          <span className="text-[10px] text-gray-500 font-black tracking-[0.3em] uppercase">Based</span>
+          <span className="text-white text-xs font-bold font-mono tracking-widest">KOLKATA · REMOTE</span>
         </motion.div>
         
         <motion.div 
@@ -87,8 +89,8 @@ const Hero = () => {
           transition={{ delay: 1.2 }}
           className="flex flex-col gap-1 border-l-2 border-blue-500/30 pl-4 py-2"
         >
-          <span className="text-[10px] text-gray-500 font-black tracking-[0.3em] uppercase">Intelligence</span>
-          <span className="text-white text-xs font-bold font-mono tracking-widest">AI_DRIVEN_LOGIC</span>
+          <span className="text-[10px] text-gray-500 font-black tracking-[0.3em] uppercase">Focus</span>
+          <span className="text-white text-xs font-bold font-mono tracking-widest">WEB · MOBILE · SAAS</span>
         </motion.div>
       </div>
 
@@ -102,7 +104,7 @@ const Hero = () => {
           <span className="text-[10px] text-gray-500 font-black tracking-[0.3em] uppercase">Status</span>
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-white text-xs font-bold font-mono tracking-widest uppercase">Operational</span>
+            <span className="text-white text-xs font-bold font-mono tracking-widest uppercase">Open for work</span>
           </div>
         </motion.div>
       </div>
@@ -118,29 +120,30 @@ const Hero = () => {
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#915EFF]/40 bg-[#915EFF]/10 mb-10">
              <span className="w-2 h-2 rounded-full bg-[#915EFF] animate-pulse" />
-             <span className="text-[#a78bfa] text-xs font-bold uppercase tracking-[0.2em]">Ready for Strategic Deployment</span>
+             <span className="text-[#a78bfa] text-xs font-bold uppercase tracking-[0.2em]">Available for freelance · Remote</span>
           </div>
 
-          <h1 className="text-white font-black text-[48px] sm:text-[72px] md:text-[90px] lg:text-[110px] leading-[0.9] tracking-tighter mb-8">
-            <span className="text-white">Design.</span> <br className="sm:hidden" />
-            <span className="bg-gradient-to-r from-[#915EFF] via-[#3b82f6] to-[#a78bfa] bg-clip-text text-transparent italic">Develop.</span> <br className="sm:hidden" />
-            <span className="text-white">Deploy.</span>
+          <h1 className="text-white font-black text-[42px] sm:text-[64px] md:text-[80px] lg:text-[92px] leading-[0.95] tracking-tighter mb-8">
+            <span className="text-white">I build products</span> <br />
+            <span className="bg-gradient-to-r from-[#915EFF] via-[#3b82f6] to-[#a78bfa] bg-clip-text text-transparent italic">clients can ship.</span>
           </h1>
 
-          <p className="text-gray-400 text-lg sm:text-2xl max-w-2xl mx-auto leading-relaxed mb-12 font-medium">
-            I'm <span className="text-white font-black uppercase tracking-tighter">Yasir Subhani</span>, a Full-Stack Architect 
-            engineering high-performance <span className="text-white border-b border-[#915EFF]/40 italic">digital ecosystems</span> powered by intelligence.
+          <p className="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-12 font-medium">
+            I'm <span className="text-white font-semibold">Yasir Subhani</span>, an AI app developer and full-stack developer with 6+ years
+            shipping TypeScript, Next.js, Flutter, and Android apps — including{" "}
+            <span className="text-white">Pull SaaS</span> and the{" "}
+            <span className="text-white">RealtorOne</span> broker app on Google Play.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6">
             <Magnetic>
               <motion.button
-                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-[#7B4FD9] text-white font-black rounded-2xl shadow-[0_15px_60px_rgba(123,79,217,0.4)] transition-all tracking-widest text-sm"
               >
-                INITIALIZE EXPLORATION
+                SEE RECENT WORK
               </motion.button>
             </Magnetic>
             
@@ -157,12 +160,12 @@ const Hero = () => {
 
             <Magnetic>
               <motion.button
-                onClick={handleCall}
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-white/5 border border-white/10 text-white font-black rounded-2xl backdrop-blur-md transition-all tracking-widest text-sm"
               >
-                SECURE CHANNEL
+                START A PROJECT
               </motion.button>
             </Magnetic>
           </div>

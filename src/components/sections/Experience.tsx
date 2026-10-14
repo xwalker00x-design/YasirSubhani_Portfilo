@@ -60,7 +60,7 @@ const ExperienceCard = ({ experience, index }: { experience: any, index: number 
 
           <div className="mt-4 text-[#a78bfa] text-[11px] font-black uppercase tracking-[0.2em] transition-colors flex items-center gap-2">
             <span className={isExpanded ? "text-white" : ""}>
-              {isExpanded ? "ANALYZING_INTEL ▲" : "ACCESS_DATA ▼"}
+              {isExpanded ? "Hide details" : "Show details"}
             </span>
           </div>
         </div>
@@ -106,8 +106,8 @@ const Experience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         className="text-center mb-32"
       >
-        <span className="text-[#a78bfa] font-bold uppercase tracking-[0.3em] text-xs">Journey</span>
-        <h2 className="text-white font-black md:text-[64px] sm:text-[52px] text-[36px] mt-4">Professional Path.</h2>
+        <span className="text-[#a78bfa] font-bold uppercase tracking-[0.3em] text-xs">Recent first</span>
+        <h2 className="text-white font-black md:text-[64px] sm:text-[52px] text-[36px] mt-4">Work.</h2>
       </motion.div>
 
       {/* The Central Drawing Line (Desktop Only) */}

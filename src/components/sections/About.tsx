@@ -103,22 +103,20 @@ const About = () => {
                 backgroundClip: 'text',
               }}
             >
-              Introduction Overview
+              What I actually do
             </h2>
 
             {/* Description */}
             <div className="space-y-4 text-gray-400 leading-relaxed text-[15px] sm:text-[16px]">
               <p>
-                Hi, I'm <span className="text-white font-semibold">Yasir Subhani</span>, a passionate{" "}
-                <span className="text-[#a78bfa] font-medium">Full-Stack Developer</span> with expertise in Flutter,{" "}
-                AI automation, and modern web technologies. I excel in integrating AI tools, optimizing
-                databases, and building scalable applications.
+                Hi, I'm <span className="text-white font-semibold">Yasir Subhani</span>, a{" "}
+                <span className="text-[#a78bfa] font-medium">full-stack developer</span> who takes a product
+                from idea to something people can open — web, Flutter mobile, and the backend that holds it together.
               </p>
               <p>
-                With over{" "}
-                <span className="text-[#60a5fa] font-medium">4 years of experience</span>, I create efficient
-                and user-friendly digital solutions that drive business growth. My focus is on delivering
-                innovative applications that solve real-world problems.
+                <span className="text-[#60a5fa] font-medium">6+ years</span> in production work. Right now I
+                build <span className="text-white">Pull SaaS</span> for RealtorOne, including the broker app on
+                Google Play. I use AI to ship faster. Clients still get reviewed, working software.
               </p>
             </div>
 

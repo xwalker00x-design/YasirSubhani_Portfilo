@@ -166,10 +166,8 @@ const Tech = () => {
                  </h3>
                  
                  <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl font-medium">
-                    Architecting resilient digital ecosystems. I engineer 
-                    <span className="text-white mx-1.5 font-black hover:text-[#3b82f6] transition-colors">High-Concurrency Infrastructures</span> 
-                    and scalable full-stack pipelines that ensure absolute stability, security, and 
-                    ultra-low latency performance.
+                    Clients hiring now want TypeScript, React, Next.js, Flutter, and AI features in the product.
+                    Newer services are written in Rust when they need speed and safer code. I ship with that mix, plus Laravel, Node, and PostgreSQL.
                  </p>
               </div>
 

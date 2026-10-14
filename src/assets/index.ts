@@ -127,6 +127,9 @@ import web from "./web.png";
 import herobg from "./herobg.png";
 import whatsapp from "./whatsapp.svg";
 import pageUp from "./page-up.svg";
+import nextjs from "./tech/nextjs.svg";
+import rust from "./tech/rust.svg";
+import postgres from "./tech/postgres.svg";
 import aws from "./tech/aws.png";
 import hostinger from "./tech/hostinger.png";
 import cloud from "./tech/cloud.png";
@@ -260,6 +263,9 @@ export {
   // Additional assets
   whatsapp,
   pageUp,
+  nextjs,
+  rust,
+  postgres,
   aws,
   hostinger,
   cloud,

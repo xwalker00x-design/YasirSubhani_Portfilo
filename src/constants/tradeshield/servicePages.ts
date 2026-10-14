@@ -88,14 +88,14 @@ export const metaTraderPlatforms = [
 
 export const metaTraderBuildTypes = [
   "Custom indicators (sessions, MTF, dashboards)",
-  "Expert Advisors with risk rules & trade management",
+  "Expert Advisors with risk rules, trade management, and prop-style limits",
   "Scripts for one-off tasks and chart utilities",
   "Modifications to existing .mq4 / .mq5 source",
   "Alerts, panels, and Telegram / push integrations",
 ] as const;
 
 export const metaTraderTrustPoints = [
-  { value: "4+", label: "Years in software development" },
+  { value: "6+", label: "Years in software development" },
   { value: "MT5", label: "Primary delivery platform" },
   { value: "Clear", label: "Scope & INR quotes upfront" },
 ] as const;
@@ -111,7 +111,7 @@ export const tradingViewSections = [
     id: "strategies",
     title: "Strategies & automation",
     description:
-      "Strategy scripts, alert conditions, and webhook-friendly setups—scoped to what TradingView allows on your plan.",
+      "Pine Script v6 strategies, alert conditions, and webhook setups — scoped to what TradingView allows on your plan.",
   },
   {
     id: "conversion",
@@ -136,6 +136,6 @@ export const programmingForStrip = [
   {
     label: "TradingView",
     href: "/trading/services/tradingview",
-    blurb: "Pine Script · alerts",
+    blurb: "Pine Script v6 · alerts",
   },
 ] as const;

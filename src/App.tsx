@@ -6,6 +6,7 @@ import {
   CustomCursor,
   Hero,
   About,
+  ClientWork,
   Experience,
   Tech,
   Works,
@@ -50,6 +51,9 @@ function PublicAppContent() {
               </div>
               <section id="about">
                 <About />
+              </section>
+              <section id="hire">
+                <ClientWork />
               </section>
               <section id="work">
                 <Experience />

@@ -69,11 +69,10 @@ const Footer = () => {
           <div className="ambient-orb ambient-orb-blue w-64 h-64 -bottom-32 -right-32 opacity-10" />
 
           <h2 className="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">
-            Let's build something <span className="text-[#a78bfa]">extraordinary</span>.
+            Need a product live, <span className="text-[#a78bfa]">not a pitch deck</span>.
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            I'm currently available for freelance projects and full-time opportunities. 
-            If you have an idea, let's turn it into reality.
+            Open for freelance and contract work. I am currently building Pull SaaS for RealtorOne and can take a new client. You work with me directly.
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
@@ -104,8 +103,7 @@ const Footer = () => {
               <span className="text-white font-black text-2xl tracking-tighter">YS.</span>
             </Link>
             <p className="text-gray-400 leading-relaxed text-[15px]">
-              Full-Stack Developer specializing in high-performance Web & Mobile applications 
-              with AI integration.
+              Full-stack developer for web, mobile, and SaaS. Also custom MT5 and TradingView tools on TradeShield.
             </p>
           </div>
 

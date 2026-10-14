@@ -46,7 +46,7 @@ export const config: TConfig = {
   },
   hero: {
     name: "Yasir",
-    p: ["Web & Android App Developer", "Flutter, AI automation, Full-stack"],
+    p: ["Full-stack developer", "Web, Flutter, SaaS, AI features"],
   },
   contact: {
     p: "Get in touch",
@@ -59,23 +59,19 @@ export const config: TConfig = {
       email: { span: "Your Email", placeholder: "What's your email?" },
       message: {
         span: "Your Message",
-        placeholder: "What do you want to say?",
+        placeholder: "What do you need built, and by when?",
       },
     },
   },
   sections: {
     about: {
-      p: "Introduction",
+      p: "About",
       h2: "Overview.",
-      content: `I'm a skilled software developer with experience in TypeScript and
-      JavaScript, and expertise in frameworks like React, Node.js, and
-      Three.js. I'm a quick learner and collaborate closely with clients to
-      create efficient, scalable, and user-friendly solutions that solve
-      real-world problems. Let's work together to bring your ideas to life!`,
+      content: `Full-stack developer with 6+ years shipping web apps, Flutter mobile apps, and SaaS. I work directly with clients, use AI to move faster, and stay on a product until it is live.`,
     },
     experience: {
-      p: "What I have done so far",
-      h2: "Work Experience.",
+      p: "Recent first",
+      h2: "Work.",
     },
     feedbacks: {
       p: "What others say",
@@ -84,11 +80,7 @@ export const config: TConfig = {
     works: {
       p: "My work",
       h2: "Projects.",
-      content: `Following projects showcases my skills and experience through
-    real-world examples of my work. Each project is briefly described with
-    links to code repositories and live demos in it. It reflects my
-    ability to solve complex problems, work with different technologies,
-    and manage projects effectively.`,
+      content: `Live products: SaaS, broker apps, school ERP, and healthcare platforms. Open a card for screenshots and store links.`,
     },
   },
 };

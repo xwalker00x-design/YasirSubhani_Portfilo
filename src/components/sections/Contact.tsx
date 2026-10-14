@@ -97,7 +97,7 @@ const Contact = () => {
         <h3 className="text-white font-black md:text-[50px] sm:text-[40px] text-[30px] mb-2 leading-tight">
           Get in <span className="text-[#a78bfa]">Touch.</span>
         </h3>
-        <p className="text-gray-400 mb-10 text-lg">Have a project in mind? Let's talk.</p>
+        <p className="text-gray-400 mb-10 text-lg">Tell me what you need built. I reply within one business day. Remote, Monday–Saturday, IST.</p>
 
         <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-8 relative z-10">
           {Object.keys(config.contact.form).map((input) => {

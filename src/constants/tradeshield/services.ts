@@ -12,7 +12,7 @@ export const serviceOffers: ServiceOffer[] = [
   {
     title: "Expert Advisors & Bots",
     description:
-      "Automate entries, exits, and risk rules with EAs for MetaTrader or alert-based strategies on TradingView.",
+      "Automate entries, exits, and risk rules with EAs for MetaTrader or alert-based strategies on TradingView — including daily loss, session filters, and partial close.",
     icon: "📈",
     gradient: "from-blue-500 to-cyan-600",
   },

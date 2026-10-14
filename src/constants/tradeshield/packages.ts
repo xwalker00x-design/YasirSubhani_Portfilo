@@ -38,6 +38,7 @@ export const servicePackages: ServicePackage[] = [
     includes: [
       "New conditions & signal rules",
       "Telegram / push / email alerts",
+      "Risk rules: daily loss, sessions, break-even",
       "Multi-timeframe support",
       "2 rounds of revisions",
     ],
@@ -69,7 +70,7 @@ export const servicePackages: ServicePackage[] = [
     priceNote: "Depends on scope",
     description: "Custom indicator or strategy with alerts on TradingView.",
     includes: [
-      "Pine Script v5",
+      "Pine Script v6",
       "Alert-ready outputs",
       "Webhook-friendly where needed",
       "Revision rounds included",
