@@ -31,3 +31,7 @@ dist-ssr
 
 .vercel
 .env*.local
+
+# Local resume exports
+YasirSubhani-Resume.pdf
+YasirSubhani-Resume.html

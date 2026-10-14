@@ -59,7 +59,7 @@ export const defaultResumeData: ResumeData = {
   achievements: [],
   certifications: [],
   languages: "English, Hindi",
-  availability: "",
+  availability: "Open for freelance · Mon–Sat · Remote (IST)",
   hobbies: "Playing Guitar, Gaming, Stock Market",
   aiTools:
     "Cursor AI, Rocode/Cline, Anthropic Claude, Google Gemini, OpenAI GPT, Gemini CLI, LangChain, LlamaIndex, MCP Servers, Pinecone, FAISS, Whisper, TTS, Vision Models, Function Calling, RAG Pipelines",
