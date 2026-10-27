@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { projects } from "../../constants";
 import { close } from "../../assets";
 import { TProject } from "../../types";
+import { usePageTitle } from "../../hooks/usePageTitle";
 import {
   installer1,
   installer2,
@@ -420,6 +421,10 @@ const ProjectCard: React.FC<TProject & { index: number; onProjectClick: (project
 };
 
 const ProjectsPage = () => {
+  usePageTitle(
+    "Projects | Web Apps, Flutter Apps, and SaaS — Yasir Subhani",
+    "Shipped work by Yasir Subhani: SaaS, Flutter and Android apps, websites, and real-estate products including RealtorOne."
+  );
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState<TProject | null>(null);

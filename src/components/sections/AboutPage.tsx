@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 const AboutPage = () => {
+  usePageTitle(
+    "About Yasir Subhani | Full-Stack and App Developer in Kolkata",
+    "About Yasir Subhani, a freelance full-stack developer in Kolkata with 6+ years building websites, Flutter apps, SaaS, and AI features."
+  );
   return (
     <div className="w-full min-h-screen bg-primary py-20 relative overflow-hidden">
       {/* Animated Background Elements */}

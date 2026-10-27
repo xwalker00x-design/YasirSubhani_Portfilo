@@ -110,9 +110,9 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-bold text-lg mb-6">Explore</h4>
             <ul className="space-y-4">
-              {['Home', 'About', 'Work', 'Skills', 'Projects'].map(item => (
+              {['Home', 'About', 'Services', 'Work', 'Projects'].map(item => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase()}`} className="text-gray-500 hover:text-[#915EFF] transition-colors text-[15px]">
+                  <a href={item === 'Services' ? '/services' : `#${item.toLowerCase()}`} className="text-gray-500 hover:text-[#915EFF] transition-colors text-[15px]">
                     {item}
                   </a>
                 </li>
@@ -143,12 +143,13 @@ const Footer = () => {
 
           <div>
             <h4 className="text-white font-bold text-lg mb-6">Social</h4>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-3">
               {[
-                { name: 'LinkedIn', url: 'https://linkedin.com/in/yasirsubhani' },
-                { name: 'GitHub', url: 'https://github.com/yasirSub' },
-                { name: 'Twitter', url: 'https://twitter.com' },
-                { name: 'Instagram', url: 'https://instagram.com' }
+                { name: 'LinkedIn', url: 'https://linkedin.com/in/yasirsubhani', label: 'In' },
+                { name: 'GitHub', url: 'https://github.com/yasirSub', label: 'Gh' },
+                { name: 'YouTube', url: 'https://youtube.com/@yasirsubhani', label: 'Yt' },
+                { name: 'Twitter', url: 'https://x.com/yasirsubhani', label: 'X' },
+                { name: 'Instagram', url: 'https://instagram.com/yasirsubhani', label: 'Ig' }
               ].map((social) => (
                 <Magnetic key={social.name}>
                   <motion.a 
@@ -156,13 +157,11 @@ const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                     className="text-gray-500 hover:text-[#915EFF] transition-colors"
+                    title={social.name}
                   >
                     <span className="sr-only">{social.name}</span>
-                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:border-[#915EFF]/50 transition-colors bg-white/5 backdrop-blur-sm">
-                       {social.name === 'LinkedIn' && 'In'}
-                       {social.name === 'GitHub' && 'Gh'}
-                       {social.name === 'Twitter' && 'Tw'}
-                       {social.name === 'Instagram' && 'Ig'}
+                    <div className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center hover:border-[#915EFF]/50 hover:text-white transition-colors bg-white/5 backdrop-blur-sm text-xs font-bold">
+                       {social.label}
                     </div>
                   </motion.a>
                 </Magnetic>

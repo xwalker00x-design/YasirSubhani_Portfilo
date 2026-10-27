@@ -7,6 +7,7 @@ import {
   Hero,
   About,
   ClientWork,
+  Services,
   Experience,
   Tech,
   Works,
@@ -55,6 +56,9 @@ function PublicAppContent() {
               <section id="hire">
                 <ClientWork />
               </section>
+              <section id="services">
+                <Services />
+              </section>
               <section id="work">
                 <Experience />
               </section>
@@ -76,6 +80,7 @@ function PublicAppContent() {
         />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/services" element={<Services asPage />} />
         <Route path="/resume" element={<Navigate to="/" replace />} />
         <Route path="/gear" element={<Gear />} />
         <Route path="/pursuits" element={<OtherPursuits />} />
