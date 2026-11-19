@@ -83,7 +83,7 @@ const TradeShieldSiteFooter = () => (
       <div className="border-t border-white/5 pt-8 space-y-4 text-gray-500 text-xs leading-relaxed">
         <p>
           MetaTrader®, MetaTrader 5®, MT4®, and MT5® are registered trademarks of MetaQuotes Software Corp.
-          TradeShield / yasirsubhani.me is not associated with MetaQuotes Software Corp. Not associated with TradingView, Inc.
+          TradeShield / yasirsubhani.tech is not associated with MetaQuotes Software Corp. Not associated with TradingView, Inc.
         </p>
         <p>
           <strong className="text-gray-400">Risk disclosure:</strong> Trading involves substantial risk.

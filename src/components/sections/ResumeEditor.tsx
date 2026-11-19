@@ -82,7 +82,7 @@ const ResumeEditor = ({ showPublish = true }: Props) => {
       {showPublish && (
         <div className="mb-8 flex flex-wrap items-center gap-4 rounded-xl border border-[#915EFF]/30 bg-[#915EFF]/10 px-5 py-4">
           <p className="text-secondary text-sm flex-1 min-w-[200px]">
-            Save changes to publish resume data to the main site (yasirsubhani.me). Hero download uses this data.
+            Save changes to publish resume data to the main site (yasirsubhani.tech). Hero download uses this data.
           </p>
           <motion.button
             whileHover={{ scale: 1.03 }}

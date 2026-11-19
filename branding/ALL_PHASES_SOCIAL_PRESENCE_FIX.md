@@ -41,7 +41,7 @@ Before pushing traffic, your entire digital footprint must look institutional, s
    - **YouTube (`@yasirsubhani`):**  
      `I build and reverse-engineer SaaS, mobile apps, and algorithmic trading tools. Drop your build requests in the comments.`
 3. **Canonical Link Unification:**
-   - Every single profile points to your primary hub: `https://yasirsubhani.me` (or direct WhatsApp `+91 8271 819 813` for high-ticket bookings).
+   - Every single profile points to your primary hub: `https://yasirsubhani.tech` (or direct WhatsApp `+91 8271 819 813` for high-ticket bookings).
 
 ---
 
@@ -84,10 +84,10 @@ Position your personal domain and social profiles at the top of Google and YouTu
 
 ### Action Items:
 1. **Google Schema Synchronization:**  
-   - Ensure `index.html` on `yasirsubhani.me` has updated `sameAs` array linking to your official YouTube, LinkedIn, X, Instagram, and GitHub profiles (already embedded).
+   - Ensure `index.html` on `yasirsubhani.tech` has updated `sameAs` array linking to your official YouTube, LinkedIn, X, Instagram, and GitHub profiles (already embedded).
 2. **Topical Authority Blogging (Dev.to, Hashnode, Medium):**  
    - Publish the pre-written article in `branding/CONTENT_BLOGGING_PLAN.md`: *"Architecting a High-Performance Multi-Tenant SaaS with PostgreSQL Row-Level Security"*.
-   - Add canonical links back to `yasirsubhani.me` to transfer domain authority to your personal site.
+   - Add canonical links back to `yasirsubhani.tech` to transfer domain authority to your personal site.
 3. **GitHub Profile README Relaunch:**  
    - Upgrade `https://github.com/yasirSub` with dynamic GitHub stats, live project cards for RealtorOne, TradeShield, and WhatsApp AI bot, and clear contact badge for paid development contracts.
 
@@ -135,7 +135,7 @@ When users flood your profiles asking *"How do you build this?"*, your automated
 - **Immediate Automated DM:**
   > *"Hey! Here is the architecture diagram and GitHub starter repo: [Link to Portfolio Case Study]. Are you looking to learn how to build this yourself, or do you have a project you need me to build for your business?"*
 - **If User Replies "Build for my business":**
-  > Automated link sent: *"Awesome. You can review my engagement tiers and schedule an architecture call directly here: https://yasirsubhani.me"*
+  > Automated link sent: *"Awesome. You can review my engagement tiers and schedule an architecture call directly here: https://yasirsubhani.tech"*
 
 ### 2. The $5/Day "Proof-of-Build" Ad Campaign:
 - **Platform:** Meta Ads Manager (Instagram & Facebook).

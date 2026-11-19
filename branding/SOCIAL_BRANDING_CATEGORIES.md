@@ -22,7 +22,7 @@ To achieve massive fame without confusing high-paying software clients, your ent
 ├──────────────────────────────┤       ├──────────────────────────────┤       ├──────────────────────────────┤
 │ • YouTube (Builds, Gear,     │       │ • LinkedIn (B2B Authority)   │       │ • Official Facebook Page     │
 │   Gaming, Guitar, Vlogs)     │       │ • GitHub (Code Proofs)       │       │   (Creator / Public Figure)  │
-│ • Kick.com (Live Streaming)  │       │ • Portfolio (yasirsubhani.me)│       │ • TradeShield Brand Hub      │
+│ • Kick.com (Live Streaming)  │       │ • Portfolio (yasirsubhani.tech)│       │ • TradeShield Brand Hub      │
 │ • Twitch (Live Gaming/Coding)│       │ • Dev.to & Hashnode (Blogs)  │       │ • Discord Community Server   │
 │ • Instagram (@yasir_subhani) │       │ • Upwork / Freelance Hubs    │       │ • Telegram VIP Trading &     │
 │ • Twitter / X (Speed & AI)   │       │ • Tech Twitter (Dev track)   │       │   Tech Signals Channel       │
@@ -58,7 +58,7 @@ This category is your **high-revenue B2B machine**. When founders, startup CEOs,
 |---|---|---|---|---|
 | **LinkedIn** | Primary B2B Hub | `linkedin.com/in/yasirsubhani` | SaaS breakdowns (RealtorOne, Skoolwala), architecture diagrams, performance audits | Direct inbound contracts ($3k–$15k) |
 | **GitHub** | Proof of Work | `github.com/yasirSub` | Production repositories, starred projects, clean READMEs with live demo URLs | CTO technical vetting & open-source authority |
-| **Portfolio** | Conversion HQ | `https://yasirsubhani.me` | Interactive 3D portfolio, live client projects, booking calendar, testimonials | Instant client consultation booking |
+| **Portfolio** | Conversion HQ | `https://yasirsubhani.tech` | Interactive 3D portfolio, live client projects, booking calendar, testimonials | Instant client consultation booking |
 | **Dev.to / Hashnode** | Technical Blogs | `dev.to/yasirsubhani` | Step-by-step guides (Next.js multi-tenancy, Flutter 60fps, WhatsApp AI bots) | Google search SEO & thought leadership |
 | **Upwork / Direct** | Contract Vehicle | Yasir Subhani | Top Rated Full-Stack & Flutter badge, verified earnings | Inbound hourly / milestone contracts |
 
@@ -85,7 +85,7 @@ To make sure anyone who finds you on one platform discovers all your other platf
 
 ```
 [ YouTube Video Description ] ──► Links to: Kick, Instagram, GitHub, Portfolio
-[ Instagram Bio Link ]        ──► Links to: yasirsubhani.me (with tabs for Work, Streams, Socials)
+[ Instagram Bio Link ]        ──► Links to: yasirsubhani.tech (with tabs for Work, Streams, Socials)
 [ Kick / Twitch Panels ]      ──► Links to: YouTube, Twitter/X, Discord, Portfolio
 [ LinkedIn Featured Section ] ──► Links to: Portfolio, Top YouTube SaaS Breakdown, GitHub
 [ Facebook Fan Page ]         ──► Auto-crossposts Instagram Reels & YouTube links

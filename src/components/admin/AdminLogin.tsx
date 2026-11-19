@@ -40,7 +40,7 @@ const AdminLogin = () => {
         className="w-full max-w-md rounded-2xl border border-white/10 bg-black-100/80 p-8 backdrop-blur-xl"
       >
         <h1 className="text-white text-2xl font-bold mb-2">Admin</h1>
-        <p className="text-secondary text-sm mb-6">admin.yasirsubhani.me</p>
+        <p className="text-secondary text-sm mb-6">admin.yasirsubhani.tech</p>
         <label className="text-secondary text-sm block mb-2">Password</label>
         <input
           type="password"

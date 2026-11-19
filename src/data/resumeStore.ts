@@ -44,7 +44,7 @@ export const defaultResumeData: ResumeData = {
     location: "Kolkata, India",
     linkedin: "linkedin.com/in/yasirsubhani",
     github: "github.com/yasirSub",
-    website: "https://yasirsubhani.me",
+    website: "https://yasirsubhani.tech",
     yearsExperience: "6+ years experience",
   },
   summary:

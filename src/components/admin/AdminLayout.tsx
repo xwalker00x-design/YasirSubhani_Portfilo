@@ -21,7 +21,7 @@ const AdminLayout = () => {
         <Link to="/settings" className="text-white font-bold text-lg mb-1">
           Yasir<span className="text-[#915EFF]"> Admin</span>
         </Link>
-        <p className="text-secondary text-xs mb-8">admin.yasirsubhani.me</p>
+        <p className="text-secondary text-xs mb-8">admin.yasirsubhani.tech</p>
         <nav className="flex flex-col gap-2 flex-1">
           {nav.map((item) => {
             const active =
@@ -44,7 +44,7 @@ const AdminLayout = () => {
           })}
         </nav>
         <a
-          href="https://yasirsubhani.me"
+          href="https://yasirsubhani.tech"
           target="_blank"
           rel="noreferrer"
           className="text-secondary text-sm hover:text-white mb-4"

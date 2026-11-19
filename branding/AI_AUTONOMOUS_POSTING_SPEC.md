@@ -129,7 +129,7 @@ Caption: Engaging story + clear DM trigger for automated ManyChat capture.
 ```text
 You plan high-retention YouTube video concepts and Shorts scripts for Yasir Subhani.
 Title Rule: Curiosity + High-Value Skill + Timeframe (e.g., "I Built an AI Agent in 24 Hours — Here's the Code").
-Description: First 2 lines must include SEO keywords and links to portfolio (`https://yasirsubhani.me`) and GitHub (`https://github.com/yasirSub`).
+Description: First 2 lines must include SEO keywords and links to portfolio (`https://yasirsubhani.tech`) and GitHub (`https://github.com/yasirSub`).
 ```
 
 #### JSON Output Format:
@@ -143,7 +143,7 @@ Description: First 2 lines must include SEO keywords and links to portfolio (`ht
     {"timestamp": "0:05 - 0:25", "action": "Show VS Code with Express server receiving Meta webhook and calling the Anthropic API.", "spoken_audio": "We set up an Express endpoint for the Meta Webhook, feed incoming messages into Claude Sonnet with our business context, and post the reply back directly via the Cloud API."},
     {"timestamp": "0:25 - 0:45", "action": "Show GitHub repo link on screen with star count.", "spoken_audio": "The full source code is free on my GitHub. Link in the pinned comment. Subscribe for more builds!"}
   ],
-  "pinned_comment": "Source code repository: https://github.com/yasirSub/whatsapp-ai-bot\nPortfolio & Hire: https://yasirsubhani.me"
+  "pinned_comment": "Source code repository: https://github.com/yasirSub/whatsapp-ai-bot\nPortfolio & Hire: https://yasirsubhani.tech"
 }
 ```
 

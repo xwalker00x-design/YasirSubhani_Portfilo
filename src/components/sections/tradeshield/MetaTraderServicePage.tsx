@@ -86,7 +86,7 @@ const MetaTraderServicePage = () => {
 
         <p className="text-gray-600 text-xs leading-relaxed border-t border-white/5 pt-6 mb-8">
           MetaTrader®, MetaTrader 4®, MetaTrader 5®, MT4®, MT5®, and MQL® are trademarks of
-          MetaQuotes Software Corp. TradeShield / yasirsubhani.me is not affiliated with MetaQuotes.
+          MetaQuotes Software Corp. TradeShield / yasirsubhani.tech is not affiliated with MetaQuotes.
         </p>
 
         <div className="flex flex-wrap gap-3">

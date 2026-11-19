@@ -5,7 +5,7 @@ A modern, interactive 3D portfolio website built with React, Three.js, and Frame
 ## 🌟 Live Demo
 
 **Visit the live website:** 
-www.yasirsubhani.me
+www.yasirsubhani.tech
 **Status: Deploying...** 🚀
 
 ## 🚀 Features

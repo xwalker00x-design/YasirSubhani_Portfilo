@@ -1,7 +1,7 @@
 export const privacyPolicySections = [
   {
     title: "Introduction",
-    body: `TradeShield ("we", "yasirsubhani.me / Yasir Subhani") respects your privacy. This policy explains what information we collect when you use the TradeShield pages, request a quote, or communicate with us about custom trading tools.`,
+    body: `TradeShield ("we", "yasirsubhani.tech / Yasir Subhani") respects your privacy. This policy explains what information we collect when you use the TradeShield pages, request a quote, or communicate with us about custom trading tools.`,
   },
   {
     title: "Information we collect",

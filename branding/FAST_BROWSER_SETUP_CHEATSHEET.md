@@ -26,13 +26,13 @@ On this channel:
 
 Founder @ TradeShield | Creator of RealtorOne & Skoolwala ERP.
 
-🌐 Portfolio & Case Studies: https://yasirsubhani.me
+🌐 Portfolio & Case Studies: https://yasirsubhani.tech
 💻 GitHub Source Code: https://github.com/yasirSub
 💼 Hire / Architecture Consulting: yasir.subhani123@gmail.com
 ```
 
 ### Channel Links to Add:
-1. **Title:** `Portfolio & Case Studies` | **URL:** `https://yasirsubhani.me`
+1. **Title:** `Portfolio & Case Studies` | **URL:** `https://yasirsubhani.tech`
 2. **Title:** `GitHub Codebase` | **URL:** `https://github.com/yasirSub`
 3. **Title:** `LinkedIn` | **URL:** `https://www.linkedin.com/in/yasirsubhani`
 4. **Title:** `Instagram` | **URL:** `https://instagram.com/yasir_subhani`
@@ -54,7 +54,7 @@ Full-Stack Developer & Trader ⚡ Building software live, testing algorithmic bo
 - **YouTube:** `https://youtube.com/@yasirsubhani`
 - **Twitter / X:** `https://x.com/yasirsubhani`
 - **Instagram:** `https://instagram.com/yasir_subhani`
-- **Discord / Website:** `https://yasirsubhani.me`
+- **Discord / Website:** `https://yasirsubhani.tech`
 
 ---
 
@@ -70,7 +70,7 @@ Full-Stack & Mobile Architect. Building SaaS, AI agents & MT5 trading bots. Foun
 ```
 
 - **Location:** `Global / Remote`
-- **Website:** `https://yasirsubhani.me`
+- **Website:** `https://yasirsubhani.tech`
 
 ---
 
@@ -103,7 +103,7 @@ NOTABLE PRODUCTION BUILDS:
 
 Available for select high-ticket architectural consulting, custom SaaS builds, and mobile product sprints ($3,000 – $15,000+).
 
-🌐 Portfolio & Proof of Work: https://yasirsubhani.me
+🌐 Portfolio & Proof of Work: https://yasirsubhani.tech
 💻 Open Source & Commits: https://github.com/yasirSub
 📩 Inquiries & Proposals: yasir.subhani123@gmail.com | WhatsApp: +91 8271 819 813
 ```
@@ -122,10 +122,10 @@ Full-Stack Developer, Mobile App Architect & FinTech Trader. Building software, 
 ```
 
 ### Page About Details:
-- **Website:** `https://yasirsubhani.me`
+- **Website:** `https://yasirsubhani.tech`
 - **Email:** `yasir.subhani123@gmail.com`
 - **Phone / WhatsApp:** `+91 8271 819 813`
-- **Action Button:** `Send WhatsApp Message` or `Learn More` -> `https://yasirsubhani.me`
+- **Action Button:** `Send WhatsApp Message` or `Learn More` -> `https://yasirsubhani.tech`
 
 ---
 
@@ -151,12 +151,12 @@ const yasir = {
 
 ### 🚀 Production Weapons & Live Systems
 - **[RealtorOne](https://realtoronehub.com)** — Enterprise multi-tenant real estate SaaS with automated reverse proxy & container isolation.
-- **[TradeShield](https://yasirsubhani.me)** — Algorithmic trading bots, MQL5 Expert Advisors & Pine Script order flow indicators.
-- **[Skoolwala](https://yasirsubhani.me)** — Large-scale ERP system serving 50,000+ active mobile students.
+- **[TradeShield](https://yasirsubhani.tech)** — Algorithmic trading bots, MQL5 Expert Advisors & Pine Script order flow indicators.
+- **[Skoolwala](https://yasirsubhani.tech)** — Large-scale ERP system serving 50,000+ active mobile students.
 - **WhatsApp AI CRM Bot** — Meta Cloud API autonomous agent handling customer support and lead qualification.
 
 ### 🌐 Connect With Me
-- 🌍 **Portfolio & Client Booking:** [yasirsubhani.me](https://yasirsubhani.me)
+- 🌍 **Portfolio & Client Booking:** [yasirsubhani.tech](https://yasirsubhani.tech)
 - 🎥 **YouTube:** [@yasirsubhani](https://youtube.com/@yasirsubhani)
 - 💼 **LinkedIn:** [/in/yasirsubhani](https://www.linkedin.com/in/yasirsubhani)
 - 📸 **Instagram:** [@yasir_subhani](https://instagram.com/yasir_subhani)
@@ -175,7 +175,7 @@ const yasir = {
 ```text
 Dev & Trader ⚡ Building apps & AI tools live. Tap link for code 👇
 ```
-- **Website Link:** `https://yasirsubhani.me`
+- **Website Link:** `https://yasirsubhani.tech`
 
 ---
 
@@ -188,6 +188,6 @@ Dev & Trader ⚡ Building apps & AI tools live. Tap link for code 👇
 ```text
 Official channel by Yasir Subhani. Real-time updates on algorithmic trading (MT5 & Pine Script), free indicator code drops, software architecture breakdowns, and live stream notifications.
 
-🌐 Website: https://yasirsubhani.me
+🌐 Website: https://yasirsubhani.tech
 💻 Codebase: https://github.com/yasirSub
 ```

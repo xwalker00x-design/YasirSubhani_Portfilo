@@ -2,7 +2,7 @@ const LegalFooter = () => (
   <footer className="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 text-gray-500 text-xs leading-relaxed space-y-4">
     <p>
       MetaTrader®, MetaTrader 5®, MT4®, and MT5® are registered trademarks of MetaQuotes
-      Software Corp. TradeShield / yasirsubhani.me is not associated with MetaQuotes
+      Software Corp. TradeShield / yasirsubhani.tech is not associated with MetaQuotes
       Software Corp. Not associated with TradingView, Inc.
     </p>
     <p>

@@ -43,7 +43,7 @@ const buildSystemPrompt = (): string => {
     .join("\n");
   const skills = services.map((s) => s.title).join(", ");
 
-  return `You are the AI assistant on Yasir Subhani's portfolio (yasirsubhani.me).
+  return `You are the AI assistant on Yasir Subhani's portfolio (yasirsubhani.tech).
 Be concise, friendly, and professional. Help visitors learn about Yasir's work, skills, and how to hire him.
 
 Core skills: ${skills}
@@ -81,7 +81,7 @@ export const sendAiMessage = async (
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
-      "HTTP-Referer": "https://yasirsubhani.me",
+      "HTTP-Referer": "https://yasirsubhani.tech",
       "X-Title": "Yasir Subhani Portfolio",
     },
     body: JSON.stringify({

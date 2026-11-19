@@ -1,7 +1,7 @@
 export const isAdminHost = (): boolean => {
   if (typeof window === "undefined") return false;
   const host = window.location.hostname.toLowerCase();
-  return host === "admin.yasirsubhani.me" || host.startsWith("admin.");
+  return host === "admin.yasirsubhani.tech" || host.startsWith("admin.");
 };
 
 export const isLocalAdminDev = (): boolean => {
@@ -15,6 +15,6 @@ export const isAdminApp = (): boolean => isAdminHost() || isLocalAdminDev();
 export const cookieDomain = (): string | undefined => {
   if (typeof window === "undefined") return undefined;
   const host = window.location.hostname.toLowerCase();
-  if (host.endsWith("yasirsubhani.me")) return ".yasirsubhani.me";
+  if (host.endsWith("yasirsubhani.tech")) return ".yasirsubhani.tech";
   return undefined;
 };

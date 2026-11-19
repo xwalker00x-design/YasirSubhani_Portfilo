@@ -32,7 +32,7 @@ const AdminAiSettingsPage = () => {
         AI Assistant
       </motion.h1>
       <p className="text-secondary mb-8">
-        Configure the portfolio AI chat widget shown on yasirsubhani.me.
+        Configure the portfolio AI chat widget shown on yasirsubhani.tech.
       </p>
 
       <div className="space-y-6 rounded-xl border border-white/10 bg-black-100/40 p-6">

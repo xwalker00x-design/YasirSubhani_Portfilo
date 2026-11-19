@@ -12,7 +12,7 @@ Your online presence is structured into three distinct engines:
    *YouTube, Kick.com, Twitch, Instagram, Twitter/X, TikTok, Facebook Profile*  
    - Purpose: Massive reach, fan growth, live gaming, guitar sessions, tech unboxing, and ad revenue.
 2. **Category 2: Work & Engineering (High-Ticket B2B)**  
-   *LinkedIn, GitHub, Portfolio (`yasirsubhani.me`), Dev.to, Hashnode, Medium*  
+   *LinkedIn, GitHub, Portfolio (`yasirsubhani.tech`), Dev.to, Hashnode, Medium*  
    - Purpose: Signing $3,000–$15,000+ development clients, showcasing multi-tenant SaaS, and proving technical mastery.
 3. **Category 3: Official Fan Pages & Public Entity Communities**  
    *Official Facebook Creator Page, TradeShield FinTech Hub, Discord Server, Telegram VIP Channel*  
@@ -41,7 +41,7 @@ Your online presence is structured into three distinct engines:
 
 ## Quick Reference Links
 
-- **Portfolio:** `https://yasirsubhani.me`
+- **Portfolio:** `https://yasirsubhani.tech`
 - **LinkedIn:** `https://www.linkedin.com/in/yasirsubhani`
 - **GitHub:** `https://github.com/yasirSub`
 - **YouTube:** `https://youtube.com/@yasirsubhani`

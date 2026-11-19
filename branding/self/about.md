@@ -5,7 +5,7 @@ Sources: what Yasir said on 1 November 2026, his public site, LinkedIn (https://
 - Name: Yasir Subhani
 - He plays guitar. He does coding. He is an AI developer. He does mobile development. He said this directly on 1 November 2026.
 - Based in India. YouTube Studio country of residence: India. Portfolio and LinkedIn roles list Kolkata, West Bengal. Himalayas says he is authorized to work in India and is open to opportunities.
-- Public site: https://yasirsubhani.me
+- Public site: https://yasirsubhani.tech
 - Portfolio positioning: AI app developer and full-stack developer. Freelance work in websites, mobile apps, and SaaS. The site says 6+ years shipping TypeScript, Next.js, Flutter, and Android apps from idea to something people can open.
 - LinkedIn headline: AI Agent Manager | Building Intelligent Automation Solutions | Full-Stack Developer | Flutter & Laravel Specialist.
 - Himalayas headline: AI Agent Manager building intelligent automation with full-stack engineering.

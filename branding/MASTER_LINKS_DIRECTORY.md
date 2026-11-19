@@ -24,7 +24,7 @@
 |---|---|---|---|
 | **LinkedIn** | `https://www.linkedin.com/in/yasirsubhani` | Active Hub | Full-stack B2B case studies, SaaS architecture, high-ticket client acquisition |
 | **GitHub** | `https://github.com/yasirSub` | Active (30+ Repos) | Public source code, multi-tenant SaaS proofs, Flutter apps, green commits |
-| **Portfolio** | `https://yasirsubhani.me` | Production | Interactive 3D client portfolio, live project demos, client booking |
+| **Portfolio** | `https://yasirsubhani.tech` | Production | Interactive 3D client portfolio, live project demos, client booking |
 | **Dev.to** | `https://dev.to/yasirsubhani` | Technical Blog | In-depth engineering tutorials (Next.js, Flutter, WhatsApp AI) |
 | **Hashnode** | `https://yasirsubhani.hashnode.dev` | SEO Blog | High-ranking developer articles indexed by Google |
 | **Medium** | `https://medium.com/@yasirsubhani` | Thought Leadership | Long-form articles for non-technical founders & tech executives |
@@ -36,7 +36,7 @@
 | Entity | Platform | Destination | Purpose |
 |---|---|---|---|
 | **Official Fan Page** | Facebook Page | **Yasir Subhani** *(Digital Creator / Public Figure)* | Scale to 100k+ followers without personal profile limits, run ads |
-| **TradeShield Brand Hub** | FinTech Platform | `https://yasirsubhani.me/trading` | Custom MT5 indicators, Pine Script EAs, and quantitative tools |
+| **TradeShield Brand Hub** | FinTech Platform | `https://yasirsubhani.tech/trading` | Custom MT5 indicators, Pine Script EAs, and quantitative tools |
 | **Community Server** | Discord | **Yasir's Builder & Trader Lounge** | Gaming lobbies, live coding hangouts, trading chart discussions |
 | **VIP Broadcast** | Telegram Channel | **Yasir Subhani Official** | Instant direct updates for YouTube drops, market calls, and code templates |
 
@@ -47,7 +47,7 @@
 - **Primary Work Email:** `yasir.subhani123@gmail.com`
 - **Phone / WhatsApp:** `+91 8271 819 813`
 - **Location:** Kolkata, India | Open for Global Remote & International Contracts
-- **Primary Domain:** `https://yasirsubhani.me`
+- **Primary Domain:** `https://yasirsubhani.tech`
 
 ---
 

@@ -30,7 +30,7 @@ Target these exact search queries across video titles, blog tags, GitHub READMEs
 | **SaaS Architecture** | "How to architect multi-tenant SaaS PostgreSQL", "Docker Traefik production reverse proxy", "Stripe subscription multi-tenant Next.js" | YouTube Architecture Diagram + LinkedIn Post |
 | **FinTech & Trading** | "Build custom MT5 indicator MQL5", "TradingView Pine Script order block bot", "Automate webhook to broker execution" | TradeShield Case Study + YouTube Short |
 
-### 2.2 Portfolio SEO Architecture (`yasirsubhani.me`)
+### 2.2 Portfolio SEO Architecture (`yasirsubhani.tech`)
 To rank on Google for development and architectural queries:
 
 1. **JSON-LD Schema Markup:** Embed comprehensive `Person` and `ProfessionalService` schemas (already integrated in your `index.html` and `docs/index.html`).

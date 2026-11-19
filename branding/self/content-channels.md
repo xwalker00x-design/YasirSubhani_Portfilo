@@ -40,7 +40,7 @@ He signs into YouTube himself and says when sign-in is done. Do not type his pas
 
 What was already published before he said to stop:
 
-- Channel description was replaced and published. It now leads with fingerstyle guitar, Bihar travel vlogs, and live gaming, and links yasirsubhani.me and instagram.com/yasir_subhani.
+- Channel description was replaced and published. It now leads with fingerstyle guitar, Bihar travel vlogs, and live gaming, and links yasirsubhani.tech and instagram.com/yasir_subhani.
 - Channel keywords were replaced and saved, even though he later said not to change them. The keywords box, on Settings → Channel → Basic info, currently shows only: Yasir Subhani, fingerstyle guitar, guitar tab, guitar cover, Bihar travel vlog, Bhagalpur vlog, Mandar Hill, acoustic guitar.
 
 The previous keywords, which he wants kept because he plans to update those videos again, were: Yasir Subhani, AI developer, AI tools, ChatGPT tutorial, work from home, trading, stock market trading, share market for beginners, Nifty Bank Nifty, Indian stock market news, AI stock analysis, AI trading tools, AI for coders, tech hindi, gaming live, gameplay hindi, BGMI gameplay, GTA 6, desi gamers, livestream, travel vlog india, Uttarakhand travel, budget travel, vlogs, music.
@@ -58,4 +58,4 @@ Private videos were never to be touched. The website YouTube link was not switch
 
 ## Other public posting
 
-LinkedIn posts from August–October 2026 are mostly build-in-public notes on AI agents, Flutter plus AI, edge LLMs, open source, and one post on algo trading, MT5, and trading bots. They point at yasirsubhani.me.
+LinkedIn posts from August–October 2026 are mostly build-in-public notes on AI agents, Flutter plus AI, edge LLMs, open source, and one post on algo trading, MT5, and trading bots. They point at yasirsubhani.tech.
