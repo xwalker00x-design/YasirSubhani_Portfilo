@@ -135,16 +135,29 @@ export const services: TService[] = [
 
 export const experiences: TExperience[] = [
   {
+    title: "AI Agent Manager",
+    companyName: "Self. — Freelance",
+    icon: creator,
+    iconBg: "#0F172A",
+    date: "Mar 2026 - Present",
+    points: [
+      "Build AI agents that handle real client work: lead follow-up, support replies, and internal ops.",
+      "Connect the model to the product’s own APIs, data, and tools so the agent can finish the task.",
+      "Write the prompts, checks, and handoff so the feature can ship with the rest of the app.",
+      "Deliver the agent together with the Flutter, web, and API work in the same release.",
+    ],
+  },
+  {
     title: "Full-Stack Developer",
     companyName: "RealtorOne (R.N. Tiger) — Freelance",
     icon: backend,
     iconBg: "#383E56",
     date: "Feb 2026 - Present",
     points: [
-      "Building and maintaining Pull SaaS as a full-stack developer for RealtorOne under R.N. Tiger.",
-      "Shipping end-to-end features across frontend, backend, and cloud for a multi-tenant SaaS product.",
-      "Owning product workflows for real-estate operations, integrations, and performance-focused delivery.",
-      "Collaborating directly with the client on roadmap, architecture, and ongoing production releases.",
+      "Lead full-stack work on Pull SaaS for RealtorOne, client R.N. Tiger, from February 2026.",
+      "Build the multi-tenant real-estate product: agent workflows, dashboards, and the APIs behind them.",
+      "Take features from scope to a live release, directly with the client.",
+      "Keep production stable while new tenant and operations features go out.",
     ],
   },
   {
@@ -154,9 +167,10 @@ export const experiences: TExperience[] = [
     iconBg: "#915EFF",
     date: "Jan 2024 - Jun 2026",
     points: [
-      "Led full-stack architecture for high-traffic enterprise applications focusing on performance.",
-      "Engineered automated workflows with integrated AI modules for data processing.",
-      "Collaborated with cross-functional teams to deploy scalable cloud infrastructures.",
+      "Full-stack and Flutter delivery from January 2024 through June 2026.",
+      "Shipped client web apps, mobile apps, and AI-assisted internal workflows.",
+      "Owned features from build through cloud deploy for live client products.",
+      "Left in June 2026 to focus on freelance SaaS and AI agent work.",
     ],
   },
   {
@@ -297,7 +311,7 @@ export const projects: TProject[] = [
   {
     name: "Pull SaaS (RealtorOne)",
     description:
-      "SaaS product for real-estate teams. I build the features, APIs, and dashboards clients use every day. Freelance, Feb 2026–present, client R.N. Tiger.",
+      "Multi-tenant SaaS for real-estate teams. Since February 2026 I build the agent workflows, dashboards, and APIs for RealtorOne. Client: R.N. Tiger.",
     tags: [
       {
         name: "saas",

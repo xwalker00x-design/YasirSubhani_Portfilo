@@ -252,7 +252,7 @@ export async function generateResumePdf(personal: PersonalInfo, options: Generat
   addSectionTitle("Summary");
   const summary =
     options.summary ||
-    "Full-Stack Developer & AI Engineer with experience in web, mobile, and AI automation. Skilled in building scalable apps, integrating AI/LLMs, and optimizing databases with a focus on UX and performance.";
+    "Full-stack developer and AI agent manager. Six years across web, Flutter, and SaaS. In 2026: AI agents for client workflows, and Pull SaaS for RealtorOne from February 2026.";
   if (compact) {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(bodySize);
@@ -446,7 +446,7 @@ export async function generateResumePdf(personal: PersonalInfo, options: Generat
 
   // —— Education ——
   const defaultEducation = [
-    { degree: "MCA (Master of Computer Applications)", institution: "Amity University", year: "2024 - 2025" },
+    { degree: "MCA (Master of Computer Applications)", institution: "Amity University", year: "2024 - Present" },
     { degree: "BCA (Bachelor of Computer Applications)", institution: "Amity University", year: "2020 - 2023" },
     { degree: "12th (Higher Secondary)", institution: "High School Sabour", year: "2018" },
     { degree: "10th (Matriculation)", institution: "Millia Convent English School", year: "2014 - 2015" },

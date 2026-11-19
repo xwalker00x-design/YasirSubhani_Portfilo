@@ -311,7 +311,7 @@ const ResumeEditor = ({ showPublish = true }: Props) => {
             openResumeText(personal, {
               ...pdfOpts(),
               education: [
-                { degree: "MCA (Master of Computer Applications)", institution: "Amity University", year: "2024 - 2025" },
+                { degree: "MCA (Master of Computer Applications)", institution: "Amity University", year: "2024 - Present" },
                 { degree: "BCA (Bachelor of Computer Applications)", institution: "Amity University", year: "2020 - 2023" },
                 { degree: "12th (Higher Secondary)", institution: "High School Sabour", year: "2018" },
                 { degree: "10th (Matriculation)", institution: "Millia Convent English School", year: "2014 - 2015" },

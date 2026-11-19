@@ -6,7 +6,7 @@ import { openResumeText } from "../../utils/resumeText";
 const ResumePage = () => {
   const [personal, setPersonal] = useState({
     name: "Yasir Subhani",
-    role: "Full-Stack Developer • AI Engineer",
+    role: "Full-Stack Developer • AI Agent Manager",
     email: "yasir.subhani123@gmail.com",
     phone: "+91 8271819813",
     location: "Kolkata, India",
@@ -16,7 +16,7 @@ const ResumePage = () => {
     yearsExperience: "6+ years experience",
   });
   const [summary, setSummary] = useState(
-    "Full-Stack Developer & AI Engineer with experience across web/mobile, AI automation, and LLM integration (Claude, Gemini). Skilled in scalable app development, prompt engineering, and database optimization with strong focus on UX and performance."
+    "Full-stack developer and AI agent manager. Six years across web, Flutter, and SaaS. In 2026: AI agents for client workflows, and Pull SaaS for RealtorOne (R.N. Tiger) from February 2026."
   );
   const [customProjects, setCustomProjects] = useState<Array<{ name: string; description: string }>>([]);
   const [achievements, setAchievements] = useState<string[]>([]);
@@ -347,7 +347,7 @@ const ResumePage = () => {
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
             onClick={() => openResumeText(personal, { summary, additionalProjects: customProjects.filter(p => p.name && p.description), achievements: achievements.filter(Boolean), certifications: certifications.filter(Boolean), languages: languages.split(',').map(s => s.trim()).filter(Boolean), availability, education: [
-              { degree: "MCA (Master of Computer Applications)", institution: "Amity University", year: "2024 - 2025" },
+              { degree: "MCA (Master of Computer Applications)", institution: "Amity University", year: "2024 - Present" },
               { degree: "BCA (Bachelor of Computer Applications)", institution: "Amity University", year: "2020 - 2023" },
               { degree: "12th (Higher Secondary)", institution: "High School Sabour", year: "2018" },
               { degree: "10th (Matriculation)", institution: "Millia Convent English School", year: "2014 - 2015" },

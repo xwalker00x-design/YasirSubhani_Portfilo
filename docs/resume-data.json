@@ -1,7 +1,7 @@
 {
   "personal": {
     "name": "Yasir Subhani",
-    "role": "Full-Stack Developer • AI Engineer",
+    "role": "Full-Stack Developer • AI Agent Manager",
     "email": "yasir.subhani123@gmail.com",
     "phone": "+91 8271819813",
     "location": "Kolkata, India",
@@ -10,11 +10,11 @@
     "website": "https://yasirsubhani.tech",
     "yearsExperience": "6+ years experience"
   },
-  "summary": "Full-Stack Developer & AI Engineer with experience across web/mobile, AI automation, and LLM integration (Claude, Gemini). Skilled in scalable app development, prompt engineering, and database optimization with strong focus on UX and performance.",
+  "summary": "Full-stack developer and AI agent manager. Six years across web, Flutter, and SaaS. In 2026: AI agents for client workflows, and Pull SaaS for RealtorOne (R.N. Tiger) from February 2026.",
   "customProjects": [
     {
       "name": "Pull SaaS (RealtorOne)",
-      "description": "Full-stack freelance engagement for RealtorOne (client: R.N. Tiger). Building and evolving Pull SaaS over 7+ months (Feb 2026 – Present) — multi-tenant product features, APIs, dashboards, and production delivery across the stack."
+      "description": "Freelance full-stack work for RealtorOne, client R.N. Tiger, February 2026 to present. Multi-tenant real-estate SaaS: agent workflows, dashboards, APIs, and production releases."
     }
   ],
   "achievements": [],

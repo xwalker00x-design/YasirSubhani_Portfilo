@@ -46,7 +46,7 @@ export const config: TConfig = {
   },
   hero: {
     name: "Yasir",
-    p: ["Full-stack developer", "Web, Flutter, SaaS, AI features"],
+    p: ["AI agents and SaaS", "Flutter, web, and production releases"],
   },
   contact: {
     p: "Get in touch",
@@ -67,7 +67,7 @@ export const config: TConfig = {
     about: {
       p: "About",
       h2: "Overview.",
-      content: `Full-stack developer with 6+ years shipping web apps, Flutter mobile apps, and SaaS. I work directly with clients, use AI to move faster, and stay on a product until it is live.`,
+      content: `Full-stack developer, 6+ years. In 2026 I run two live tracks: AI agents for client workflows, and Pull SaaS for RealtorOne. Flutter, web, APIs, and the release that follows.`,
     },
     experience: {
       p: "Recent first",

@@ -194,15 +194,15 @@ const AboutPage = () => {
                   {
                     title: "MCA (Master of Computer Applications)",
                     institution: "Amity University",
-                    duration: "2024 - 2025",
+                    duration: "2024 - Present",
                     location: "India",
                     tags: ["Advanced CS", "Software Engineering", "Research"],
-                    isCurrent: false
+                    isCurrent: true
                   },
                   {
                     title: "BCA (Bachelor of Computer Applications)",
                     institution: "Amity University",
-                    duration: "2020 - 2023",
+                    duration: "2019 - 2023",
                     location: "India",
                     tags: ["Computer Science", "Programming", "Web Development"],
                     isCurrent: false
@@ -390,11 +390,10 @@ const AboutPage = () => {
           </h3>
           <div className="space-y-6 text-secondary leading-relaxed">
             {[
-              "I'm a passionate Full-Stack Developer with over 6 years of experience in creating innovative digital solutions. My journey in technology began with a curiosity about how things work, which evolved into a deep passion for building applications that solve real-world problems.",
-              "Currently pursuing my MCA at Amity University, I'm deepening my knowledge in Advanced Computer Science, Software Engineering, and Research methodologies. This advanced education complements my practical experience, allowing me to approach development challenges with both theoretical understanding and hands-on expertise.",
-              "My expertise spans across multiple domains - from web development using modern frameworks like React and Laravel, to mobile app development with Flutter, and cutting-edge AI integration. I believe in the power of technology to transform businesses and improve people's lives.",
-              "After working at WorkSaar (Firmbeginners It Solutions Pvt Ltd) as a Full-Stack Developer through June 2026, I'm now freelancing — building Pull SaaS for RealtorOne (R.N. Tiger) as a full-stack developer. My approach combines technical expertise with creative problem-solving, ensuring that every project I work on is not just functional, but also user-friendly and scalable.",
-              "When I'm not coding, you'll find me exploring new AI technologies, contributing to open-source projects, or mentoring aspiring developers. I'm always excited to take on new challenges and collaborate with teams to create something amazing."
+              "I build products people can open and use: web apps, Flutter apps, and SaaS. Six years of that, from WordPress and full-stack roles through mobile work, and now AI inside the product.",
+              "This year, 2026, has two current jobs. I manage AI agents for client workflows, and I build Pull SaaS for RealtorOne under R.N. Tiger — multi-tenant features, dashboards, and the APIs that keep them running.",
+              "Before the freelance shift I was a full-stack developer at WorkSaar (Firmbeginners It Solutions Pvt Ltd) from January 2024 to June 2026. I still study for my MCA at Amity University, started in 2024.",
+              "I stay on a build until it is live. Outside that I play guitar and keep the next project smaller and faster than the last one."
             ].map((paragraph, index) => (
               <motion.p
                 key={index}
